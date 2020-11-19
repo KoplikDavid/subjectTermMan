@@ -1,0 +1,18 @@
+{
+  "product": "ucl_subjecttermman_team11",
+  "version": "0.1.0",
+  "license": "License Commercial",
+  "description": {
+    "en": "",
+    "cs": ""
+  },
+  "ucl_subjecttermman_team11-hi": {},
+  "ucl_subjecttermman_team11-server": {
+    "devkit": {
+      "development": {
+        "appBoxLocationUri": "----- VALUE REQUIRED -----",
+        "appDeploymentUri": null
+      }
+    }
+  }
+}
