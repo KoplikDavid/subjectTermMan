@@ -15,6 +15,16 @@
         "realization": "index.html",
         "httpMethod": "GET",
         "type": "UVE"
+      },
+      "activity/create": {
+        "realization": "api/controllers/ActivityController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "activity/list": {
+        "realization": "api/controllers/ActivityController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
       }
     }
   }

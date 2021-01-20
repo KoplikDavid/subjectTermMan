@@ -6,6 +6,9 @@
       "schemaMap": {
         "subjecttermmanTeam11": {
           "realization": "dao/SubjecttermmanTeam11Mongo"
+        },
+        "activity": {
+          "realization": "dao/ActivityMongo"
         }
       }
     }
