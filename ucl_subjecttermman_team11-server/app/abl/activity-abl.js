@@ -35,29 +35,29 @@ class ActivityAbl {
   }
 
   async create(awid, dtoIn) {
-    // let validationResult = this.validator.validate("activityCreateDtoInType", dtoIn);
-    // let uuAppErrorMap = ValidationHelper.processValidationResult(
-    //   dtoIn,
-    //   validationResult,
-    //   WARNINGS.createUnsupportedKeys.code,
-    //   Errors.Create.InvalidDtoIn
-    // );
-    // dtoIn.awid = awid;
-    //
-    // let activity;
-    // try {
-    //   activity = await this.dao.create(dtoIn);
-    // } catch (e) {
-    //   if (e instanceof ObjectStoreError) {
-    //
-    //     throw new Errors.Create.ActivityDaoCreateFailed({ uuAppErrorMap }, e);
-    //   }
-    //   throw e;
-    // }
-    //
-    // activity.uuAppErrorMap = uuAppErrorMap;
-    //
-    // return activity;
+    let validationResult = this.validator.validate("activityCreateDtoInType", dtoIn);
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.createUnsupportedKeys.code,
+      Errors.Create.InvalidDtoIn
+    );
+    dtoIn.awid = awid;
+
+    let activity;
+    try {
+      activity = await this.dao.create(dtoIn);
+    } catch (e) {
+      if (e instanceof ObjectStoreError) {
+
+        throw new Errors.Create.ActivityDaoCreateFailed({ uuAppErrorMap }, e);
+      }
+      throw e;
+    }
+
+    activity.uuAppErrorMap = uuAppErrorMap;
+
+    return activity;
   }
 
 }
