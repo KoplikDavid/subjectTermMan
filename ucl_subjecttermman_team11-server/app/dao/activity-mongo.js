@@ -4,19 +4,18 @@ const { UuObjectDao } = require("uu_appg01_server").ObjectStore;
 class ActivityMongo extends UuObjectDao {
 
   async createSchema(){
-    await super.createIndex({ awid: 1, id: 1 }, { unique: true });
+    await super.createIndex({ awid: 1, _id: 1 }, { unique: true });
   }
 
   async create(uuObject) {
     return await super.insertOne(uuObject);
   }
 
-  async get(awid, id) {
-    let filter = {
-      awid: awid,
-      id: id,
+  async list(awid, sortBy, order, pageInfo) {
+    let sort = {
+      [sortBy]: order === "asc" ? 1 : -1
     };
-    return await super.findOne(filter);
+    return await super.find({ awid }, pageInfo, sort);
   }
 
 }

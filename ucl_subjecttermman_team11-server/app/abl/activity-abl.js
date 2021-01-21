@@ -9,18 +9,16 @@ const WARNINGS = {
   createUnsupportedKeys: {
     code: `${Errors.Create.UC_CODE}unsupportedKeys`
   },
-  getUnsupportedKeys: {
-    code: `${Errors.Get.UC_CODE}unsupportedKeys`
-  },
-  updateUnsupportedKeys: {
-    code: `${Errors.Update.UC_CODE}unsupportedKeys`
-  },
-  deleteUnsupportedKeys: {
-    code: `${Errors.Delete.UC_CODE}unsupportedKeys`
-  },
   listUnsupportedKeys: {
     code: `${Errors.List.UC_CODE}unsupportedKeys`
   }
+};
+
+const DEFAULTS = {
+  order: "asc",
+  pageIndex: 0,
+  pageSize: 100,
+  sortBy: "subjectTermId"
 };
 
 class ActivityAbl {
@@ -30,21 +28,21 @@ class ActivityAbl {
     this.dao = DaoFactory.getDao("activity");
   }
 
-  async list(awid, dtoIn) {
-    return dtoIn;
-  }
-
-  async create(awid, dtoIn) {
+  async create(awid, dtoIn, session, authorizationResult) {
     let validationResult = this.validator.validate("activityCreateDtoInType", dtoIn);
+
     let uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
       validationResult,
       WARNINGS.createUnsupportedKeys.code,
-      Errors.Create.InvalidDtoIn
-    );
+      Errors.Create.InvalidDtoIn);
+
+    dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
+    dtoIn.uuIdentityName = session.getIdentity().getName();
     dtoIn.awid = awid;
 
     let activity;
+
     try {
       activity = await this.dao.create(dtoIn);
     } catch (e) {
@@ -54,10 +52,30 @@ class ActivityAbl {
       }
       throw e;
     }
-
     activity.uuAppErrorMap = uuAppErrorMap;
 
     return activity;
+  }
+
+  async list(awid, dtoIn, authorizationResult) {
+    let validationResult = this.validator.validate("activityListDtoInType", dtoIn);
+
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.listUnsupportedKeys.code,
+      Errors.List.InvalidDtoIn);
+
+    dtoIn.sortBy = DEFAULTS.sortBy;
+    if (!dtoIn.order) dtoIn.order = DEFAULTS.order;
+    if (!dtoIn.pageInfo) dtoIn.pageInfo = {};
+    if (!dtoIn.pageInfo.pageSize) dtoIn.pageInfo.pageSize = DEFAULTS.pageSize;
+    if (!dtoIn.pageInfo.pageIndex) dtoIn.pageInfo.pageIndex = DEFAULTS.pageIndex;
+
+    let list = await this.dao.list(awid, dtoIn.sortBy, dtoIn.order, dtoIn.pageInfo);
+
+    list.uuAppErrorMap = uuAppErrorMap;
+    return list;
   }
 
 }
