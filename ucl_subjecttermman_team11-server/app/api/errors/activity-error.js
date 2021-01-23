@@ -34,7 +34,28 @@ const List = {
   }
 };
 
+const Delete = {
+  UC_CODE: `${ACTIVITY_ERROR_PREFIX}delete/`,
+
+  InvalidDtoIn: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${List.UC_CODE}invalidDtoIn`;
+      this.message = "DtoIn is not valid.";
+    }
+  },
+
+  ActivityDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${List.UC_CODE}activityInstanceDoesNotExist`;
+      this.message = "Removing activity by activity Dao removeActivity failed.";
+    }
+  }
+};
+
 module.exports = {
+  Delete,
   List,
   Create
 };

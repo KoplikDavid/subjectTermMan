@@ -11,3 +11,7 @@ const activityListDtoInType = shape({
     pageSize: integer()
   })
 });
+
+const activityDeleteDtoInType = shape({
+  id: id().isRequired(),
+});

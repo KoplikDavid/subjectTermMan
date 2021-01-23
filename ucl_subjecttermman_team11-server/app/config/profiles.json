@@ -24,6 +24,10 @@
       "activity/list": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
+      },
+      "activity/delete": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
       }
     }
   }

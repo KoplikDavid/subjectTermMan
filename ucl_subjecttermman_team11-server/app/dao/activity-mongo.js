@@ -18,6 +18,21 @@ class ActivityMongo extends UuObjectDao {
     return await super.find({ awid }, pageInfo, sort);
   }
 
+  async delete(uuObject) {
+    let filter = {
+      awid: uuObject.awid,
+      _id: uuObject.id,
+    };
+    return await super.deleteOne(filter);
+  }
+
+  async get(uuObject) {
+    let filter = {
+      awid: uuObject.awid,
+      _id: uuObject.id,
+    };
+    return await super.findOne(filter);
+  }
 }
 
 module.exports = ActivityMongo;

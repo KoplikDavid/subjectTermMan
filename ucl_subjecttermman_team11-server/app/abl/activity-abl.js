@@ -11,6 +11,9 @@ const WARNINGS = {
   },
   listUnsupportedKeys: {
     code: `${Errors.List.UC_CODE}unsupportedKeys`
+  },
+  deleteUnsupportedKeys: {
+    code: `${Errors.Delete.UC_CODE}unsupportedKeys`
   }
 };
 
@@ -55,6 +58,31 @@ class ActivityAbl {
     activity.uuAppErrorMap = uuAppErrorMap;
 
     return activity;
+  }
+
+  async delete(awid, dtoIn, session, authorizationResult) {
+    let validationResult = this.validator.validate("activityDeleteDtoInType", dtoIn);
+
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.deleteUnsupportedKeys.code,
+      Errors.Delete.InvalidDtoIn
+    );
+
+    let activity = {
+      awid: awid,
+      id: dtoIn.id,
+    };
+
+    let daoActivity = await this.dao.get(activity);
+    if (!daoActivity) {
+      throw new Errors.Delete.ActivityDoesNotExist({ uuAppErrorMap }, { activityId: dtoIn.id });
+    }
+
+    await this.dao.delete(activity);
+
+    return { uuAppErrorMap };
   }
 
   async list(awid, dtoIn, authorizationResult) {

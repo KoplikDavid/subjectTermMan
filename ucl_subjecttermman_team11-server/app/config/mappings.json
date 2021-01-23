@@ -25,6 +25,11 @@
         "realization": "api/controllers/ActivityController.list",
         "httpMethod": "GET",
         "type": "CMD"
+      },
+      "activity/delete": {
+        "realization": "api/controllers/ActivityController.delete",
+        "httpMethod": "POST",
+        "type": "CMD"
       }
     }
   }
