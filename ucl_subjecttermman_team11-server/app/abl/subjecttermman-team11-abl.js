@@ -14,16 +14,29 @@ const WARNINGS = {
   },
 };
 
+const AUTHORITIES = "Authorities";
+const EXECUTIVES = "Executives";
+const STATE_ACTIVE = "active";
+const STATE_UNDER_CONSTRUCTION = "underConstruction";
+const STATE_CLOSED = "closed";
+
 const logger = LoggerFactory.get("SubjecttermmanTeam11Abl");
 
 class SubjecttermmanTeam11Abl {
   constructor() {
     this.validator = Validator.load();
+    this.dao = DaoFactory.getDao("subjecttermmanTeam11");
   }
 
   async init(uri, dtoIn, session) {
     const awid = uri.getAwid();
     // HDS 1
+    let jokeInstance = await this.dao.getByAwid(awid);
+    // A1
+    if (jokeInstance) {
+      throw new Errors.Init.SubjecttermmanInstanceAlreadyInitialized();
+    }
+
     let validationResult = this.validator.validate("initDtoInType", dtoIn);
     // A1, A2
     let uuAppErrorMap = ValidationHelper.processValidationResult(
@@ -34,7 +47,7 @@ class SubjecttermmanTeam11Abl {
     );
 
     // HDS 2
-    const schemas = ["subjecttermmanTeam11", "activity"];
+    const schemas = ["subjecttermmanTeam11", "activity","subjectTerm"];
     let schemaCreateResults = schemas.map(async (schema) => {
       try {
         return await DaoFactory.getDao(schema).createSchema();
@@ -103,7 +116,17 @@ class SubjecttermmanTeam11Abl {
 
     // HDS 4 - HDS N
     // TODO Implement according to application needs...
+    dtoIn.awid = awid;
 
+    try {
+      let instance = await this.dao.create(dtoIn);
+    } catch (e) {
+      // A4
+      if (e instanceof ObjectStoreError) {
+        throw new Errors.Init.SubjecttermmanInstanceDaoCreateFailed({ uuAppErrorMap }, e);
+      }
+      throw e;
+    }
     // HDS N+1
     const workspace = UuAppWorkspace.get(awid);
 
@@ -111,6 +134,50 @@ class SubjecttermmanTeam11Abl {
       ...workspace,
       uuAppErrorMap: uuAppErrorMap,
     };
+  }
+
+  async load(uri, authorizationResult) {
+    const awid = uri.getAwid();
+
+    let subjecttermman = await this.checkInstance(
+      awid,
+      Errors.Load.SubjecttermmanInstanceDoesNotExist,
+      Errors.Load.SubjecttermmanInstanceNotInProperState
+    );
+
+    let authorizedProfiles = authorizationResult.getAuthorizedProfiles();
+    if (
+      subjecttermman.state === STATE_UNDER_CONSTRUCTION &&
+      !authorizedProfiles.includes(AUTHORITIES) &&
+      !authorizedProfiles.includes(EXECUTIVES)
+    ) {
+      throw new Errors.Load.SubjecttermmanInstanceIsUnderConstruction({}, { state: subjecttermman.state });
+    }
+
+
+    // hds 3
+    subjecttermman.authorizedProfileList = authorizedProfiles;
+
+    // HDS 4
+    return subjecttermman;
+  }
+
+
+  async checkInstance(awid, notExistError, closedStateError) {
+    let subjecttermman = await this.dao.getByAwid(awid);
+    if (!subjecttermman) {
+      throw new notExistError();
+    }
+    if (subjecttermman.state === STATE_CLOSED) {
+      throw new closedStateError(
+        {},
+        {
+          state: subjecttermman.state,
+          expectedStateList: [STATE_ACTIVE, STATE_UNDER_CONSTRUCTION]
+        }
+      );
+    }
+    return subjecttermman;
   }
 }
 

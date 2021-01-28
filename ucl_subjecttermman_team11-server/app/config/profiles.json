@@ -28,6 +28,10 @@
       "activity/delete": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
+      },
+      "subjecttermman/load": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
       }
     }
   }

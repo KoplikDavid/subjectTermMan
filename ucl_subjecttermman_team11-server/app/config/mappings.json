@@ -30,6 +30,11 @@
         "realization": "api/controllers/ActivityController.delete",
         "httpMethod": "POST",
         "type": "CMD"
+      },
+      "subjecttermman/load": {
+        "realization": "api/controllers/SubjecttermmanTeam11Controller.load",
+        "httpMethod": "GET",
+        "type": "CMD"
       }
     }
   }
