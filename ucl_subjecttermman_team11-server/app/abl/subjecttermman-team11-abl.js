@@ -47,7 +47,7 @@ class SubjecttermmanTeam11Abl {
     );
 
     // HDS 2
-    const schemas = ["subjecttermmanTeam11", "activity","subjectTerm"];
+    const schemas = ["subjecttermmanTeam11", "activity"];
     let schemaCreateResults = schemas.map(async (schema) => {
       try {
         return await DaoFactory.getDao(schema).createSchema();

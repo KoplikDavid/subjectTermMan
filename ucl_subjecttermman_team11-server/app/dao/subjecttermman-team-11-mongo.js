@@ -33,6 +33,10 @@ class SubjecttermmanTeam11Mongo extends UuObjectDao {
     };
     return await super.deleteOne(filter);
   }
+
+  async getByAwid(awid) {
+    return await super.findOne({ awid });
+  }
 }
 
 module.exports = SubjecttermmanTeam11Mongo;

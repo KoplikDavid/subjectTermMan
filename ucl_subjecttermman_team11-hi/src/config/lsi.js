@@ -9,6 +9,10 @@ const Lsi = {
       cs: "Vítejte",
       en: "Welcome",
     },
+    activities: {
+      cs: "Activity",
+      en: "Activities",
+    },
     about: {
       cs: "O aplikaci",
       en: "About Application",
