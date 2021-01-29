@@ -10,8 +10,8 @@
   "ucl_subjecttermman_team11-server": {
     "devkit": {
       "development": {
-        "appBoxLocationUri": "ues:UCL-BT:OPR.RSP/APPBOXES",
-        "appDeploymentUri": "ues:UCL-BT[118500965363973101]:UUN_STUDENTS02_AWE[5f9fea3cf439f9fab6743986]:UUN.BPMI20WPT11.MAING01[5fde5500f903803c708e8df5]"
+        "appBoxLocationUri": "----- VALUE REQUIRED -----",
+        "appDeploymentUri": null
       }
     }
   }
