@@ -9,7 +9,7 @@ import Config from "./config/config";
 import Left from "./left";
 import Bottom from "./bottom";
 import Home from "../routes/home";
-import Activity from "../routes/activity";
+import Activities from "../routes/activities";
 
 //@@viewOff:imports
 
@@ -28,7 +28,7 @@ const ROUTES = {
   "": DEFAULT_USE_CASE,
   home: { component: <Home /> },
   about: { component: <About /> },
-  activities: {component:<Activity />},
+  activities: {component:<Activities />},
   "sys/uuAppWorkspace/initUve": { component: <InitAppWorkspace /> },
   controlPanel: { component: <ControlPanel /> },
 };

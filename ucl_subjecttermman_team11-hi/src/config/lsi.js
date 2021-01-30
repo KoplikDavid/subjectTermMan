@@ -10,7 +10,7 @@ const Lsi = {
       en: "Welcome",
     },
     activities: {
-      cs: "Activity",
+      cs: "Aktivity",
       en: "Activities",
     },
     about: {

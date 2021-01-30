@@ -7,7 +7,8 @@ import Plus4U5 from "uu_plus4u5g01";
 import "uu_plus4u5g01-bricks";
 import "uu_plus4u5g01-app";
 import Calls from "../calls";
-import ActivityList from "../activity/tileList";
+import ActivityList from "../activity/activityList";
+import ActivityTile from "../activity/activityTile";
 
 
 const BINARY_URL = "https://uuos9.plus4u.net/uu-bookkitg01-main/78462435-5c73a1fdb9a14b4aaff232962752c9b6/getBinaryData";
@@ -94,25 +95,25 @@ const ExampleTile = UU5.Common.VisualComponent.create({
 });
 const Example = UU5.Common.VisualComponent.create({
   renderTile(data){
-    console.log(data);
+    console.log("example",data);
     return <div>aaa</div>;
   },
 
   render() {
     return (
-      <UU5.Bricks.Container header="Simple Tile List" level={1}>
+      <UU5.Bricks.Container header="Example Tile List" level={1}>
         {(this.props.data.length > 0) ?
           /*@@viewOn:example*/
           <UU5.Bricks.Resize>
-            <h1>{JSON.stringify(Calls.activityList())}</h1>
-            <UU5.Tiles.ListController
-              onLoad={Calls.activityList}
-              ref_={r => this._lc = r}
-              controlled={false}
-            >
+            {/*<h1>{JSON.stringify(Calls.activityList())}</h1>*/}
+            {/*<UU5.Tiles.ListController*/}
+            {/*  onLoad={Calls.activityList}*/}
+            {/*  ref_={r => this._lc = r}*/}
+            {/*  controlled={false}*/}
+            {/*>*/}
               <UU5.Tiles.List
                 tile={this.renderTile}
-                //data={this.props.data}
+                data={this.props.data}
                 tileHeight={300}
                 tileMinWidth={220}
                 tileMaxWidth={400}
@@ -124,7 +125,7 @@ const Example = UU5.Common.VisualComponent.create({
                 tileJustify="space-between"
                 scrollElement={window}
               />
-            </UU5.Tiles.ListController>
+            {/*</UU5.Tiles.ListController>*/}
           </UU5.Bricks.Resize>
           /*@@viewOff:example*/
           : <UU5.Bricks.Div className="center">Nothing to show ...</UU5.Bricks.Div>
@@ -166,16 +167,18 @@ const Loader = UU5.Common.VisualComponent.create({
   },
 
   render() {
-    return this.getLoadFeedbackChildren(dtoOut =>
-      <div>
-        <ActivityList />
+    return this.getLoadFeedbackChildren((dtoOut) => {
+      console.log("tady", dtoOut)
+      return <div>
+        <ActivityTile data={Calls.oneActivity()}/>
+        <ActivityList data={Calls.activityList()}/>
         <Example data={dtoOut}/>
       </div>
-    );
+    });
   }
 });
 
-const Activity = UU5.Common.VisualComponent.create({
+const Activities = UU5.Common.VisualComponent.create({
 
   //@@viewOn:mixins
   mixins: [
@@ -189,4 +192,4 @@ const Activity = UU5.Common.VisualComponent.create({
   }
 });
 
-export default Activity;
+export default Activities;
