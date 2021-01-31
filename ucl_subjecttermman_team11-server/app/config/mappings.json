@@ -40,6 +40,11 @@
         "realization": "api/controllers/ActivityController.addStudent",
         "httpMethod": "POST",
         "type": "CMD"
+      },
+      "activity/deleteStudent": {
+        "realization": "api/controllers/ActivityController.deleteStudent",
+        "httpMethod": "POST",
+        "type": "CMD"
       }
     }
   }

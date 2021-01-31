@@ -32,6 +32,48 @@ class ActivityAbl {
     this.dao = DaoFactory.getDao("activity");
   }
 
+  async deleteStudent(awid, dtoIn) {
+    await SubjecttermmanTeam11Abl.checkInstance(
+      awid,
+      Errors.DeleteStudent.SubjectTermInstanceDoesNotExist,
+      Errors.DeleteStudent.SubjectTermInstanceNotInProperState
+    );
+
+    let validationResult = this.validator.validate("activityAddStudentDtoInType", dtoIn);
+
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.createUnsupportedKeys.code,
+      Errors.DeleteStudent.InvalidDtoIn);
+
+    let activityFilter = {
+      awid: awid,
+      id: dtoIn.id,
+    };
+
+    let activity = await this.dao.get(activityFilter);
+
+    if (!activity) {
+      throw new Errors.DeleteStudent.ActivityDoesNotExist({ uuAppErrorMap }, { activityId: dtoIn.id });
+    }
+
+    dtoIn.awid=awid;
+
+    try {
+      activity = await this.dao.deleteStudent(dtoIn);
+    } catch (e) {
+      if (e instanceof ObjectStoreError) {
+
+        throw new Errors.DeleteStudent.ActivityDaoDeleteStudentFailed({ uuAppErrorMap }, e);
+      }
+      throw e;
+    }
+
+    activity.uuAppErrorMap = uuAppErrorMap;
+    return activity;
+  }
+
   async addStudent(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,

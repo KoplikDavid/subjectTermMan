@@ -147,7 +147,53 @@ const AddStudent = {
 
 };
 
+const DeleteStudent = {
+  UC_CODE: `${ACTIVITY_ERROR_PREFIX}deleteStudent/`,
+
+  InvalidDtoIn: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${List.UC_CODE}invalidDtoIn`;
+      this.message = "DtoIn is not valid.";
+    }
+  },
+
+  ActivityDaoDeleteStudentFailed: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${Create.UC_CODE}activityDaoDeleteStudentFailed`;
+      this.message = "Delete student by activity DAO update failed.";
+    }
+  },
+
+  SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${Update.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.message = "SubjectTermInstance does not exist.";
+    }
+  },
+
+  SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${Update.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
+    }
+  },
+
+  ActivityDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${Update.UC_CODE}ActivityTermDoesNotExist`;
+      this.message = "Activity does not exist.";
+    }
+  },
+
+};
+
 module.exports = {
+  DeleteStudent,
   AddStudent,
   Delete,
   List,
