@@ -11,11 +11,12 @@ class ActivityMongo extends UuObjectDao {
     return await super.insertOne(uuObject);
   }
 
-  async list(awid, sortBy, order, pageInfo) {
+  async list(filter, sortBy, order, pageInfo) {
+
     let sort = {
       [sortBy]: order === "asc" ? 1 : -1
     };
-    return await super.find({ awid }, pageInfo, sort);
+    return await super.find(filter, pageInfo, sort);
   }
 
   async delete(uuObject) {

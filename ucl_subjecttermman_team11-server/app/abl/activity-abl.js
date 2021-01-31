@@ -43,6 +43,8 @@ class ActivityAbl {
     dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
     dtoIn.uuIdentityName = session.getIdentity().getName();
     dtoIn.awid = awid;
+    dtoIn.lifeCycleState= "planned";
+    if (!dtoIn.activityLink) dtoIn.activityLink = "add link please";
 
     let activity;
 
@@ -100,7 +102,12 @@ class ActivityAbl {
     if (!dtoIn.pageInfo.pageSize) dtoIn.pageInfo.pageSize = DEFAULTS.pageSize;
     if (!dtoIn.pageInfo.pageIndex) dtoIn.pageInfo.pageIndex = DEFAULTS.pageIndex;
 
-    let list = await this.dao.list(awid, dtoIn.sortBy, dtoIn.order, dtoIn.pageInfo);
+    let filter ={
+      awid: awid,
+      subjectTermId: dtoIn.subjectTermId
+    }
+
+    let list = await this.dao.list(filter, dtoIn.sortBy, dtoIn.order, dtoIn.pageInfo);
 
     list.uuAppErrorMap = uuAppErrorMap;
     return list;
