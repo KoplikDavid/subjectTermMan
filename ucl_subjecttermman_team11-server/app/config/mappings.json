@@ -35,6 +35,11 @@
         "realization": "api/controllers/SubjecttermmanTeam11Controller.load",
         "httpMethod": "GET",
         "type": "CMD"
+      },
+      "activity/addStudent": {
+        "realization": "api/controllers/ActivityController.addStudent",
+        "httpMethod": "POST",
+        "type": "CMD"
       }
     }
   }

@@ -3,6 +3,10 @@ const ActivityAbl = require("../../abl/activity-abl.js");
 
 class ActivityController {
 
+  addStudent(ucEnv) {
+    return ActivityAbl.addStudent(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
+  }
+
   delete(ucEnv) {
     return ActivityAbl.delete(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
   }

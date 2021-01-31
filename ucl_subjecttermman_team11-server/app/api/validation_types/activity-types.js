@@ -22,3 +22,8 @@ const activityListDtoInType = shape({
 const activityDeleteDtoInType = shape({
   id: id().isRequired(),
 });
+
+const activityAddStudentDtoInType =shape({
+  id: id().isRequired(),
+  studentId: uu5String(255).isRequired()
+});

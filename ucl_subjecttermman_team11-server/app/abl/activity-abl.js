@@ -4,6 +4,7 @@ const { Validator } = require("uu_appg01_server").Validation;
 const { DaoFactory, ObjectStoreError } = require("uu_appg01_server").ObjectStore;
 const { ValidationHelper } = require("uu_appg01_server").AppServer;
 const Errors = require("../api/errors/activity-error.js");
+const SubjecttermmanTeam11Abl = require("./subjecttermman-team11-abl");
 
 const WARNINGS = {
   createUnsupportedKeys: {
@@ -31,7 +32,59 @@ class ActivityAbl {
     this.dao = DaoFactory.getDao("activity");
   }
 
+  async addStudent(awid, dtoIn) {
+    await SubjecttermmanTeam11Abl.checkInstance(
+      awid,
+      Errors.AddStudent.SubjectTermInstanceDoesNotExist,
+      Errors.AddStudent.SubjectTermInstanceNotInProperState
+    );
+
+    let validationResult = this.validator.validate("activityAddStudentDtoInType", dtoIn);
+
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.createUnsupportedKeys.code,
+      Errors.AddStudent.InvalidDtoIn);
+
+    let activityFilter = {
+      awid: awid,
+      id: dtoIn.id,
+    };
+
+    let activity = await this.dao.get(activityFilter);
+
+    if (!activity) {
+      throw new Errors.AddStudent.ActivityDoesNotExist({ uuAppErrorMap }, { activityId: dtoIn.id });
+    }
+
+    let newStudent = {
+      studentId: dtoIn.studentId,
+      score: 0
+    }
+
+    try {
+      activity = await this.dao.addStudent(activityFilter,newStudent);
+    } catch (e) {
+      if (e instanceof ObjectStoreError) {
+
+        throw new Errors.AddStudent.ActivityDaoAddStudentFailed({ uuAppErrorMap }, e);
+      }
+      throw e;
+    }
+
+    activity.uuAppErrorMap = uuAppErrorMap;
+    return activity;
+
+  }
+
   async create(awid, dtoIn, session, authorizationResult) {
+    await SubjecttermmanTeam11Abl.checkInstance(
+      awid,
+      Errors.Create.SubjectTermInstanceDoesNotExist,
+      Errors.Create.SubjectTermInstanceNotInProperState
+    );
+
     let validationResult = this.validator.validate("activityCreateDtoInType", dtoIn);
 
     let uuAppErrorMap = ValidationHelper.processValidationResult(
@@ -63,6 +116,12 @@ class ActivityAbl {
   }
 
   async delete(awid, dtoIn, session, authorizationResult) {
+    await SubjecttermmanTeam11Abl.checkInstance(
+      awid,
+      Errors.Delete.SubjectTermInstanceDoesNotExist,
+      Errors.Delete.SubjectTermInstanceNotInProperState
+    );
+
     let validationResult = this.validator.validate("activityDeleteDtoInType", dtoIn);
 
     let uuAppErrorMap = ValidationHelper.processValidationResult(
@@ -88,6 +147,12 @@ class ActivityAbl {
   }
 
   async list(awid, dtoIn, authorizationResult) {
+    await SubjecttermmanTeam11Abl.checkInstance(
+      awid,
+      Errors.Delete.SubjectTermInstanceDoesNotExist,
+      Errors.Delete.SubjectTermInstanceNotInProperState
+    );
+
     let validationResult = this.validator.validate("activityListDtoInType", dtoIn);
 
     let uuAppErrorMap = ValidationHelper.processValidationResult(

@@ -32,6 +32,10 @@
       "subjecttermman/load": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
+      },
+      "activity/addStudent": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
       }
     }
   }
