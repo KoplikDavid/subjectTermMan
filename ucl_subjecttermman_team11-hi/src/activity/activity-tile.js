@@ -1,6 +1,8 @@
 import UU5 from "uu5g04";
 import Lsi from "./activity-tile-lsi";
 
+
+
 const ActivityTile = UU5.Common.VisualComponent.create({
   //@@viewOn:mixins
   mixins: [
@@ -19,9 +21,18 @@ const ActivityTile = UU5.Common.VisualComponent.create({
   //@@viewOff:statics
 
   //@@viewOn:private
-  _handleDelete() {
 
+  _handleDetail() {
+    console.log("opoustim tile",this.props.onDetail,"a dal",this.props.data);
+    const data = this.props.data;
+    console.log("funkce?",this.props.onClose);
+      data.onClose=this.props.onClose;
+
+    this.props.onDetail(data);
   },
+
+
+
   //@@viewOff:private
 
   //@@viewOn:render
@@ -82,18 +93,9 @@ const ActivityTile = UU5.Common.VisualComponent.create({
             flexDirection: "column"
           }}
         >
-          <UU5.Bricks.Panel
-            header="Manage student"
-            content="Ut nec nunc dui. Praesent eget urna rhoncus, facilisis sem at, vestibulum nibh. Aliquam cursus purus sapien, ac facilisis est malesuada at. Fusce accumsan, mi ut volutpat posuere, neque elit tincidunt arcu, vel venenatis odio elit sed mi. Sed porttitor, orci quis dignissim elementum, velit nunc tristique tellus, at ullamcorper orci ex eget lacus."
-            colorSchema={this.state.colorSchema === "null" ? null : this.state.colorSchema}
-            colorSchemaHeader={"primary"}
-            colorSchemaContent={"primary"}
-            bgStyle={"underline"}
-            bgStyleHeader={this.state.bgStyleHeader === "null" ? null : this.state.bgStyleHeader}
-            bgStyleContent={this.state.bgStyleContent === "null" ? null : this.state.bgStyleContent}
-            iconExpanded="mdi-chevron-up" iconCollapsed="mdi-chevron-down"
-            openClick={this.state.openClick === "null" ? null : this.state.openClick}
-          />
+          <UU5.Bricks.Button size="m" onClick={this._handleDetail}>
+
+          </UU5.Bricks.Button>
         </UU5.Bricks.Div>
       </UU5.Bricks.Div>
     )

@@ -170,7 +170,6 @@ const Loader = UU5.Common.VisualComponent.create({
     return this.getLoadFeedbackChildren((dtoOut) => {
       console.log("tady", dtoOut)
       return <div>
-        <ActivityTile data={Calls.oneActivity()}/>
         <ActivityList data={Calls.activityList()}/>
         <Example data={dtoOut}/>
       </div>
