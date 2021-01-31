@@ -1,5 +1,5 @@
 import UU5 from "uu5g04";
-import ActivityTile from "./activityTile";
+import ActivityTile from "./activity-tile";
 import "uu5g04-bricks";
 import "uu5g04-forms";
 import "uu5tilesg01";
@@ -8,7 +8,6 @@ import "uu_plus4u5g01-app";
 
 const ActivityList = UU5.Common.VisualComponent.create({
   renderTile(data){
- console.log("renderData",data)
     return <ActivityTile data={data}/>;
   },
 
@@ -23,7 +22,7 @@ const ActivityList = UU5.Common.VisualComponent.create({
               data={this.props.data.itemList}
               tileHeight={300}
               tileMinWidth={220}
-              tileMaxWidth={400}
+              tileMaxWidth={300}
               tileSpacing={8}
               tileElevationHover={1}
               tileBorder
@@ -31,6 +30,7 @@ const ActivityList = UU5.Common.VisualComponent.create({
               rowSpacing={8}
               tileJustify="space-between"
               scrollElement={window}
+              selectable={true}
             />
           </UU5.Bricks.Resize>
           /*@@viewOff:example*/
