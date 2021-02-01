@@ -3,7 +3,7 @@ const subjectTermDtoInType = shape({
   subjectCode: uu5String(255).isRequired(),
   subjectName: uu5String(255).isRequired(),
   termCode: uu5String(255).isRequired(),
-  students: array(id(), 50)
+  students: array(uu5String(255), 50)
 });
 
 const subjectTermSetStateDtoInType = shape({
