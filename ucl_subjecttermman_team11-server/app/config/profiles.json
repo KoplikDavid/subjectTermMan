@@ -40,6 +40,30 @@
       "activity/deleteStudent": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
+      },
+      "subjectTerm/create": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+      "subjectTerm/delete": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+      "subjectTerm/list": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+      "subjectTerm/addStudent": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+      "subjectTerm/deleteStudent": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+      "subjectTerm/setState": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
       }
     }
   }

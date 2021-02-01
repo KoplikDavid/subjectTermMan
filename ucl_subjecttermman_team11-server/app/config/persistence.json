@@ -9,6 +9,9 @@
         },
         "activity": {
           "realization": "dao/ActivityMongo"
+        },
+        "subjectTerm": {
+          "realization": "dao/SubjectTermMongo"
         }
       }
     }

@@ -45,6 +45,36 @@
         "realization": "api/controllers/ActivityController.deleteStudent",
         "httpMethod": "POST",
         "type": "CMD"
+      },
+      "subjectTerm/create": {
+        "realization": "api/controllers/SubjectTermController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "subjectTerm/delete": {
+        "realization": "api/controllers/SubjectTermController.delete",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "subjectTerm/list": {
+        "realization": "api/controllers/SubjectTermController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "subjectTerm/addStudent": {
+        "realization": "api/controllers/SubjectTermController.addStudent",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "subjectTerm/deleteStudent": {
+        "realization": "api/controllers/SubjectTermController.deleteStudent",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "subjectTerm/setState": {
+        "realization": "api/controllers/SubjectTermController.setState",
+        "httpMethod": "POST",
+        "type": "CMD"
       }
     }
   }
