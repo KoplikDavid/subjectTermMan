@@ -11,8 +11,8 @@ class SubjectTermMongo extends UuObjectDao {
     return await super.insertOne(uuObject);
   }
 
-  async list(filter, sortBy, order, pageInfo) {
-
+  async list(awid, sortBy, order, pageInfo) {
+    let filter = { awid: awid};
     let sort = {
       [sortBy]: order === "asc" ? 1 : -1
     };
@@ -33,6 +33,10 @@ class SubjectTermMongo extends UuObjectDao {
       _id: uuObject.id,
     };
     return await super.findOne(filter);
+  }
+
+  async setState(filter, dtoIn) {
+    return await super.findOneAndUpdate(filter, dtoIn, "NONE");
   }
 
   async addStudent(filter, newStudent) {

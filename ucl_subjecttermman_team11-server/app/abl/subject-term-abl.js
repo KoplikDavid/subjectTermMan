@@ -42,6 +42,39 @@ class SubjectTermAbl {
       Errors.SetState.SubjectTermInstanceNotInProperState
     );
 
+    let validationResult = this.validator.validate("subjectTermSetStateDtoInType", dtoIn);
+
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.updateUnsupportedKeys.code,
+      Errors.SetState.InvalidDtoIn
+    );
+
+    let subjectTermFilter = {
+      awid: awid,
+      id: dtoIn.id,
+    };
+
+    let subjectTerm = await this.dao.get(subjectTermFilter);
+
+    if (!subjectTerm) {
+      throw new Errors.SetState.SubjectTermDoesNotExist({ uuAppErrorMap }, { subjectTermId: dtoIn.id });
+    }
+
+    try {
+      subjectTerm = await this.dao.setState(subjectTermFilter, dtoIn);
+    } catch (e) {
+      if (e instanceof ObjectStoreError) {
+
+        throw new Errors.SetState.SubjectTermDaoUpdateFailed({ uuAppErrorMap }, e);
+      }
+      throw e;
+    }
+
+    subjectTerm.uuAppErrorMap = uuAppErrorMap;
+    return subjectTerm;
+
   }
 
   async deleteStudent(awid, dtoIn) {
@@ -69,6 +102,25 @@ class SubjectTermAbl {
       Errors.List.SubjectTermInstanceNotInProperState
     );
 
+    let validationResult = this.validator.validate("subjectTermListDtoInType", dtoIn);
+
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.listUnsupportedKeys.code,
+      Errors.List.InvalidDtoIn);
+
+    dtoIn.sortBy = DEFAULTS.sortBy;
+    if (!dtoIn.order) dtoIn.order = DEFAULTS.order;
+    if (!dtoIn.pageInfo) dtoIn.pageInfo = {};
+    if (!dtoIn.pageInfo.pageSize) dtoIn.pageInfo.pageSize = DEFAULTS.pageSize;
+    if (!dtoIn.pageInfo.pageIndex) dtoIn.pageInfo.pageIndex = DEFAULTS.pageIndex;
+
+    let list = await this.dao.list(awid, dtoIn.sortBy, dtoIn.order, dtoIn.pageInfo);
+
+    list.uuAppErrorMap = uuAppErrorMap;
+    return list;
+
   }
 
   async delete(awid, dtoIn) {
@@ -77,6 +129,29 @@ class SubjectTermAbl {
       Errors.Delete.SubjectTermInstanceDoesNotExist,
       Errors.Delete.SubjectTermInstanceNotInProperState
     );
+
+    let validationResult = this.validator.validate("subjectTermDeleteDtoInType", dtoIn);
+
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.deleteUnsupportedKeys.code,
+      Errors.Delete.InvalidDtoIn
+    );
+
+    let subjectTerm = {
+      awid: awid,
+      id: dtoIn.id,
+    };
+
+    let daoActivity = await this.dao.get(subjectTerm);
+    if (!daoActivity) {
+      throw new Errors.Delete.SubjectTermDoesNotExist({ uuAppErrorMap }, { activityId: dtoIn.id });
+    }
+
+    await this.dao.delete(subjectTerm);
+
+    return { uuAppErrorMap };
 
   }
 
