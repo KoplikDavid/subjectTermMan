@@ -64,6 +64,14 @@
       "subjectTerm/setState": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
+      },
+      "activity/setState": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+      "activity/setActivityLink": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
       }
     }
   }

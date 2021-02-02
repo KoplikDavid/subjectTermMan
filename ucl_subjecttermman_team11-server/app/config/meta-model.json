@@ -1,0 +1,255 @@
+{
+  "code": "{vendor}-{app}-{subApp}gNN",
+  "name": "{uuAppMetaModel name}",
+  "desc": "{uuAppMetaModel description}",
+  "version": "{N.N.N}",
+
+  "defaultIcon": "{code uubml icon}",
+
+  "stateList": [{
+    "code": "active",
+    "name": "Active",
+    "type": "ACTIVE",
+    "icon": "uubml-state-s00-active"
+  }, {
+    "code": "closed",
+    "name": "Closed",
+    "type": "FINAL",
+    "icon": "uubml-state-s00-final"
+  }
+  ],
+
+  "defaultPermissionMatrix": [
+    "10000000-00000000-00000000-00000000",
+    "10000000-00000000-00000000-00000000"
+  ],
+
+  "profileList": [{
+    "code": "{uuAppProfileCode}",
+    "name": "{uuAppProfileName}",
+    "desc": "{uuAppProfileDescription}",
+    "disableImplicitPermissions": false,
+    "enabledExplicitTypeList": ["uu-businessterritory-maing01/uuRoleGroupIfc"]
+  }
+  ],
+
+  "ancestorPathMap": {
+    "uu-businessterritory-maing01/uuAwsc": [],
+    "uu-businessterritory-maing01/uuArtifactIfc": ["uu-businessterritory-maing01/uuAwsc"]
+  },
+
+  "ancestorMap": {
+    "uu-businessterritory-maing01/uuAwsc": {
+      "interfaceUuCmdMap": {
+        "authorizeMe": "",
+        "authorizeUuIdentity": "",
+        "authorizeRoleIfcList": "",
+        "get": "",
+        "load": "",
+        "loadEnvironment": "",
+        "loadPermissions": "",
+        "getNavigation": "",
+        "getImplicitPermissions": "",
+        "setBasicAttributes": "",
+        "setVersion": "",
+        "setResponsibleRole": "",
+        "setHomeFolder": "",
+        "setState": "",
+        "setPermissions": "",
+        "setImplicitPermissions": "",
+        "find": "",
+        "connectAppWorkspace": "",
+        "delete": "",
+        "listStateHistory": "",
+        "listMyRoles": "",
+
+        // Activity
+        "checkDwr": "",
+        "loadLifeCycle": "",
+        "listActivities": "",
+        "activity/create": "",
+        "activity/load": "",
+        "activity/setBasicAttributes": "",
+        "activity/setTypeSpecificData": "",
+        "activity/setSubmitter": "",
+        "activity/setState": "",
+        "activity/addSolver": "",
+        "activity/removeSolver": "",
+        "activity/reactivateSolver": "",
+        "activity/elementary/setSolver": "",
+        "activity/addNote": "",
+        "activity/createNote": "",
+        "activity/elementary/addNote": "",
+        "activity/elementary/setState": "",
+        "activity/elementary/createNote": "",
+        "activity/setNoteImportance": "",
+        "activity/removeNote": "",
+        "activity/propagateReadToDw": "",
+
+        // AAR
+        "aar/create": "",
+        "aar/createMirror": "",
+        "aar/get": "",
+        "aar/update": "",
+        "aar/updateMirror": "",
+        "aar/delete": "",
+        "aar/deleteMirror": "",
+        "aar/listByArtifactA": "",
+        "aar/listByArtifactB": "",
+
+        // Context Property
+        "contextProperty/create": "",
+        "contextProperty/setBasicAttributes": "",
+        "contextProperty/get": "",
+        "contextProperty/listByArtifact": "",
+        "contextProperty/load": "",
+        "contextProperty/delete": "",
+        "contextProperty/setValue": ""
+      }
+    }
+  },
+
+  "synchronizeUuCmdMap": {
+    "synchronizeArtifactAttributes": "",
+    "synchronizeHomeUnit": "",
+    "synchronizeHomeFolder": "",
+    "synchronizeResponsibleRole": "",
+  },
+
+  "useCaseProfileMap": {
+
+    //own uuAwsc use cases
+    "{useCaseName}": "",
+
+    //uuAppWorkspace use cases (sys, binary store etc.)
+    "sys/getAppWorkspace": "",
+    "sys/getProfile": "",
+    "sys/setProfile": "",
+    "sys/listProfiles": "",
+    "sys/createPermission": "",
+    "sys/deletePermission": "",
+    "sys/listPermissions": "",
+    "sys/getLicenseOwner": "",
+    "sys/getAppWorkspaceConfig": "",
+    "sys/setAppWorkspaceConfig": "",
+    "sys/clearAppWorkspaceConfig": "",
+    "sys/calculateDataStoreStats": "",
+    "sys/getDataStoreStats": "",
+    "sys/setAwidRuntimeMode": "",
+    "sys/getAwidRuntimeMode": "",
+    "sys/setAuthType": "",
+    "sys/connectArtifact": "",
+    "sys/awidDump": "",
+    "sys/awidRestore": "",
+    "sys/appClientToken/initKeys": "",
+
+    "uu-app-binarystore/createBinary": "",
+    "uu-app-binarystore/getBinaryData": "",
+    "uu-app-binarystore/updateBinaryData": "",
+    "uu-app-binarystore/getBinary": "",
+    "uu-app-binarystore/updateBinary": "",
+    "uu-app-binarystore/deleteBinary": "",
+    "uu-app-binarystore/listBinaries": "",
+    "uu-app-binarystore/getBinaryVersion": "",
+    "uu-app-binarystore/updateBinaryVersion": "",
+    "uu-app-binarystore/getBinaryVersionData": "",
+    "uu-app-binarystore/deleteBinaryVersion": "",
+    "uu-app-binarystore/listBinaryVersions": "",
+
+    //use cases of ancestor
+    "uu-businessterritory-maing01/uuAwsc/authorizeMe": "",
+    "uu-businessterritory-maing01/uuAwsc/authorizeUuIdentity": "",
+    "uu-businessterritory-maing01/uuAwsc/authorizeRoleIfcList": "",
+    "uu-businessterritory-maing01/uuAwsc/get": "",
+    "uu-businessterritory-maing01/uuAwsc/load": "",
+    "uu-businessterritory-maing01/uuAwsc/loadEnvironment": "",
+    "uu-businessterritory-maing01/uuAwsc/loadPermissions": "",
+    "uu-businessterritory-maing01/uuAwsc/getNavigation": "",
+    "uu-businessterritory-maing01/uuAwsc/getImplicitPermissions": "",
+    "uu-businessterritory-maing01/uuAwsc/setBasicAttributes": "",
+    "uu-businessterritory-maing01/uuAwsc/setVersion": "",
+    "uu-businessterritory-maing01/uuAwsc/setResponsibleRole": "",
+    "uu-businessterritory-maing01/uuAwsc/setHomeFolder": "",
+    "uu-businessterritory-maing01/uuAwsc/setState": "",
+    "uu-businessterritory-maing01/uuAwsc/setPermissions": "",
+    "uu-businessterritory-maing01/uuAwsc/setImplicitPermissions": "",
+    "uu-businessterritory-maing01/uuAwsc/find": "",
+    "uu-businessterritory-maing01/uuAwsc/connectAppWorkspace": "",
+    "uu-businessterritory-maing01/uuAwsc/delete": "",
+    "uu-businessterritory-maing01/uuAwsc/listStateHistory": "",
+    "uu-businessterritory-maing01/uuAwsc/checkDwr": "",
+    "uu-businessterritory-maing01/uuAwsc/loadLifeCycle": "",
+    "uu-businessterritory-maing01/uuAwsc/listActivities": "",
+    "uu-businessterritory-maing01/uuAwsc/listMyRoles": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/create": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/load": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/setBasicAttributes": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/setTypeSpecificData": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/setSubmitter": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/setState": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/addSolver": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/removeSolver": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/reactivateSolver": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/elementary/setSolver": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/addNote": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/createNote": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/elementary/addNote": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/elementary/setState": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/elementary/createNote": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/setNoteImportance": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/removeNote": "",
+    "uu-businessterritory-maing01/uuAwsc/activity/propagateReadToDw": "",
+    "uu-businessterritory-maing01/uuAwsc/aar/create": "",
+    "uu-businessterritory-maing01/uuAwsc/aar/createMirror": "",
+    "uu-businessterritory-maing01/uuAwsc/aar/get": "",
+    "uu-businessterritory-maing01/uuAwsc/aar/update": "",
+    "uu-businessterritory-maing01/uuAwsc/aar/updateMirror": "",
+    "uu-businessterritory-maing01/uuAwsc/aar/delete": "",
+    "uu-businessterritory-maing01/uuAwsc/aar/deleteMirror": "",
+    "uu-businessterritory-maing01/uuAwsc/aar/listByArtifactA": "",
+    "uu-businessterritory-maing01/uuAwsc/aar/listByArtifactB": "",
+    "uu-businessterritory-maing01/uuAwsc/contextProperty/create": "",
+    "uu-businessterritory-maing01/uuAwsc/contextProperty/setBasicAttributes": "",
+    "uu-businessterritory-maing01/uuAwsc/contextProperty/get": "",
+    "uu-businessterritory-maing01/uuAwsc/contextProperty/listByArtifact": "",
+    "uu-businessterritory-maing01/uuAwsc/contextProperty/load": "",
+    "uu-businessterritory-maing01/uuAwsc/contextProperty/delete": "",
+    "uu-businessterritory-maing01/uuAwsc/contextProperty/setValue": "",
+
+    //synchronize uuCmds
+    "uu-businessterritory-maing01/uuAwsc/synchronizeArtifactAttributes": "",
+    "uu-businessterritory-maing01/uuAwsc/synchronizeHomeUnit": "",
+    "uu-businessterritory-maing01/uuAwsc/synchronizeHomeFolder": "",
+    "uu-businessterritory-maing01/uuAwsc/synchronizeResponsibleRole": "",
+  },
+
+  "routeMap": {
+    "userGate/activityDetail": [
+      "userGate/activityDetail",
+      "UuTerritory.Activity.Routes.Detail"
+    ],
+    "userGate/activityList": [
+      "userGate/activityList",
+      "UuTerritory.Activity.Routes.ActivityList"
+    ]
+  },
+  "uuTypeMap": { // only if there are types in your app
+    "{appTypeCode}": {}
+  },
+  "organizationalContextPropertyMap": {
+    //set null if not needed
+    "{propertyCode}": {
+      "name": "{propertyName}",
+      "desc": "{propertyDesc}",
+      "allowedContextMap": {
+        "uuTypeInstance": ["{appTypeCode}","..."],
+        "uuUnit": "false",
+        "uuAccessRoleIfc": "false",
+        "uuAppMetaModel": "false"
+      },
+      "appTokenRequired": "true",
+      "uuAppWorkspaceRequired": "true"
+    }
+  }
+}
+}

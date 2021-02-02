@@ -38,3 +38,13 @@ const activityAssessStudentDtoInType = shape({
   studentId: uu5String(255).isRequired(),
   score: integer()
 });
+
+const activitySetActivityLinkDtoInType = shape({
+  id: id().isRequired(),
+  activityLink: uu5String(255)
+});
+
+const activitySetStateDtoInType = shape({
+  id: id().isRequired(),
+  lifeCycleState: oneOf(["Planned", "Cancelled","Not assessed yet", "Assessed"])
+});

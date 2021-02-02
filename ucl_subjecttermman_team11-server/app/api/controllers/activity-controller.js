@@ -3,6 +3,14 @@ const ActivityAbl = require("../../abl/activity-abl.js");
 
 class ActivityController {
 
+  setActivityLink(ucEnv) {
+    return ActivityAbl.setActivityLink(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
+  }
+
+  setState(ucEnv) {
+    return ActivityAbl.setstate(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
+  }
+
   deleteStudent(ucEnv) {
     return ActivityAbl.deleteStudent(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
   }

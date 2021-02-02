@@ -42,7 +42,7 @@ class SubjectTermMongo extends UuObjectDao {
   async addStudent(filter, newStudent) {
 
     let update = {
-      $push: {students:{...newStudent}}
+      $push: {students: {studentId: newStudent}}
     }
     return await super.findOneAndUpdate(filter, update, "NONE");
   }
@@ -53,7 +53,7 @@ class SubjectTermMongo extends UuObjectDao {
       id: dToIn.id,
     }
     let update = {
-      $pull: {students:{studentId: dToIn.studentId}}
+      $pull: {students: {studentId: dToIn.studentId}}
     }
     return await super.findOneAndUpdate(filter, update, "NONE");
   }

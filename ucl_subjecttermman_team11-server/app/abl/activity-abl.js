@@ -15,6 +15,12 @@ const WARNINGS = {
   },
   deleteUnsupportedKeys: {
     code: `${Errors.Delete.UC_CODE}unsupportedKeys`
+  },
+  setStateUnsupportedKeys: {
+    code: `${Errors.Setstate.UC_CODE}unsupportedKeys`
+  },
+  setActivityLinkUnsupportedKeys: {
+    code: `${Errors.SetActivityLink.UC_CODE}unsupportedKeys`
   }
 };
 
@@ -32,6 +38,91 @@ class ActivityAbl {
     this.dao = DaoFactory.getDao("activity");
   }
 
+  async setActivityLink(awid, dtoIn) {
+    await SubjecttermmanTeam11Abl.checkInstance(
+      awid,
+      Errors.SetActivityLink.SubjectTermInstanceDoesNotExist,
+      Errors.SetActivityLink.SubjectTermInstanceNotInProperState
+    );
+
+    let validationResult = this.validator.validate("activitySetActivityLinkDtoInType", dtoIn);
+
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.setActivityLinkUnsupportedKeys.code,
+      Errors.SetActivityLink.InvalidDtoIn
+    );
+
+    let activityFilter = {
+      awid: awid,
+      id: dtoIn.id,
+    };
+
+    let activity = await this.dao.get(activityFilter);
+
+    if (!activity) {
+      throw new Errors.SetActivityLink.ActivityDoesNotExist({ uuAppErrorMap }, { subjectTermId: dtoIn.id });
+    }
+
+    try {
+      activity = await this.dao.update(activityFilter, dtoIn);
+    } catch (e) {
+      if (e instanceof ObjectStoreError) {
+
+        throw new Errors.SetActivityLink.ActivityLinkDaoUpdateFailed({ uuAppErrorMap }, e);
+      }
+      throw e;
+    }
+
+    activity.uuAppErrorMap = uuAppErrorMap;
+    return activity;
+  }
+
+  async setstate(awid, dtoIn) {
+    await SubjecttermmanTeam11Abl.checkInstance(
+      awid,
+      Errors.Setstate.SubjectTermInstanceDoesNotExist,
+      Errors.Setstate.SubjectTermInstanceNotInProperState
+    );
+
+    let validationResult = this.validator.validate("activitySetStateDtoInType", dtoIn);
+
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.setStateUnsupportedKeys.code,
+      Errors.Setstate.InvalidDtoIn
+    );
+
+    let activityFilter = {
+      awid: awid,
+      id: dtoIn.id,
+    };
+
+    let activity = await this.dao.get(activityFilter);
+
+    if (!activity) {
+      throw new Errors.Setstate.ActivityDoesNotExist({ uuAppErrorMap }, { subjectTermId: dtoIn.id });
+    }
+    let newStudent = {
+      studentId: dtoIn.studentId
+    }
+
+    try {
+      activity = await this.dao.update(activityFilter, newStudent);
+    } catch (e) {
+      if (e instanceof ObjectStoreError) {
+
+        throw new Errors.Setstate.ActivityLinkDaoUpdateFailed({ uuAppErrorMap }, e);
+      }
+      throw e;
+    }
+
+    activity.uuAppErrorMap = uuAppErrorMap;
+    return activity;
+  }
+
   async deleteStudent(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
@@ -39,7 +130,7 @@ class ActivityAbl {
       Errors.DeleteStudent.SubjectTermInstanceNotInProperState
     );
 
-    let validationResult = this.validator.validate("activityAddStudentDtoInType", dtoIn);
+    let validationResult = this.validator.validate("activityDeleteStudentDtoInType", dtoIn);
 
     let uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
@@ -81,7 +172,7 @@ class ActivityAbl {
       Errors.AddStudent.SubjectTermInstanceNotInProperState
     );
 
-    let validationResult = this.validator.validate("activityAddStudentDtoInType", dtoIn);
+    let validationResult = this.validator.validate("subjectTermAddStudentDtoInType", dtoIn);
 
     let uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
@@ -117,7 +208,6 @@ class ActivityAbl {
 
     activity.uuAppErrorMap = uuAppErrorMap;
     return activity;
-
   }
 
   async create(awid, dtoIn, session, authorizationResult) {

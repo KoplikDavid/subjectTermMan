@@ -38,7 +38,7 @@ class ActivityMongo extends UuObjectDao {
   async addStudent(filter, newStudent) {
 
     let update = {
-      $push: {activityDetails:{...newStudent}}
+      $push: {activityDetails: newStudent}
     }
     return await super.findOneAndUpdate(filter, update, "NONE");
   }
@@ -52,6 +52,10 @@ class ActivityMongo extends UuObjectDao {
       $pull: {activityDetails:{studentId: dToIn.studentId}}
     }
     return await super.findOneAndUpdate(filter, update, "NONE");
+  }
+
+  async update(filter,dToIn){
+    return await super.findOneAndUpdate(filter, dToIn, "NONE");
   }
 
 }

@@ -1,8 +1,8 @@
 "use strict";
 const Path = require("path");
-const { Validator } = require("uu_appg01_server").Validation;
-const { DaoFactory } = require("uu_appg01_server").ObjectStore;
-const { ValidationHelper } = require("uu_appg01_server").AppServer;
+const {Validator} = require("uu_appg01_server").Validation;
+const {DaoFactory} = require("uu_appg01_server").ObjectStore;
+const {ValidationHelper} = require("uu_appg01_server").AppServer;
 const Errors = require("../api/errors/subject-term-error.js");
 const SubjecttermmanTeam11Abl = require("./subjecttermman-team11-abl");
 
@@ -59,7 +59,7 @@ class SubjectTermAbl {
     let subjectTerm = await this.dao.get(subjectTermFilter);
 
     if (!subjectTerm) {
-      throw new Errors.SetState.SubjectTermDoesNotExist({ uuAppErrorMap }, { subjectTermId: dtoIn.id });
+      throw new Errors.SetState.SubjectTermDoesNotExist({uuAppErrorMap}, {subjectTermId: dtoIn.id});
     }
 
     try {
@@ -67,14 +67,13 @@ class SubjectTermAbl {
     } catch (e) {
       if (e instanceof ObjectStoreError) {
 
-        throw new Errors.SetState.SubjectTermDaoUpdateFailed({ uuAppErrorMap }, e);
+        throw new Errors.SetState.SubjectTermDaoUpdateFailed({uuAppErrorMap}, e);
       }
       throw e;
     }
 
     subjectTerm.uuAppErrorMap = uuAppErrorMap;
     return subjectTerm;
-
   }
 
   async deleteStudent(awid, dtoIn) {
@@ -83,6 +82,40 @@ class SubjectTermAbl {
       Errors.DeleteStudent.SubjectTermInstanceDoesNotExist,
       Errors.DeleteStudent.SubjectTermInstanceNotInProperState
     );
+
+    let validationResult = this.validator.validate("subjectTermDeleteStudentDtoInType", dtoIn);
+
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.deleteUnsupportedKeys.code,
+      Errors.DeleteStudent.InvalidDtoIn);
+
+    let subjectTermFilter = {
+      awid: awid,
+      id: dtoIn.id,
+    };
+
+    let subjectTerm = await this.dao.get(subjectTermFilter);
+
+    if (!subjectTerm) {
+      throw new Errors.DeleteStudent.SubjectTermDoesNotExist({uuAppErrorMap}, {activityId: dtoIn.id});
+    }
+
+    dtoIn.awid = awid;
+
+    try {
+      subjectTerm = await this.dao.deleteStudent(dtoIn);
+    } catch (e) {
+      if (e instanceof ObjectStoreError) {
+
+        throw new Errors.DeleteStudent.SubjectTermDaoDeleteStudentFailed({uuAppErrorMap}, e);
+      }
+      throw e;
+    }
+
+    subjectTerm.uuAppErrorMap = uuAppErrorMap;
+    return subjectTerm;
 
   }
 
@@ -93,6 +126,37 @@ class SubjectTermAbl {
       Errors.AddStudent.SubjectTermInstanceNotInProperState
     );
 
+    let validationResult = this.validator.validate("activityAddStudentDtoInType", dtoIn);
+
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.createUnsupportedKeys.code,
+      Errors.AddStudent.InvalidDtoIn);
+
+    let subjectTermFilter = {
+      awid: awid,
+      id: dtoIn.id,
+    };
+
+    let subjectTerm = await this.dao.get(subjectTermFilter);
+
+    if (!subjectTerm) {
+      throw new Errors.AddStudent.SubjectTermDoesNotExist({uuAppErrorMap}, {activityId: dtoIn.id});
+    }
+
+    try {
+      subjectTerm = await this.dao.addStudent(subjectTermFilter, dtoIn.studentId);
+    } catch (e) {
+      if (e instanceof ObjectStoreError) {
+
+        throw new Errors.AddStudent.SubjectTermDaoAddStudentFailed({uuAppErrorMap}, e);
+      }
+      throw e;
+    }
+
+    subjectTerm.uuAppErrorMap = uuAppErrorMap;
+    return subjectTerm;
   }
 
   async list(awid, dtoIn) {
@@ -139,19 +203,19 @@ class SubjectTermAbl {
       Errors.Delete.InvalidDtoIn
     );
 
-    let subjectTerm = {
+    let subjectTermFilter = {
       awid: awid,
       id: dtoIn.id,
     };
 
-    let daoActivity = await this.dao.get(subjectTerm);
-    if (!daoActivity) {
-      throw new Errors.Delete.SubjectTermDoesNotExist({ uuAppErrorMap }, { activityId: dtoIn.id });
+    let subjectTerm = await this.dao.get(subjectTermFilter);
+    if (!subjectTerm) {
+      throw new Errors.Delete.SubjectTermDoesNotExist({uuAppErrorMap}, {activityId: dtoIn.id});
     }
 
-    await this.dao.delete(subjectTerm);
+    await this.dao.delete(subjectTermFilter);
 
-    return { uuAppErrorMap };
+    return {uuAppErrorMap};
 
   }
 
@@ -171,7 +235,7 @@ class SubjectTermAbl {
       Errors.Create.InvalidDtoIn);
 
     dtoIn.awid = awid;
-    dtoIn.lifeCycleState ="planned";
+    dtoIn.lifeCycleState = "planned";
 
     let subjectTerm;
 
@@ -180,7 +244,7 @@ class SubjectTermAbl {
     } catch (e) {
       if (e instanceof ObjectStoreError) {
 
-        throw new Errors.Create.SubjectTermDaoCreateFailed({ uuAppErrorMap }, e);
+        throw new Errors.Create.SubjectTermDaoCreateFailed({uuAppErrorMap}, e);
       }
       throw e;
     }

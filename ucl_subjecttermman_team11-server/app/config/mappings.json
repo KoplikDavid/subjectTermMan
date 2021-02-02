@@ -75,6 +75,16 @@
         "realization": "api/controllers/SubjectTermController.setState",
         "httpMethod": "POST",
         "type": "CMD"
+      },
+      "activity/setState": {
+        "realization": "api/controllers/ActivityController.setState",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "activity/setActivityLink": {
+        "realization": "api/controllers/ActivityController.setActivityLink",
+        "httpMethod": "POST",
+        "type": "CMD"
       }
     }
   }

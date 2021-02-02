@@ -9,7 +9,7 @@ const Create = {
   UserNotAuthorized: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}userNotAuthorized`;
+      this.code = `${Create.UC_CODE}userNotAuthorized`;
       this.message = "User not authorized.";
     }
   },
@@ -33,7 +33,7 @@ const Create = {
   SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${Create.UC_CODE}SubjectTermInstanceDoesNotExist`;
       this.message = "SubjectTermInstance does not exist.";
     }
   },
@@ -41,7 +41,7 @@ const Create = {
   SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.code = `${Create.UC_CODE}SubjectTermInstanceNotInProperState`;
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },
@@ -53,7 +53,7 @@ const Delete = {
   UserNotAuthorized: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}userNotAuthorized`;
+      this.code = `${Delete.UC_CODE}userNotAuthorized`;
       this.message = "User not authorized.";
     }
   },
@@ -61,7 +61,7 @@ const Delete = {
   SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${Delete.UC_CODE}SubjectTermInstanceDoesNotExist`;
       this.message = "SubjectTermInstance does not exist.";
     }
   },
@@ -69,7 +69,7 @@ const Delete = {
   SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.code = `${Delete.UC_CODE}SubjectTermInstanceNotInProperState`;
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },
@@ -77,7 +77,7 @@ const Delete = {
   InvalidDtoIn: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${List.UC_CODE}invalidDtoIn`;
+      this.code = `${Delete.UC_CODE}invalidDtoIn`;
       this.message = "DtoIn is not valid.";
     }
   },
@@ -85,7 +85,7 @@ const Delete = {
   SubjectTermDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${List.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${Delete.UC_CODE}SubjectTermInstanceDoesNotExist`;
       this.message = "Removing SubjectTerm by SubjectTerm Dao removeActivity failed.";
     }
   }
@@ -98,7 +98,7 @@ const List = {
   UserNotAuthorized: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}userNotAuthorized`;
+      this.code = `${List.UC_CODE}userNotAuthorized`;
       this.message = "User not authorized.";
     }
   },
@@ -106,7 +106,7 @@ const List = {
   SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${List.UC_CODE}SubjectTermInstanceDoesNotExist`;
       this.message = "SubjectTermInstance does not exist.";
     }
   },
@@ -114,7 +114,7 @@ const List = {
   SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.code = `${List.UC_CODE}SubjectTermInstanceNotInProperState`;
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },
@@ -135,7 +135,7 @@ const AddStudent = {
   UserNotAuthorized: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}userNotAuthorized`;
+      this.code = `${AddStudent.UC_CODE}userNotAuthorized`;
       this.message = "User not authorized.";
     }
   },
@@ -143,7 +143,7 @@ const AddStudent = {
   SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${AddStudent.UC_CODE}SubjectTermInstanceDoesNotExist`;
       this.message = "SubjectTermInstance does not exist.";
     }
   },
@@ -151,7 +151,7 @@ const AddStudent = {
   SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.code = `${AddStudent.UC_CODE}SubjectTermInstanceNotInProperState`;
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },
@@ -159,7 +159,7 @@ const AddStudent = {
   InvalidDtoIn: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${List.UC_CODE}invalidDtoIn`;
+      this.code = `${AddStudent.UC_CODE}invalidDtoIn`;
       this.message = "DtoIn is not valid.";
     }
   },
@@ -167,7 +167,7 @@ const AddStudent = {
   SubjectTermDaoAddStudentFailed: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Create.UC_CODE}subjectTermDaoAddStudentFailed`;
+      this.code = `${AddStudent.UC_CODE}subjectTermDaoAddStudentFailed`;
       this.message = "Add student by subjectTerm DAO update failed.";
     }
   },
@@ -175,7 +175,7 @@ const AddStudent = {
   SubjectTermDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermDoesNotExist`;
+      this.code = `${AddStudent.UC_CODE}SubjectTermDoesNotExist`;
       this.message = "SubjectTerm does not exist.";
     }
   },
@@ -187,7 +187,7 @@ const DeleteStudent = {
   UserNotAuthorized: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}userNotAuthorized`;
+      this.code = `${DeleteStudent.UC_CODE}userNotAuthorized`;
       this.message = "User not authorized.";
     }
   },
@@ -195,7 +195,7 @@ const DeleteStudent = {
   SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${DeleteStudent.UC_CODE}SubjectTermInstanceDoesNotExist`;
       this.message = "SubjectTermInstance does not exist.";
     }
   },
@@ -203,7 +203,7 @@ const DeleteStudent = {
   SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.code = `${DeleteStudent.UC_CODE}SubjectTermInstanceNotInProperState`;
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },
@@ -211,7 +211,7 @@ const DeleteStudent = {
   InvalidDtoIn: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${List.UC_CODE}invalidDtoIn`;
+      this.code = `${DeleteStudent.UC_CODE}invalidDtoIn`;
       this.message = "DtoIn is not valid.";
     }
   },
@@ -219,7 +219,7 @@ const DeleteStudent = {
   SubjectTermDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermDoesNotExist`;
+      this.code = `${DeleteStudent.UC_CODE}SubjectTermDoesNotExist`;
       this.message = "SubjectTerm does not exist.";
     }
   },
@@ -227,7 +227,7 @@ const DeleteStudent = {
   SubjectTermDaoDeleteStudentFailed: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Create.UC_CODE}subjectTermDaoDeleteStudentFailed`;
+      this.code = `${DeleteStudent.UC_CODE}subjectTermDaoDeleteStudentFailed`;
       this.message = "Delete student by subjectTerm DAO update failed.";
     }
   },
@@ -240,7 +240,7 @@ const SetState = {
   UserNotAuthorized: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}userNotAuthorized`;
+      this.code = `${SetState.UC_CODE}userNotAuthorized`;
       this.message = "User not authorized.";
     }
   },
@@ -248,21 +248,21 @@ const SetState = {
   SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${SetState.UC_CODE}SubjectTermInstanceDoesNotExist`;
       this.message = "SubjectTermInstance does not exist.";
     }
   },
   SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.code = `${SetState.UC_CODE}SubjectTermInstanceNotInProperState`;
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },
   InvalidDtoIn: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}invalidDtoIn`;
+      this.code = `${SetState.UC_CODE}invalidDtoIn`;
       this.message = "DtoIn is not valid.";
     }
   },
@@ -270,7 +270,7 @@ const SetState = {
   SubjectTermDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermDoesNotExist`;
+      this.code = `${SetState.UC_CODE}SubjectTermDoesNotExist`;
       this.message = "SubjectTerm does not exist.";
     }
   },
@@ -278,7 +278,7 @@ const SetState = {
   SubjectTermDaoUpdateFailed: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Update.UC_CODE}SubjectTermDaoUpdateFailed`;
+      this.code = `${SetState.UC_CODE}SubjectTermDaoUpdateFailed`;
       this.message = "Update SubjectTerm by SubjectTerm Dao update failed.";
     }
   }
