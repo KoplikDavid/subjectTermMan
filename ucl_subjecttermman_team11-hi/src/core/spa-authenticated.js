@@ -1,3 +1,6 @@
+//TODO here you specify all the routes (still not visible in the menu)
+// this represents the view for authenticated users
+
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import "uu5g04-bricks";
@@ -5,12 +8,14 @@ import { createVisualComponent, useState } from "uu5g04-hooks";
 import Plus4U5 from "uu_plus4u5g01";
 import "uu_plus4u5g01-app";
 
-import Config from "./config/config";
-import Left from "./left";
-import Bottom from "./bottom";
+import Config from "../core/config/config";
+import Bottom from "../core/bottom";
 import Home from "../routes/home";
+import SubjectTerms from "../routes/subjectTerms";
+import Left from "./left";
 import Activities from "../routes/activities";
-
+import Students from "../routes/students";
+import StudentDetail from "../bricks/students/studentDetail";
 //@@viewOff:imports
 
 const STATICS = {
@@ -19,16 +24,24 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-const About = UU5.Common.Component.lazy(() => import("../routes/about"));
-const InitAppWorkspace = UU5.Common.Component.lazy(() => import("../routes/init-app-workspace"));
-const ControlPanel = UU5.Common.Component.lazy(() => import("../routes/control-panel"));
+const About = UU5.Common.Component.lazy(() =>
+  import("../../../../SubjectTermMan/uu_subjectTermMan_maing01-hi/src/routes/about")
+);
+const InitAppWorkspace = UU5.Common.Component.lazy(() =>
+  import("../../../../SubjectTermMan/uu_subjectTermMan_maing01-hi/src/routes/init-app-workspace")
+);
+const ControlPanel = UU5.Common.Component.lazy(() =>
+  import("../../../../SubjectTermMan/uu_subjectTermMan_maing01-hi/src/routes/control-panel")
+);
 
 const DEFAULT_USE_CASE = "home";
 const ROUTES = {
   "": DEFAULT_USE_CASE,
   home: { component: <Home /> },
+  activities: { component: <Activities /> },
+  subjectTerms: { component: <SubjectTerms /> },
+  students: { component: <Students /> },
   about: { component: <About /> },
-  activities: {component:<Activities />},
   "sys/uuAppWorkspace/initUve": { component: <InitAppWorkspace /> },
   controlPanel: { component: <ControlPanel /> },
 };

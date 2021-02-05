@@ -1,7 +1,9 @@
+//TODO you need this to edit the menu (language specifics)
+
 const Lsi = {
   appName: {
-    cs: "Aplikace uclSubjecttermman",
-    en: "Application uclSubjecttermman",
+    cs: "Aplikace uuSubjectTermMan",
+    en: "Application uuSubjectTermMan",
   },
 
   left: {
@@ -13,6 +15,14 @@ const Lsi = {
       cs: "Aktivity",
       en: "Activities",
     },
+    subjectTerms: {
+      cs: "Termíny", //TODO edit this line accordingly
+      en: "Subject Terms",
+    },
+    students: {
+      cs: "Studenti",
+      en: "Students",
+    },
     about: {
       cs: "O aplikaci",
       en: "About Application",
@@ -21,8 +31,8 @@ const Lsi = {
 
   about: {
     header: {
-      cs: "O aplikaci uclSubjecttermman",
-      en: "About application uclSubjecttermman",
+      cs: "O aplikaci uuSubjectTermMan",
+      en: "About application uuSubjectTermMan",
     },
     creatorsHeader: {
       cs: "Tvůrci aplikace",
@@ -123,12 +133,12 @@ const Lsi = {
 
   unauthInit: {
     buyYourOwn: {
-      cs: "Můžete si koupit vlastní uclSubjecttermman.",
-      en: "You can buy your own uclSubjecttermman.",
+      cs: "Můžete si koupit vlastní uuSubjectTermMan.",
+      en: "You can buy your own uuSubjectTermMan.",
     },
     notAuthorized: {
-      cs: "Nemáte právo inicializovat tuto aplikaci uclSubjecttermman.",
-      en: "You don't have rights to initialize this uclSubjecttermman.",
+      cs: "Nemáte právo inicializovat tuto aplikaci uuSubjectTermMan.",
+      en: "You don't have rights to initialize this uuSubjectTermMan.",
     },
   },
 
