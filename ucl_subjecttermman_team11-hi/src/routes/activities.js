@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import { createComponent, useState } from "uu5g04-hooks";
-import Config from "../../../../SubjectTermMan/uu_subjectTermMan_maing01-hi/src/routes/config/config";
+import Config from "../config/config";
 import { activities } from "../../mock/data/activities";
 import ActivityRow from "../bricks/activities/row";
 import StudentPicker from "../bricks/utils/studentPicker";

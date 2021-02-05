@@ -25,13 +25,13 @@ const STATICS = {
 };
 
 const About = UU5.Common.Component.lazy(() =>
-  import("../../../../SubjectTermMan/uu_subjectTermMan_maing01-hi/src/routes/about")
+  import("../routes/about")
 );
 const InitAppWorkspace = UU5.Common.Component.lazy(() =>
-  import("../../../../SubjectTermMan/uu_subjectTermMan_maing01-hi/src/routes/init-app-workspace")
+  import("../routes/init-app-workspace")
 );
 const ControlPanel = UU5.Common.Component.lazy(() =>
-  import("../../../../SubjectTermMan/uu_subjectTermMan_maing01-hi/src/routes/control-panel")
+  import("../routes/control-panel")
 );
 
 const DEFAULT_USE_CASE = "home";
