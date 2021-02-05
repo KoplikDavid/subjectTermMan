@@ -58,6 +58,19 @@ class ActivityMongo extends UuObjectDao {
     return await super.findOneAndUpdate(filter, dToIn, "NONE");
   }
 
+  async assess(filter,dToIn){
+let studentFilter={
+  awid:filter.awid,
+  id: filter.id,
+  "activityDetails.studentId": dToIn.studentId
+}
+
+    let update={
+      $set: {"activityDetails.$.score": dToIn.score}
+    }
+    return await super.findOneAndUpdate(studentFilter, update, "NONE");
+  }
+
 }
 
 module.exports = ActivityMongo;

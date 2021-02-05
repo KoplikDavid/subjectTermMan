@@ -34,3 +34,4 @@ const subjectTermDeleteStudentDtoInType =shape({
   id: id().isRequired(),
   studentId: uu5String(255).isRequired()
 });
+

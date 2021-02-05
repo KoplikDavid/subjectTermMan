@@ -3,6 +3,10 @@ const ActivityAbl = require("../../abl/activity-abl.js");
 
 class ActivityController {
 
+  assessStudent(ucEnv) {
+    return ActivityAbl.assessStudent(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
+  }
+
   setActivityLink(ucEnv) {
     return ActivityAbl.setActivityLink(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
   }

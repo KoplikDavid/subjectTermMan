@@ -305,6 +305,7 @@ const SetActivityLink = {
       this.message = "SubjectTermInstance does not exist.";
     }
   },
+
   SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
@@ -312,6 +313,7 @@ const SetActivityLink = {
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },
+
   InvalidDtoIn: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
@@ -338,7 +340,62 @@ const SetActivityLink = {
 
 };
 
+const AssessStudent = {
+  UC_CODE: `${ACTIVITY_ERROR_PREFIX}assessStudent/`,
+
+  UserNotAuthorized: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${AssessStudent.UC_CODE}userNotAuthorized`;
+      this.message = "User not authorized.";
+    }
+  },
+
+  SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${AssessStudent.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.message = "SubjectTermInstance does not exist.";
+    }
+  },
+
+  SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${AssessStudent.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
+    }
+  },
+
+  InvalidDtoIn: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${AssessStudent.UC_CODE}invalidDtoIn`;
+      this.message = "DtoIn is not valid.";
+    }
+  },
+
+  ActivityDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${AssessStudent.UC_CODE}ActivityDoesNotExist`;
+      this.message = "Activity does not exist.";
+    }
+  },
+
+  ActivityAssessStudentDaoFailed: class extends SubjecttermmanTeam11UseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${SetActivityLink.UC_CODE}AssessStudentDaoUpdateFailed`;
+      this.message = "AssessStudent by Activity Dao update failed.";
+    }
+  }
+
+
+};
+
 module.exports = {
+  AssessStudent,
   SetActivityLink,
   Setstate,
   DeleteStudent,

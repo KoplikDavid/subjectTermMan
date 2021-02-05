@@ -21,6 +21,9 @@ const WARNINGS = {
   },
   setActivityLinkUnsupportedKeys: {
     code: `${Errors.SetActivityLink.UC_CODE}unsupportedKeys`
+  },
+  assessStudentUnsupportedKeys: {
+    code: `${Errors.AssessStudent.UC_CODE}unsupportedKeys`
   }
 };
 
@@ -36,6 +39,47 @@ class ActivityAbl {
   constructor() {
     this.validator = Validator.load();
     this.dao = DaoFactory.getDao("activity");
+  }
+
+  async assessStudent(awid, dtoIn) {
+    await SubjecttermmanTeam11Abl.checkInstance(
+      awid,
+      Errors.AssessStudent.SubjectTermInstanceDoesNotExist,
+      Errors.AssessStudent.SubjectTermInstanceNotInProperState
+    );
+
+    let validationResult = this.validator.validate("activityAssessStudentDtoInType", dtoIn);
+
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.assessStudentUnsupportedKeys.code,
+      Errors.AssessStudent.InvalidDtoIn
+    );
+
+    let activityFilter = {
+      awid: awid,
+      id: dtoIn.id,
+    };
+
+    let activity = await this.dao.get(activityFilter);
+
+    if (!activity) {
+      throw new Errors.AssessStudent.ActivityDoesNotExist({ uuAppErrorMap }, { subjectTermId: dtoIn.id });
+    }
+
+    try {
+      activity = await this.dao.assess(activityFilter, dtoIn);
+    } catch (e) {
+      if (e instanceof ObjectStoreError) {
+
+        throw new Errors.AssessStudent.ActivityAssessStudentDaoFailed({ uuAppErrorMap }, e);
+      }
+      throw e;
+    }
+
+    activity.uuAppErrorMap = uuAppErrorMap;
+    return activity;
   }
 
   async setActivityLink(awid, dtoIn) {

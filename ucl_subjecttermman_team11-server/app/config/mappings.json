@@ -85,6 +85,11 @@
         "realization": "api/controllers/ActivityController.setActivityLink",
         "httpMethod": "POST",
         "type": "CMD"
+      },
+      "activity/assessStudent": {
+        "realization": "api/controllers/ActivityController.assessStudent",
+        "httpMethod": "POST",
+        "type": "CMD"
       }
     }
   }

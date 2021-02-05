@@ -72,6 +72,10 @@
       "activity/setActivityLink": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
+      },
+      "activity/assessStudent": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
       }
     }
   }
