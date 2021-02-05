@@ -237,23 +237,6 @@
       "userGate/activityList",
       "UuTerritory.Activity.Routes.ActivityList"
     ]
-  },
-  "uuTypeMap": {
-    "{appTypeCode}": {}
-  },
-  "organizationalContextPropertyMap": {
-    "{propertyCode}": {
-      "name": "{propertyName}",
-      "desc": "{propertyDesc}",
-      "allowedContextMap": {
-        "uuTypeInstance": ["{appTypeCode}","..."],
-        "uuUnit": "false",
-        "uuAccessRoleIfc": "false",
-        "uuAppMetaModel": "false"
-      },
-      "appTokenRequired": "true",
-      "uuAppWorkspaceRequired": "true"
-    }
   }
 }
 
