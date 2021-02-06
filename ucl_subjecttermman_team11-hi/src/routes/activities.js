@@ -131,6 +131,7 @@ const Loader = UU5.Common.VisualComponent.create({
       console.log("tady", dtoOut)
       return <div>
         <ActivityList data={Calls.activityList()}/>
+        {/* <Example data={dtoOut}/> */}
       </div>
     });
   }

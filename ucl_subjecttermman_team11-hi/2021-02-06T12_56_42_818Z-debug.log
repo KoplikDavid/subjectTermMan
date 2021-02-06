@@ -1,0 +1,81 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install' ]
+2 info using npm@6.14.4
+3 info using node@v10.19.0
+4 verbose npm-session f7cd7467b8714b29
+5 silly install runPreinstallTopLevelLifecycles
+6 silly preinstall ucl_subjecttermman_team11-hi@0.1.3-DEV
+7 info lifecycle ucl_subjecttermman_team11-hi@0.1.3-DEV~preinstall: ucl_subjecttermman_team11-hi@0.1.3-DEV
+8 silly install loadCurrentTree
+9 silly install readLocalPackageData
+10 timing stage:loadCurrentTree Completed in 9ms
+11 silly install loadIdealTree
+12 silly install cloneCurrentTreeToIdealTree
+13 timing stage:loadIdealTree:cloneCurrentTree Completed in 1ms
+14 silly install loadShrinkwrap
+15 timing stage:loadIdealTree:loadShrinkwrap Completed in 1ms
+16 silly install loadAllDepsIntoIdealTree
+17 http fetch GET 404 https://registry.npmjs.org/uu5g04 986ms
+18 http fetch GET 404 https://registry.npmjs.org/uu_contentkitg01 989ms
+19 http fetch GET 404 https://registry.npmjs.org/uu_plus4u5g01 991ms
+20 http fetch GET 404 https://registry.npmjs.org/uu5tilesg02 1009ms
+21 http fetch GET 404 https://registry.npmjs.org/uu_appg01_devkit 1063ms
+22 http fetch GET 404 https://registry.npmjs.org/uu_territoryg01 1061ms
+23 http fetch GET 404 https://registry.npmjs.org/uu_plus4u5g01 261ms
+24 silly fetchPackageMetaData error for uu_plus4u5g01@^4.0.0 404 Not Found - GET https://registry.npmjs.org/uu_plus4u5g01 - Not found
+25 http fetch GET 200 https://registry.npmjs.org/systemjs 1622ms
+26 http fetch GET 404 https://registry.npmjs.org/uu_contentkitg01 794ms
+27 silly fetchPackageMetaData error for uu_contentkitg01@^2.0.0 404 Not Found - GET https://registry.npmjs.org/uu_contentkitg01 - Not found
+28 http fetch GET 404 https://registry.npmjs.org/uu5g04 800ms
+29 silly fetchPackageMetaData error for uu5g04@^1.19.0 404 Not Found - GET https://registry.npmjs.org/uu5g04 - Not found
+30 http fetch GET 404 https://registry.npmjs.org/uu5tilesg02 780ms
+31 silly fetchPackageMetaData error for uu5tilesg02@^1.8.0 404 Not Found - GET https://registry.npmjs.org/uu5tilesg02 - Not found
+32 http fetch GET 200 https://registry.npmjs.org/systemjs/-/systemjs-0.19.47.tgz 184ms
+33 silly pacote version manifest for systemjs@0.19.47 fetched in 1820ms
+34 http fetch GET 404 https://registry.npmjs.org/uu_appg01_devkit 794ms
+35 silly fetchPackageMetaData error for uu_appg01_devkit@^3.1.0 404 Not Found - GET https://registry.npmjs.org/uu_appg01_devkit - Not found
+36 http fetch GET 404 https://registry.npmjs.org/uu_territoryg01 845ms
+37 silly fetchPackageMetaData error for uu_territoryg01@^1.0.0 404 Not Found - GET https://registry.npmjs.org/uu_territoryg01 - Not found
+38 http fetch GET 200 https://registry.npmjs.org/when 99ms
+39 http fetch GET 200 https://registry.npmjs.org/when/-/when-3.7.8.tgz 178ms
+40 silly pacote range manifest for when@^3.7.5 fetched in 283ms
+41 silly pacote version manifest for systemjs@0.19.47 fetched in 12ms
+42 silly resolveWithNewModule systemjs@0.19.47 checking installable status
+43 http fetch GET 404 https://registry.npmjs.org/uu_territoryg01 66ms
+44 http fetch GET 404 https://registry.npmjs.org/uu5g04 71ms
+45 http fetch GET 404 https://registry.npmjs.org/uu_plus4u5g01 74ms
+46 http fetch GET 404 https://registry.npmjs.org/uu_contentkitg01 77ms
+47 http fetch GET 404 https://registry.npmjs.org/uu5tilesg02 99ms
+48 http fetch GET 404 https://registry.npmjs.org/uu_territoryg01 58ms
+49 silly fetchPackageMetaData error for uu_territoryg01@^1.0.0 404 Not Found - GET https://registry.npmjs.org/uu_territoryg01 - Not found
+50 http fetch GET 404 https://registry.npmjs.org/uu_plus4u5g01 66ms
+51 silly fetchPackageMetaData error for uu_plus4u5g01@^4.0.0 404 Not Found - GET https://registry.npmjs.org/uu_plus4u5g01 - Not found
+52 http fetch GET 404 https://registry.npmjs.org/uu5g04 90ms
+53 silly fetchPackageMetaData error for uu5g04@^1.19.0 404 Not Found - GET https://registry.npmjs.org/uu5g04 - Not found
+54 http fetch GET 404 https://registry.npmjs.org/uu5tilesg02 81ms
+55 silly fetchPackageMetaData error for uu5tilesg02@^1.8.0 404 Not Found - GET https://registry.npmjs.org/uu5tilesg02 - Not found
+56 http fetch GET 404 https://registry.npmjs.org/uu_contentkitg01 110ms
+57 silly fetchPackageMetaData error for uu_contentkitg01@^2.0.0 404 Not Found - GET https://registry.npmjs.org/uu_contentkitg01 - Not found
+58 timing stage:rollbackFailedOptional Completed in 1ms
+59 timing stage:runTopLevelLifecycles Completed in 2335ms
+60 silly saveTree ucl_subjecttermman_team11-hi@0.1.3-DEV
+60 silly saveTree └── systemjs@0.19.47
+61 verbose stack Error: 404 Not Found - GET https://registry.npmjs.org/uu_territoryg01 - Not found
+61 verbose stack     at res.buffer.catch.then.body (/usr/share/npm/node_modules/npm-registry-fetch/check-response.js:104:15)
+61 verbose stack     at process._tickCallback (internal/process/next_tick.js:68:7)
+62 verbose statusCode 404
+63 verbose pkgid uu_territoryg01@^1.0.0
+64 verbose cwd /home/denis/subjectTermMan/ucl_subjecttermman_team11-hi
+65 verbose Linux 5.8.0-41-generic
+66 verbose argv "/usr/bin/node" "/usr/bin/npm" "install"
+67 verbose node v10.19.0
+68 verbose npm  v6.14.4
+69 error code E404
+70 error 404 Not Found - GET https://registry.npmjs.org/uu_territoryg01 - Not found
+71 error 404
+72 error 404 'uu_territoryg01@^1.0.0' is not in the npm registry.
+73 error 404 You should bug the author to publish it (or use the name yourself!)
+74 error 404 It was specified as a dependency of 'ucl_subjecttermman_team11-hi'
+75 error 404 Note that you can also install from a
+76 error 404 tarball, folder, http url, or git url.
+77 verbose exit [ 1, true ]

@@ -1,3 +1,6 @@
+//TODO here you define the actual items visible in your menu
+//you also need to create it in src/config/lsi
+
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import "uu5g04-bricks";
@@ -38,7 +41,7 @@ export const Left = createVisualComponent({
         logoProps={{
           backgroundColor: UU5.Environment.colors.blue.c700,
           backgroundColorTo: UU5.Environment.colors.blue.c500,
-          title: "uclSubjecttermman",
+          title: "uuSubjectTermMan",
           companyLogo: Plus4U5.Environment.basePath + "assets/img/unicorn-logo.svg",
           generation: "1",
         }}
@@ -50,7 +53,10 @@ export const Left = createVisualComponent({
           // NOTE Item "id" equals to useCase so that item gets automatically selected when route changes (see spa-autheticated.js).
           items={[
             { id: "home", href: "home", content: <UU5.Bricks.Lsi lsi={Lsi.left.home} /> },
-            { id: "activities", href: "activities", content: <UU5.Bricks.Lsi lsi={Lsi.left.activities} /> }]}
+            { id: "activities", href: "activities", content: <UU5.Bricks.Lsi lsi={Lsi.left.activities} /> },
+            { id: "subjectTerms", href: "subjectTerms", content: <UU5.Bricks.Lsi lsi={Lsi.left.subjectTerms} /> },
+            { id: "students", href: "students", content: <UU5.Bricks.Lsi lsi={Lsi.left.students} /> },
+          ]}
         />
       </Plus4U5.App.Left>
     );
