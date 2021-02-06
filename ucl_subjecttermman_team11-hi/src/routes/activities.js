@@ -93,47 +93,7 @@ const ExampleTile = UU5.Common.VisualComponent.create({
   }
   //@@viewOff:render
 });
-const Example = UU5.Common.VisualComponent.create({
-  renderTile(data){
-    console.log("example",data);
-    return <div>aaa</div>;
-  },
 
-  render() {
-    return (
-      <UU5.Bricks.Container header="Example Tile List" level={1}>
-        {(this.props.data.length > 0) ?
-          /*@@viewOn:example*/
-          <UU5.Bricks.Resize>
-            {/*<h1>{JSON.stringify(Calls.activityList())}</h1>*/}
-            {/*<UU5.Tiles.ListController*/}
-            {/*  onLoad={Calls.activityList}*/}
-            {/*  ref_={r => this._lc = r}*/}
-            {/*  controlled={false}*/}
-            {/*>*/}
-              <UU5.Tiles.List
-                tile={this.renderTile}
-                data={this.props.data}
-                tileHeight={300}
-                tileMinWidth={220}
-                tileMaxWidth={400}
-                tileSpacing={8}
-                tileElevationHover={1}
-                tileBorder
-                tileStyle={{borderRadius: 4}}
-                rowSpacing={8}
-                tileJustify="space-between"
-                scrollElement={window}
-              />
-            {/*</UU5.Tiles.ListController>*/}
-          </UU5.Bricks.Resize>
-          /*@@viewOff:example*/
-          : <UU5.Bricks.Div className="center">Nothing to show ...</UU5.Bricks.Div>
-        }
-      </UU5.Bricks.Container>
-    );
-  }
-});
 const streamToString = (stream, encoding = "utf-8") => {
   return window.TextDecoder
     ? new window.TextDecoder(encoding).decode(stream)
@@ -171,7 +131,6 @@ const Loader = UU5.Common.VisualComponent.create({
       console.log("tady", dtoOut)
       return <div>
         <ActivityList data={Calls.activityList()}/>
-        <Example data={dtoOut}/>
       </div>
     });
   }
