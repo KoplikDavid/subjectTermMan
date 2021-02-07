@@ -81,7 +81,7 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
           <UU5.Bricks.Heading><UU5.Bricks.Lsi lsi={Lsi.header}/></UU5.Bricks.Heading>
           <UU5.Bricks.Row>
             {Object.entries(this.props.data).map(([key, value]) => {
-              if (["activityType", "activityLink", "lifeCycleState"].includes(key)) {
+              if (["activityType", "activityLink", "lifeCycleState","defaultTerm"].includes(key)) {
                 return (
                   <UU5.Bricks.Column>
                     <UU5.Bricks.Small>

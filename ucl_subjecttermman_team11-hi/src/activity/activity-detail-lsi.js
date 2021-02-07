@@ -15,4 +15,8 @@ export default {
     cs: "State:",
     en: "State",
   },
+  defaultTerm:{
+    cs: "Termín:",
+    en: "Term:",
+  },
 }

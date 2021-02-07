@@ -57,7 +57,7 @@ const ActivityTile = UU5.Common.VisualComponent.create({
         >
           <UU5.Bricks.Heading><UU5.Bricks.Lsi lsi={Lsi.header}/></UU5.Bricks.Heading>
           {Object.entries(this.props.data).map(([key, value]) => {
-            if (["activityType"].includes(key)) {
+            if (["activityType","defaultTerm"].includes(key)) {
               return (
                 <UU5.Bricks.Column>
                   <UU5.Bricks.Small>

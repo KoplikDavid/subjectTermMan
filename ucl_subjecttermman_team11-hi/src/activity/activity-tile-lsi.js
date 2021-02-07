@@ -5,6 +5,10 @@ export default {
   },
   activityType:{
     cs: "Druh aktivity:",
-    en: "Type of activity",
+    en: "Type of activity:",
+  },
+  defaultTerm:{
+    cs: "Termín:",
+    en: "Term:",
   },
 }

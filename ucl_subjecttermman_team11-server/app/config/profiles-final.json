@@ -1,0 +1,82 @@
+{
+  "{asid}": {
+    "profileList": ["AsidAuthorities","AsidExecutives","AsidLicenseOwner","Public"],
+    "useCaseMap": {}
+  },
+  "*": {
+    "profileList": ["Authorities","StudyDepartment","ScheduleAdministrators","Teachers"],
+    "useCaseMap": {
+      "sys/uuAppWorkspace/init": {
+        "sysStateList": ["created"],
+        "profileList": ["AwidLicenseOwner"]
+      },
+      "defaultUve": {
+        "profileList": ["Public"]
+      },
+      "sys/uuAppWorkspace/initUve": {
+        "sysStateList": ["created"],
+        "profileList": ["Public","AwidLicenseOwner"]
+      },
+      "activity/create": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment","Teachers"]
+      },
+      "activity/list": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment","ScheduleAdministrators","Teachers"]
+      },
+      "activity/delete": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment","ScheduleAdministrators","Teachers"]
+      },
+      "subjecttermman/load": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment","ScheduleAdministrators","Teachers"]
+      },
+      "activity/addStudent": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment","ScheduleAdministrators","Teachers"]
+      },
+      "activity/deleteStudent": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment","Teachers"]
+      },
+      "subjectTerm/create": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment","ScheduleAdministrators"]
+      },
+      "subjectTerm/delete": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment","ScheduleAdministrators"]
+      },
+      "subjectTerm/list": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment","ScheduleAdministrators","Teachers"]
+      },
+      "subjectTerm/addStudent": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment"]
+      },
+      "subjectTerm/deleteStudent": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment"]
+      },
+      "subjectTerm/setState": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment"]
+      },
+      "activity/setState": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment","ScheduleAdministrators","Teachers"]
+      },
+      "activity/setActivityLink": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment","ScheduleAdministrators","Teachers"]
+      },
+      "activity/assessStudent": {
+        "sysStateList": ["active"],
+        "profileList": ["Authorities","StudyDepartment","Teachers"]
+      }
+    }
+  }
+}
