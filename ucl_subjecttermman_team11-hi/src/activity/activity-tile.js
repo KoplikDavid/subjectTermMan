@@ -36,13 +36,6 @@ const ActivityTile = UU5.Common.VisualComponent.create({
   //@@viewOff:private
 
   //@@viewOn:render
-  renderHeader() {
-    return (
-      <>
-        My funny joke
-      </>
-    );
-  },
 
   render() {
     let mainProps = this.getMainPropsToPass();
@@ -91,7 +84,7 @@ const ActivityTile = UU5.Common.VisualComponent.create({
             flexDirection: "column"
           }}
         >
-          <UU5.Bricks.Button size="m" onClick={this._handleDetail}>
+          <UU5.Bricks.Button content="Detail" size="m" onClick={this._handleDetail}>
 
           </UU5.Bricks.Button>
         </UU5.Bricks.Div>

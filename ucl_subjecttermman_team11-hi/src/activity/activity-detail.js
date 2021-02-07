@@ -1,7 +1,5 @@
 import UU5 from "uu5g04";
 import Lsi from "./activity-detail-lsi";
-import {useState} from "uu5g04-hooks";
-import StudentPicker from "../bricks/utils/studentPicker";
 
 const ActivityDetail = UU5.Common.VisualComponent.create({
   //@@viewOn:mixins
@@ -24,6 +22,23 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
   //@@viewOn:private
   _handleDelete() {
 
+  },
+
+  _handleAddStudent(uuIdentity) {
+    let dtoOut = {
+      "id": this.props.data.id,
+      "studentId": uuIdentity
+    }
+    alert(JSON.stringify(dtoOut));
+  },
+
+  _handleAssessStudent(uuIdentity, score) {
+    let dtoOut = {
+      "id": this.props.data.id,
+      "studentId": uuIdentity,
+      "score": score
+    }
+    alert(JSON.stringify(dtoOut));
   },
 
 
@@ -70,7 +85,8 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
           <UU5.Bricks.Row>
             {Object.entries(this.props.data).map(([key, value]) => {
               if (["activityType", "activityLink", "lifeCycleState"].includes(key)) {
-                return (<UU5.Bricks.Column>
+                return (
+                  <UU5.Bricks.Column>
                     <UU5.Bricks.Small>
                       <UU5.Bricks.Strong style={{margin: 10}}><UU5.Bricks.Lsi lsi={Lsi[key]}/></UU5.Bricks.Strong>
                     </UU5.Bricks.Small>
@@ -103,13 +119,28 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
           <UU5.Bricks.Panel
             header="Manage student"
             content={<>
-                {/*<StudentPicker handleChange={handleChange}/>*/}
-                <UU5.Bricks.ButtonGroup size="m" horizontal>
-                  <UU5.Bricks.Button content="add student"/>
-                  <UU5.Bricks.Button content="delete student"/>
-                </UU5.Bricks.ButtonGroup>
-                </>
-              }
+              {/*<StudentPicker handleChange={handleChange}/>*/}
+              <UU5.Bricks.Column>
+                <UU5.Forms.TextArea
+                  label='Studen uuIdentity'
+                  ref_={input => this._inputUUid = input}
+                  size="s"
+                />
+                <UU5.Forms.TextArea
+                  label='Score'
+                  ref_={input => this._inputScore = input}
+                  size="s"
+                />
+              </UU5.Bricks.Column>
+              <UU5.Bricks.ButtonGroup size="m" horizontal>
+                <UU5.Bricks.Button content="add student"
+                                   onClick={() => this._handleAddStudent(this._inputUUid.getValue())}/>
+                <UU5.Bricks.Button content="delete student"/>
+                <UU5.Bricks.Button content="assess student"
+                                   onClick={() => this._handleAssessStudent(this._inputUUid.getValue(), this._inputScore.getValue())}/>
+              </UU5.Bricks.ButtonGroup>
+            </>
+            }
             colorSchema={this.state.colorSchema === "null" ? null : this.state.colorSchema}
             colorSchemaHeader={"primary"}
             colorSchemaContent={"primary"}
