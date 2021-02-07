@@ -1,10 +1,10 @@
 {
-  "code": "uun_bpmi20wpt11_maing01",
-  "name": "{uuAppMetaModel name}",
-  "desc": "{uuAppMetaModel description}",
-  "version": "{0.1.7}",
+  "code": "uun-bpmi20wpt11-maing01",
+  "name": "SubjectTermMan",
+  "desc": "SubjectTermMan",
+  "version": "0.1.8",
 
-  "defaultIcon": "{uubml-artifact}",
+  "defaultIcon": "uubml-artifact",
 
   "stateList": [{
     "code": "active",
