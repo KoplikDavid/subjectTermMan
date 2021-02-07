@@ -3,7 +3,7 @@
  */
 import UU5 from "uu5g04";
 import Plus4U5 from "uu_plus4u5g01";
-import {activityList, activity1} from "../test/Mock/mockedActivity"
+import {activity1, activityList} from "../test/Mock/mockedActivity"
 
 let Calls = {
   /** URL containing app base, e.g. "https://uuos9.plus4u.net/vnd-app/awid/". */
@@ -40,10 +40,8 @@ let Calls = {
   },
 
   activityList(dtoInData) {
-    return new Promise((resolve, reject) => {
-      let commandUri = Calls.getCommandUri("activity/list");
-      Calls.call("get", commandUri, { data: dtoInData, done: resolve, fail: reject });
-    });
+    let commandUri = Calls.getCommandUri("activity/list");
+    return Calls.call("get", commandUri, dtoInData);
   },
 
   oneActivity() {

@@ -16,7 +16,7 @@ const Lsi = {
       en: "Activities",
     },
     subjectTerms: {
-      cs: "Termíny", //TODO edit this line accordingly
+      cs: "Semestry", //TODO edit this line accordingly
       en: "Subject Terms",
     },
     students: {
