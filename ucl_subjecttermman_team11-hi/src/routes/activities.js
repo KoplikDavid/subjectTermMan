@@ -17,9 +17,8 @@ const Loader = UU5.Common.VisualComponent.create({
   statics: {},
 
   handelCalls() {
-    const id ="601fa7258b21ee105087ab10";
     let task ={
-      "subjectTermId": "601fa7258b21ee105087ab10",
+      "subjectTermId": "601fe31a9c713b001b8949c1",
       "order": "asc",
       "pageInfo": {
         "pageIndex": "0",
