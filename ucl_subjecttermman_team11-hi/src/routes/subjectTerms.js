@@ -26,7 +26,7 @@ const SubjectTerms = createComponent({
     return (
       <div>
         <StudentPicker handleChange={handleChange} />
-        {selectedStudent &&
+        {true &&
           subjectTerms.map(({ subjectTermStart, subjectTermEnd }, index) => (
             <SubjectTermRow start={subjectTermStart} end={subjectTermEnd} key={index} />
           ))}

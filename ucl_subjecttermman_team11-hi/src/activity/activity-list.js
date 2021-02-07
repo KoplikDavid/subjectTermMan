@@ -11,7 +11,7 @@ import {removeRouteParameters, setRouteParameters} from "../helpers/history-help
 const ActivityList = UU5.Common.VisualComponent.create({
 
   _handleDetailOpen(record) {
-    setRouteParameters({ id: record.id });
+    setRouteParameters({id: record.id});
   },
 
   _handleDetailClose(opt) {
@@ -46,12 +46,12 @@ const ActivityList = UU5.Common.VisualComponent.create({
       <UU5.Bricks.Div>
         <UU5.Bricks.Modal ref_={this._registerModal} onClose={this._handleDetailClose}/>
         <UU5.Bricks.Container header="Activity List" level={1}>
-          {(this.props.data.itemList.length > 0) ?
+          {(this.props.data && this.props.data.length > 0) ?
             /*@@viewOn:example*/
             <UU5.Bricks.Resize>
               <UU5.Tiles.List
                 tile={this.renderTile}
-                data={this.props.data.itemList}
+                data={this.props.data}
                 tileHeight={180}
                 tileMinWidth={220}
                 tileMaxWidth={300}
