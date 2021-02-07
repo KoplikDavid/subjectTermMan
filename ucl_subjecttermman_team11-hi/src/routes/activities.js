@@ -16,25 +16,93 @@ const Loader = UU5.Common.VisualComponent.create({
 
   statics: {},
 
-  _getActions() {
-    return [
-      {
-        content: {
-          en: "Add Animal",
-          cs: "Přidat zvíře"
-        },
-        onClick: () => console.log("Add animal"),
-        icon: "mdi-plus-circle",
-        active: true
-      },
-    ]
+  handelCalls() {
+    const id ="601fa7258b21ee105087ab10";
+    let task ={
+      "subjectTermId": "601fa7258b21ee105087ab10",
+      "order": "asc",
+      "pageInfo": {
+        "pageIndex": "0",
+        "pageSize": "20"
+      }
+    }
+    return Calls.activityList(task);
   },
+
 
   render() {
     return (
-      <div>
-          <ActivityList data={Calls.activityList()}/>
-      </div>
+        <UU5.Common.ListDataManager
+          pessimistic={this.state.pessimistic}
+          onLoad={this.handelCalls}
+          onCreate={Calls.create}
+          onUpdate={Calls.update}
+          onDelete={Calls.delete}
+        >
+          {({
+              viewState, errorState, errorData, data, response,
+              handleLoad, handleReload, handleCreate, handleUpdate, handleDelete
+            }) => {
+            return (
+              <UU5.Bricks.Div>
+                <UU5.Bricks.Button
+                  disabled={!data}
+                  onClick={() => {
+                    handleLoad()
+                      .then(data => console.log("load ok", data))
+                      .catch(data => console.log("load ko", data))
+                  }}
+                >
+                  Load
+                </UU5.Bricks.Button>
+                <UU5.Bricks.Button
+                  disabled={!data}
+                  colorSchema="primary"
+                  onClick={() => {
+                    handleReload()
+                      .then(data => console.log("reload ok", data))
+                      .catch(data => console.log("reload ko", data))
+                  }}
+                >
+                  Reload
+                </UU5.Bricks.Button>
+                <UU5.Bricks.Button
+                  disabled={!data}
+                  colorSchema="success"
+                  onClick={() => {
+                    this._useModal(this.state.pessimistic).then(({ component, values }) => {
+                      handleCreate({ id: UU5.Common.Tools.generateUUID(), ...values })
+                        .then(data => {
+                          component.saveDone(data);
+                          console.log("create ok", data)
+                        })
+                        .catch(data => {
+                          component.saveFail(data);
+                          console.log("create ko", data)
+                        })
+                    });
+                  }}
+                >
+                  Create
+                </UU5.Bricks.Button>
+                <UU5.Bricks.Pre className="margin">
+                  {JSON.stringify({
+                    viewState, errorState, errorData,
+                    data: data ? JSON.stringify(data).replace(/"/g, "'") : null,
+                    response: response ? JSON.stringify(response).replace(/"/g, "'") : null,
+                    handleLoad: "handleLoad(dtoInData, pessimistic)",
+                    handleReload: "handleReload(dtoInData, pessimistic)",
+                    handleCreate: "handleCreate(newItem, pessimistic)",
+                    handleUpdate: "handleUpdate(id, updatedItem, pessimistic)",
+                    handleDelete: "handleDelete(id, pessimistic)"
+                  }, null, 2)}
+                </UU5.Bricks.Pre>
+                <ActivityList data={data}/>
+              </UU5.Bricks.Div>
+            )
+          }}
+          {/*@@viewOff:example*/}
+        </UU5.Common.ListDataManager>
     )
   },
 })
