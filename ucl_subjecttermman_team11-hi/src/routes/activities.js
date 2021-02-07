@@ -128,10 +128,8 @@ const Loader = UU5.Common.VisualComponent.create({
 
   render() {
     return this.getLoadFeedbackChildren((dtoOut) => {
-      console.log("tady", dtoOut)
       return <div>
         <ActivityList data={Calls.activityList()}/>
-        {/* <Example data={dtoOut}/> */}
       </div>
     });
   }

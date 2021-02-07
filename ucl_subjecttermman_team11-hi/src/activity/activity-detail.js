@@ -1,5 +1,7 @@
 import UU5 from "uu5g04";
-import Lsi from "./activity-tile-lsi";
+import Lsi from "./activity-detail-lsi";
+import {useState} from "uu5g04-hooks";
+import StudentPicker from "../bricks/utils/studentPicker";
 
 const ActivityDetail = UU5.Common.VisualComponent.create({
   //@@viewOn:mixins
@@ -17,6 +19,7 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
     }
   },
   //@@viewOff:statics
+
 
   //@@viewOn:private
   _handleDelete() {
@@ -36,6 +39,17 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
   },
 
   render() {
+    //@viewOn:hooks
+    //FIX ME vyhazuje crosorigin error??? posledni cast v renderu v panelu
+    // const [selectedStudent, setSelectedStudent] = useState("");
+    //@viewOff:hooks
+
+    //@viewOn:private
+    // const handleChange = (e) => {
+    //   setSelectedStudent(e.target.value);
+    // };
+    //@viewOff:private
+
     let mainProps = this.getMainPropsToPass();
     mainProps.style = {...mainProps.style, ...{height: "100%", width: "100%"}};
     return (
@@ -54,26 +68,23 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
         >
           <UU5.Bricks.Heading><UU5.Bricks.Lsi lsi={Lsi.header}/></UU5.Bricks.Heading>
           <UU5.Bricks.Row>
-            <UU5.Bricks.Column>
-              <UU5.Bricks.Small>
-                <UU5.Bricks.Strong style={{margin: 10}}><UU5.Bricks.Lsi lsi={Lsi.activityType}/></UU5.Bricks.Strong>
-              </UU5.Bricks.Small>
-              <UU5.Bricks.Small>
-                <UU5.Bricks.Strong>{this.props.data.activityType}</UU5.Bricks.Strong>
-              </UU5.Bricks.Small>
-              <UU5.Bricks.Button content="Change term"/>
-            </UU5.Bricks.Column>
-            <UU5.Bricks.Column>
-              <UU5.Bricks.Small>
-                <UU5.Bricks.Strong style={{margin: 10}}><UU5.Bricks.Lsi lsi={Lsi.activityType}/></UU5.Bricks.Strong>
-              </UU5.Bricks.Small>
-              <UU5.Bricks.Small>
-                <UU5.Bricks.Strong>{this.props.data.activityType}</UU5.Bricks.Strong>
-              </UU5.Bricks.Small>
-            </UU5.Bricks.Column>
+            {Object.entries(this.props.data).map(([key, value]) => {
+              if (["activityType", "activityLink", "lifeCycleState"].includes(key)) {
+                return (<UU5.Bricks.Column>
+                    <UU5.Bricks.Small>
+                      <UU5.Bricks.Strong style={{margin: 10}}><UU5.Bricks.Lsi lsi={Lsi[key]}/></UU5.Bricks.Strong>
+                    </UU5.Bricks.Small>
+                    <UU5.Bricks.Small>
+                      <UU5.Bricks.Strong>{value}</UU5.Bricks.Strong>
+                    </UU5.Bricks.Small>
+                  </UU5.Bricks.Column>
+                )
+              }
+            })
+            }
           </UU5.Bricks.Row>
           <UU5.Bricks.Row>
-            <UU5.Bricks.ButtonGroup size="m" vertical>
+            <UU5.Bricks.ButtonGroup size="m" horizontal>
               <UU5.Bricks.Button content="delete"/>
             </UU5.Bricks.ButtonGroup>
           </UU5.Bricks.Row>
@@ -91,7 +102,14 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
         >
           <UU5.Bricks.Panel
             header="Manage student"
-            content="Ut nec nunc dui. Praesent eget urna rhoncus, facilisis sem at, vestibulum nibh. Aliquam cursus purus sapien, ac facilisis est malesuada at. Fusce accumsan, mi ut volutpat posuere, neque elit tincidunt arcu, vel venenatis odio elit sed mi. Sed porttitor, orci quis dignissim elementum, velit nunc tristique tellus, at ullamcorper orci ex eget lacus."
+            content={<>
+                {/*<StudentPicker handleChange={handleChange}/>*/}
+                <UU5.Bricks.ButtonGroup size="m" horizontal>
+                  <UU5.Bricks.Button content="add student"/>
+                  <UU5.Bricks.Button content="delete student"/>
+                </UU5.Bricks.ButtonGroup>
+                </>
+              }
             colorSchema={this.state.colorSchema === "null" ? null : this.state.colorSchema}
             colorSchemaHeader={"primary"}
             colorSchemaContent={"primary"}
@@ -106,7 +124,7 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
       </UU5.Bricks.Div>
     )
   }
-  //@@viewOff:render
+//@@viewOff:render
 });
 
 export default ActivityDetail;

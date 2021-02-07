@@ -45,8 +45,6 @@ const ActivityTile = UU5.Common.VisualComponent.create({
   },
 
   render() {
-    console.log("color", Object.keys(UU5.Environment.colorSchemaMap));
-    console.log(this.props);
     let mainProps = this.getMainPropsToPass();
     mainProps.style = {...mainProps.style, ...{height: "100%", width: "100%"}};
 
