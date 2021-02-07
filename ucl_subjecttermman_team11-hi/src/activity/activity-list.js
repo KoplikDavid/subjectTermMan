@@ -52,7 +52,7 @@ const ActivityList = UU5.Common.VisualComponent.create({
               <UU5.Tiles.List
                 tile={this.renderTile}
                 data={this.props.data.itemList}
-                tileHeight={300}
+                tileHeight={180}
                 tileMinWidth={220}
                 tileMaxWidth={300}
                 tileSpacing={8}

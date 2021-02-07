@@ -40,11 +40,10 @@ let Calls = {
   },
 
   activityList(dtoInData) {
-    // return new Promise((resolve, reject) => {
-    //   let commandUri = Calls.getCommandUri("activity/list");
-    //   Calls.call("get", commandUri, { data: dtoInData, done: resolve, fail: reject });
-    // });
-    return activityList;
+    return new Promise((resolve, reject) => {
+      let commandUri = Calls.getCommandUri("activity/list");
+      Calls.call("get", commandUri, { data: dtoInData, done: resolve, fail: reject });
+    });
   },
 
   oneActivity() {

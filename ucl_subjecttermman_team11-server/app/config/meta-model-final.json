@@ -2,9 +2,9 @@
   "code": "uun-bpmi20wpt11-maing01",
   "name": "SubjectTermMan",
   "desc": "SubjectTermMan",
-  "version": "{0.1.7}",
+  "version": "0.1.8",
 
-  "defaultIcon": "{uubml-artifact}",
+  "defaultIcon": "uubml-artifact",
 
   "stateList": [{
     "code": "active",
@@ -22,7 +22,8 @@
   "defaultPermissionMatrix": [
     "11000000-00000000-00000000-00000100",
     "00100000-00000000-00000000-00000000",
-    "00000000-00000000-00000000-00000011"
+    "00000000-00000000-00000000-00000011",
+    "00000000-00000000-00000000-00000100"
   ],
 
   "profileList": [{
@@ -33,14 +34,19 @@
     "enabledExplicitTypeList": ["uu-businessterritory-maing01/uuRoleGroupIfc"]
   },
     {
-      "code": "Executives",
-      "name": "Executives",
-      "desc": "Executives"
+      "code": "StudyDepartment",
+      "name": "StudyDepartment",
+      "desc": "StudyDepartment"
     },
     {
-      "code": "Public",
-      "name": "Public",
-      "desc": "Public"
+      "code": "ScheduleAdministrators",
+      "name": "ScheduleAdministrators",
+      "desc": "ScheduleAdministrators"
+    },
+    {
+      "code": "Teachers",
+      "name": "Teachers",
+      "desc": "Teachers"
     }
   ],
 
@@ -125,22 +131,22 @@
   },
 
   "useCaseProfileMap": {
-    "subjecttermman/load": "11100000-00000000-00000000-00000000",
+    "subjecttermman/load": "11110000-00000000-00000000-00000000",
     "subjecttermman/update": "10000000-00000000-00000000-00000000",
-    "jokesInstance/getUveMetaData": "11100000-00000000-00000000-00000000",
-    "subjectTerm/create": "11000000-00000000-00000000-00000000",
+    "jokesInstance/getUveMetaData": "11110000-00000000-00000000-00000000",
+    "subjectTerm/create": "11100000-00000000-00000000-00000000",
     "subjectTerm/addStudent": "11100000-00000000-00000000-00000000",
-    "subjectTerm/setState": "11000000-00000000-00000000-00000000",
+    "subjectTerm/setState": "11100000-00000000-00000000-00000000",
     "subjectTerm/deleteStudent": "11000000-00000000-00000000-00000000",
     "subjectTerm/delete": "11000000-00000000-00000000-00000000",
-    "subjectTerm/list": "11100000-00000000-00000000-00000000",
-    "activity/create": "10100000-00000000-00000000-00000000",
-    "activity/setActivityLink": "10100000-00000000-00000000-00000000",
-    "activity/setState": "10100000-00000000-00000000-00000000",
-    "activity/delete": "10100000-00000000-00000000-00000000",
-    "activity/list": "10100000-00000000-00000000-00000000",
-    "activity/addStudent": "10100000-00000000-00000000-00000000",
-    "activity/deleteStudent": "10100000-00000000-00000000-00000000",
+    "subjectTerm/list": "11110000-00000000-00000000-00000000",
+    "activity/create": "11010000-00000000-00000000-00000000",
+    "activity/setActivityLink": "11010000-00000000-00000000-00000000",
+    "activity/setState": "11000000-00000000-00000000-00000000",
+    "activity/delete": "11110000-00000000-00000000-00000000",
+    "activity/list": "11110000-00000000-00000000-00000000",
+    "activity/addStudent": "11000000-00000000-00000000-00000000",
+    "activity/deleteStudent": "11000000-00000000-00000000-00000000",
 
     "uu-app-binarystore/createBinary": "11000000-00000000-00000000-00000000",
     "uu-app-binarystore/getBinaryData": "11100000-00000000-00000000-00000000",
@@ -172,13 +178,13 @@
     "sys/awidRestore": "10000000-00000000-00000000-00000000",
     "sys/appClientToken/initKeys": "10000000-00000000-00000000-00000000",
 
-    "uu-businessterritory-maing01/uuAwsc/authorizeMe": "11100000-00000000-00000000-00000000",
-    "uu-businessterritory-maing01/uuAwsc/authorizeUuIdentity": "11000000-00000000-00000000-00000000",
-    "uu-businessterritory-maing01/uuAwsc/get": "11100000-00000000-00000000-00000000",
-    "uu-businessterritory-maing01/uuAwsc/load": "11100000-00000000-00000000-00000000",
-    "uu-businessterritory-maing01/uuAwsc/loadEnvironment": "11100000-00000000-00000000-00000000",
-    "uu-businessterritory-maing01/uuAwsc/loadPermissions": "11100000-00000000-00000000-00000000",
-    "uu-businessterritory-maing01/uuAwsc/getNavigation": "11100000-00000000-00000000-00000000",
+    "uu-businessterritory-maing01/uuAwsc/authorizeMe": "11110000-00000000-00000000-00000000",
+    "uu-businessterritory-maing01/uuAwsc/authorizeUuIdentity": "11110000-00000000-00000000-00000000",
+    "uu-businessterritory-maing01/uuAwsc/get": "11110000-00000000-00000000-00000000",
+    "uu-businessterritory-maing01/uuAwsc/load": "11110000-00000000-00000000-00000000",
+    "uu-businessterritory-maing01/uuAwsc/loadEnvironment": "11110000-00000000-00000000-00000000",
+    "uu-businessterritory-maing01/uuAwsc/loadPermissions": "11110000-00000000-00000000-00000000",
+    "uu-businessterritory-maing01/uuAwsc/getNavigation": "11110000-00000000-00000000-00000000",
     "uu-businessterritory-maing01/uuAwsc/getImplicitPermissions": "11100000-00000000-00000000-00000000",
     "uu-businessterritory-maing01/uuAwsc/setBasicAttributes": "11000000-00000000-00000000-00000000",
     "uu-businessterritory-maing01/uuAwsc/setVersion": "11000000-00000000-00000000-00000000",

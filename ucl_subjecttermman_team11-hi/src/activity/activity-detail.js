@@ -1,5 +1,5 @@
 import UU5 from "uu5g04";
-import Lsi from "./activity-tile-lsi";
+import Lsi from "./activity-detail-lsi";
 
 const ActivityDetail = UU5.Common.VisualComponent.create({
   //@@viewOn:mixins
@@ -18,24 +18,50 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
   },
   //@@viewOff:statics
 
+
   //@@viewOn:private
   _handleDelete() {
 
   },
 
+  _handleAddStudent(uuIdentity) {
+    let dtoOut = {
+      "id": this.props.data.id,
+      "studentId": uuIdentity
+    }
+    alert(JSON.stringify(dtoOut));
+  },
+
+  _handleAssessStudent(uuIdentity, score) {
+    let dtoOut = {
+      "id": this.props.data.id,
+      "studentId": uuIdentity,
+      "score": score
+    }
+    alert(JSON.stringify(dtoOut));
+  },
+
+  myFunction(total, value) {
+  return JSON.stringify(total) + JSON.stringify(value);
+},
+
 
   //@@viewOff:private
 
   //@@viewOn:render
-  renderHeader() {
-    return (
-      <>
-        My funny joke
-      </>
-    );
-  },
 
   render() {
+    //@viewOn:hooks
+    //FIX ME vyhazuje crosorigin error??? posledni cast v renderu v panelu
+    // const [selectedStudent, setSelectedStudent] = useState("");
+    //@viewOff:hooks
+
+    //@viewOn:private
+    // const handleChange = (e) => {
+    //   setSelectedStudent(e.target.value);
+    // };
+    //@viewOff:private
+
     let mainProps = this.getMainPropsToPass();
     mainProps.style = {...mainProps.style, ...{height: "100%", width: "100%"}};
     return (
@@ -54,28 +80,21 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
         >
           <UU5.Bricks.Heading><UU5.Bricks.Lsi lsi={Lsi.header}/></UU5.Bricks.Heading>
           <UU5.Bricks.Row>
-            <UU5.Bricks.Column>
-              <UU5.Bricks.Small>
-                <UU5.Bricks.Strong style={{margin: 10}}><UU5.Bricks.Lsi lsi={Lsi.activityType}/></UU5.Bricks.Strong>
-              </UU5.Bricks.Small>
-              <UU5.Bricks.Small>
-                <UU5.Bricks.Strong>{this.props.data.activityType}</UU5.Bricks.Strong>
-              </UU5.Bricks.Small>
-              <UU5.Bricks.Button content="Change term"/>
-            </UU5.Bricks.Column>
-            <UU5.Bricks.Column>
-              <UU5.Bricks.Small>
-                <UU5.Bricks.Strong style={{margin: 10}}><UU5.Bricks.Lsi lsi={Lsi.activityType}/></UU5.Bricks.Strong>
-              </UU5.Bricks.Small>
-              <UU5.Bricks.Small>
-                <UU5.Bricks.Strong>{this.props.data.activityType}</UU5.Bricks.Strong>
-              </UU5.Bricks.Small>
-            </UU5.Bricks.Column>
-          </UU5.Bricks.Row>
-          <UU5.Bricks.Row>
-            <UU5.Bricks.ButtonGroup size="m" vertical>
-              <UU5.Bricks.Button content="delete"/>
-            </UU5.Bricks.ButtonGroup>
+            {Object.entries(this.props.data).map(([key, value]) => {
+              if (["activityType", "activityLink", "lifeCycleState","defaultTerm"].includes(key)) {
+                return (
+                  <UU5.Bricks.Column>
+                    <UU5.Bricks.Small>
+                      <UU5.Bricks.Strong style={{margin: 10}}><UU5.Bricks.Lsi lsi={Lsi[key]}/></UU5.Bricks.Strong>
+                    </UU5.Bricks.Small>
+                    <UU5.Bricks.Small>
+                      <UU5.Bricks.Strong>{value}</UU5.Bricks.Strong>
+                    </UU5.Bricks.Small>
+                  </UU5.Bricks.Column>
+                )
+              }
+            })
+            }
           </UU5.Bricks.Row>
         </UU5.Bricks.Div>
         <UU5.Bricks.Div
@@ -90,8 +109,65 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
           }}
         >
           <UU5.Bricks.Panel
+            header="Manage activity"
+            content={<>
+              {/*<StudentPicker handleChange={handleChange}/>*/}
+              <UU5.Bricks.Column>
+                <UU5.Forms.TextArea
+                  label='Activity link'
+                  ref_={input => this._inputSetLink = input}
+                  size="s"
+                />
+                <UU5.Forms.TextArea
+                  label='State'
+                  ref_={input => this._inputSetState = input}
+                  size="s"
+                />
+              </UU5.Bricks.Column>
+              <UU5.Bricks.ButtonGroup size="m" horizontal>
+                <UU5.Bricks.Button content="delete"/>
+                <UU5.Bricks.Button content="set state"/>
+                <UU5.Bricks.Button content="set link"/>
+              </UU5.Bricks.ButtonGroup>
+            </>
+            }
+            colorSchema={this.state.colorSchema === "null" ? null : this.state.colorSchema}
+            colorSchemaHeader={"primary"}
+            colorSchemaContent={"primary"}
+            bgStyle={"underline"}
+            bgStyleHeader={this.state.bgStyleHeader === "null" ? null : this.state.bgStyleHeader}
+            bgStyleContent={this.state.bgStyleContent === "null" ? null : this.state.bgStyleContent}
+            iconExpanded="mdi-chevron-up" iconCollapsed="mdi-chevron-down"
+            openClick={this.state.openClick === "null" ? null : this.state.openClick}
+          />
+          <UU5.Bricks.Panel
             header="Manage student"
-            content="Ut nec nunc dui. Praesent eget urna rhoncus, facilisis sem at, vestibulum nibh. Aliquam cursus purus sapien, ac facilisis est malesuada at. Fusce accumsan, mi ut volutpat posuere, neque elit tincidunt arcu, vel venenatis odio elit sed mi. Sed porttitor, orci quis dignissim elementum, velit nunc tristique tellus, at ullamcorper orci ex eget lacus."
+            content={<>
+              {/*<StudentPicker handleChange={handleChange}/>*/}
+              <UU5.Bricks.Column>
+                <UU5.Bricks.Strong
+                  content={this.props.data.activityDetails.reduce(this.myFunction)}
+                />
+                <UU5.Forms.TextArea
+                  label='Studen uuIdentity'
+                  ref_={input => this._inputUUid = input}
+                  size="s"
+                />
+                <UU5.Forms.TextArea
+                  label='Score'
+                  ref_={input => this._inputScore = input}
+                  size="s"
+                />
+              </UU5.Bricks.Column>
+              <UU5.Bricks.ButtonGroup size="m" horizontal>
+                <UU5.Bricks.Button content="add student"
+                                   onClick={() => this._handleAddStudent(this._inputUUid.getValue())}/>
+                <UU5.Bricks.Button content="delete student"/>
+                <UU5.Bricks.Button content="assess student"
+                                   onClick={() => this._handleAssessStudent(this._inputUUid.getValue(), this._inputScore.getValue())}/>
+              </UU5.Bricks.ButtonGroup>
+            </>
+            }
             colorSchema={this.state.colorSchema === "null" ? null : this.state.colorSchema}
             colorSchemaHeader={"primary"}
             colorSchemaContent={"primary"}
@@ -106,7 +182,7 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
       </UU5.Bricks.Div>
     )
   }
-  //@@viewOff:render
+//@@viewOff:render
 });
 
 export default ActivityDetail;

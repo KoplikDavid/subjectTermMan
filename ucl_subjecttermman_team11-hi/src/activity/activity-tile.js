@@ -36,17 +36,8 @@ const ActivityTile = UU5.Common.VisualComponent.create({
   //@@viewOff:private
 
   //@@viewOn:render
-  renderHeader() {
-    return (
-      <>
-        My funny joke
-      </>
-    );
-  },
 
   render() {
-    console.log("color", Object.keys(UU5.Environment.colorSchemaMap));
-    console.log(this.props);
     let mainProps = this.getMainPropsToPass();
     mainProps.style = {...mainProps.style, ...{height: "100%", width: "100%"}};
 
@@ -56,7 +47,7 @@ const ActivityTile = UU5.Common.VisualComponent.create({
           style={{
             position: "relative",
             width: "100%",
-            height: "70%",
+            height: "50%",
             overflow: "hidden",
             padding: 8,
             display: "flex",
@@ -65,35 +56,34 @@ const ActivityTile = UU5.Common.VisualComponent.create({
           }}
         >
           <UU5.Bricks.Heading><UU5.Bricks.Lsi lsi={Lsi.header}/></UU5.Bricks.Heading>
-          <UU5.Bricks.Column>
-            <UU5.Bricks.Small>
-              <UU5.Bricks.Strong style={{margin: 10}}><UU5.Bricks.Lsi lsi={Lsi.activityType}/></UU5.Bricks.Strong>
-            </UU5.Bricks.Small>
-            <UU5.Bricks.Small>
-              <UU5.Bricks.Strong>{this.props.data.activityType}</UU5.Bricks.Strong>
-            </UU5.Bricks.Small>
-          </UU5.Bricks.Column>
-          <UU5.Bricks.Column>
-            <UU5.Bricks.Small>
-              <UU5.Bricks.Strong style={{margin: 10}}><UU5.Bricks.Lsi lsi={Lsi.activityType}/></UU5.Bricks.Strong>
-            </UU5.Bricks.Small>
-            <UU5.Bricks.Small>
-              <UU5.Bricks.Strong>{this.props.data.activityType}</UU5.Bricks.Strong>
-            </UU5.Bricks.Small>
-          </UU5.Bricks.Column>
+          {Object.entries(this.props.data).map(([key, value]) => {
+            if (["activityType","defaultTerm"].includes(key)) {
+              return (
+                <UU5.Bricks.Column>
+                  <UU5.Bricks.Small>
+                    <UU5.Bricks.Strong style={{margin: 10}}><UU5.Bricks.Lsi lsi={Lsi[key]}/></UU5.Bricks.Strong>
+                  </UU5.Bricks.Small>
+                  <UU5.Bricks.Small>
+                    <UU5.Bricks.Strong>{value}</UU5.Bricks.Strong>
+                  </UU5.Bricks.Small>
+                </UU5.Bricks.Column>
+              )
+            }
+          })
+          }
         </UU5.Bricks.Div>
         <UU5.Bricks.Div
           style={{
             position: "relative",
             width: "100%",
-            height: "30%",
+            height: "50%",
             overflow: "hidden",
             padding: 8,
             display: "flex",
             flexDirection: "column"
           }}
         >
-          <UU5.Bricks.Button size="m" onClick={this._handleDetail}>
+          <UU5.Bricks.Button content="Detail" size="m" onClick={this._handleDetail}>
 
           </UU5.Bricks.Button>
         </UU5.Bricks.Div>

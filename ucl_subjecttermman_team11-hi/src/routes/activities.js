@@ -1,37 +1,55 @@
-//@@viewOn:imports
-import { createComponent, useState } from "uu5g04-hooks";
-import Config from "../config/config";
-import { activities } from "../../mock/data/activities";
-import ActivityRow from "../bricks/activities/row";
-import StudentPicker from "../bricks/utils/studentPicker";
-//@@viewOff:imports
+import UU5 from "uu5g04";
+import "uu5g04-bricks";
+import "uu5g04-forms";
+import "uu5tilesg01";
+import Plus4U5 from "uu_plus4u5g01";
+import "uu_plus4u5g01-bricks";
+import "uu_plus4u5g01-app";
+import Calls from "../calls";
+import ActivityList from "../activity/activity-list";
 
-const Activities = createComponent({
-  //@@viewOn:statics
-  displayName: Config.TAG + "Activities",
-  //@@viewOff:statics
+
+const Loader = UU5.Common.VisualComponent.create({
+  mixins: [
+    UU5.Common.BaseMixin, UU5.Common.LoadMixin
+  ],
+
+  statics: {},
+
+  _getActions() {
+    return [
+      {
+        content: {
+          en: "Add Animal",
+          cs: "Přidat zvíře"
+        },
+        onClick: () => console.log("Add animal"),
+        icon: "mdi-plus-circle",
+        active: true
+      },
+    ]
+  },
 
   render() {
-    //@@viewOn:hooks
-    const [selectedStudent, setSelectedStudent] = useState("");
-    //@@viewOff:hooks
-    //@@viewOn:private
-
-    const handleChange = (e) => {
-      setSelectedStudent(e.target.value);
-    };
-
-    //@viewOff:private
-    //@@viewOn:render
     return (
-      <>
-        <StudentPicker handleChange={handleChange} />
-        {selectedStudent &&
-          activities.map(({ activity, type }, index) => <ActivityRow key={index} activity={activity} type={type} />)}
-      </>
-    );
-    //@@viewOff:render
+      <div>
+          <ActivityList data={Calls.activityList()}/>
+      </div>
+    )
   },
+})
+const Activities = UU5.Common.VisualComponent.create({
+
+  //@@viewOn:mixins
+  mixins: [
+    UU5.Common.BaseMixin,
+    UU5.Common.IdentityMixin
+  ],
+  //@@viewOff:mixins
+
+  render() {
+    return this.isAuthenticated() ? <Loader/> : <Plus4U5.App.Login/>;
+  }
 });
 
 export default Activities;
