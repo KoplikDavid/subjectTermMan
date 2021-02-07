@@ -34,7 +34,7 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
       "id": this.props.data.id,
       "studentId": uuIdentity
     }
-    alert(JSON.stringify(dtoOut));
+    return Calls.activityAddStudent(dtoOut);
   },
 
   _handleAssessStudent(uuIdentity, score) {
@@ -43,7 +43,7 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
       "studentId": uuIdentity,
       "score": score
     }
-    alert(JSON.stringify(dtoOut));
+    return Calls.activityAssessStudent(dtoOut);
   },
 
   myFunction(total, value) {
@@ -56,17 +56,6 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
   //@@viewOn:render
 
   render() {
-    //@viewOn:hooks
-    //FIX ME vyhazuje crosorigin error??? posledni cast v renderu v panelu
-    // const [selectedStudent, setSelectedStudent] = useState("");
-    //@viewOff:hooks
-
-    //@viewOn:private
-    // const handleChange = (e) => {
-    //   setSelectedStudent(e.target.value);
-    // };
-    //@viewOff:private
-
     let mainProps = this.getMainPropsToPass();
     mainProps.style = {...mainProps.style, ...{height: "100%", width: "100%"}};
     return (
@@ -116,7 +105,6 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
           <UU5.Bricks.Panel
             header="Manage activity"
             content={<>
-              {/*<StudentPicker handleChange={handleChange}/>*/}
               <UU5.Bricks.Column>
                 <UU5.Forms.TextArea
                   label='Activity link'
