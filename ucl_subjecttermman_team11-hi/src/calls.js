@@ -44,8 +44,9 @@ let Calls = {
     return Calls.call("get", commandUri, dtoInData);
   },
 
-  oneActivity() {
-    return activity1
+  activityDelete(dtoInData) {
+    let commandUri = Calls.getCommandUri("activity/delete");
+    return Calls.call("post", commandUri, dtoInData);
   },
 
   /*

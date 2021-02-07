@@ -85,18 +85,7 @@ const Loader = UU5.Common.VisualComponent.create({
                 >
                   Create
                 </UU5.Bricks.Button>
-                <UU5.Bricks.Pre className="margin">
-                  {JSON.stringify({
-                    viewState, errorState, errorData,
-                    data: data ? JSON.stringify(data).replace(/"/g, "'") : null,
-                    response: response ? JSON.stringify(response).replace(/"/g, "'") : null,
-                    handleLoad: "handleLoad(dtoInData, pessimistic)",
-                    handleReload: "handleReload(dtoInData, pessimistic)",
-                    handleCreate: "handleCreate(newItem, pessimistic)",
-                    handleUpdate: "handleUpdate(id, updatedItem, pessimistic)",
-                    handleDelete: "handleDelete(id, pessimistic)"
-                  }, null, 2)}
-                </UU5.Bricks.Pre>
+
                 <ActivityList data={data}/>
               </UU5.Bricks.Div>
             )

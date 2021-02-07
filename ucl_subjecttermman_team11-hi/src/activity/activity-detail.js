@@ -1,5 +1,7 @@
 import UU5 from "uu5g04";
 import Lsi from "./activity-detail-lsi";
+import Calls from "../calls";
+
 
 const ActivityDetail = UU5.Common.VisualComponent.create({
   //@@viewOn:mixins
@@ -21,7 +23,10 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
 
   //@@viewOn:private
   _handleDelete() {
-
+    let dtoOut = {
+      "id": this.props.data.id
+    }
+    return Calls.activityDelete(dtoOut)
   },
 
   _handleAddStudent(uuIdentity) {
@@ -125,7 +130,7 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
                 />
               </UU5.Bricks.Column>
               <UU5.Bricks.ButtonGroup size="m" horizontal>
-                <UU5.Bricks.Button content="delete"/>
+                <UU5.Bricks.Button content="delete" onClick={this._handleDelete}/>
                 <UU5.Bricks.Button content="set state"/>
                 <UU5.Bricks.Button content="set link"/>
               </UU5.Bricks.ButtonGroup>
