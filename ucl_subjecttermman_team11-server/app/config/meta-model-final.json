@@ -154,8 +154,8 @@
     "uu-app-binarystore/deleteBinary": "11000000-00000000-00000000-00000000",
     "uu-app-binarystore/listBinaries": "11000000-00000000-00000000-00000000",
 
-    "sys/listAuditLogRecordsByTimeAndSpp": ["Authorities", "AwidOwner"],
-    "sys/listMyAuditLogRecordsByTime": ["Authorities", "AwidOwner", "Executives", "Public"],
+    "sys/listAuditLogRecordsByTimeAndSpp": "10000000-00000000-00000000-00000000",
+    "sys/listMyAuditLogRecordsByTime": "11110000-00000000-00000000-00000000",
 
     "sys/getAppWorkspace": "10000000-00000000-00000000-00000000",
     "sys/getProfile": "11000000-00000000-00000000-00000000",
@@ -232,34 +232,6 @@
     "uu-businessterritory-maing01/uuAwsc/synchronizeHomeUnit": "11000000-00000000-00000000-00000000",
     "uu-businessterritory-maing01/uuAwsc/synchronizeHomeFolder": "11000000-00000000-00000000-00000000",
     "uu-businessterritory-maing01/uuAwsc/synchronizeResponsibleRole": "11000000-00000000-00000000-00000000"
-  },
-
-  "routeMap": {
-    "userGate/activityDetail": [
-      "userGate/activityDetail",
-      "UuTerritory.Activity.Routes.Detail"
-    ],
-    "userGate/activityList": [
-      "userGate/activityList",
-      "UuTerritory.Activity.Routes.ActivityList"
-    ]
-  },
-  "uuTypeMap": {
-    "{appTypeCode}": {}
-  },
-  "organizationalContextPropertyMap": {
-    "{propertyCode}": {
-      "name": "{propertyName}",
-      "desc": "{propertyDesc}",
-      "allowedContextMap": {
-        "uuTypeInstance": ["{appTypeCode}","..."],
-        "uuUnit": "false",
-        "uuAccessRoleIfc": "false",
-        "uuAppMetaModel": "false"
-      },
-      "appTokenRequired": "true",
-      "uuAppWorkspaceRequired": "true"
-    }
   }
 }
 

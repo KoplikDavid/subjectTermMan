@@ -66,7 +66,7 @@ class SubjecttermmanTeam11Abl {
 
       const createAwscDtoIn = {
         name: "UclSubjecttermman",
-        typeCode: "ucl-subjecttermman-team11",
+        typeCode: "uun-bpmi20wpt11-maing01",
         location: location,
         uuAppWorkspaceUri: baseUri,
       };
