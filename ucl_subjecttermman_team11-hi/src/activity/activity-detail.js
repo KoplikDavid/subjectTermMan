@@ -41,17 +41,14 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
     alert(JSON.stringify(dtoOut));
   },
 
+  myFunction(total, value) {
+  return JSON.stringify(total) + JSON.stringify(value);
+},
+
 
   //@@viewOff:private
 
   //@@viewOn:render
-  renderHeader() {
-    return (
-      <>
-        My funny joke
-      </>
-    );
-  },
 
   render() {
     //@viewOn:hooks
@@ -99,11 +96,6 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
             })
             }
           </UU5.Bricks.Row>
-          <UU5.Bricks.Row>
-            <UU5.Bricks.ButtonGroup size="m" horizontal>
-              <UU5.Bricks.Button content="delete"/>
-            </UU5.Bricks.ButtonGroup>
-          </UU5.Bricks.Row>
         </UU5.Bricks.Div>
         <UU5.Bricks.Div
           style={{
@@ -117,10 +109,45 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
           }}
         >
           <UU5.Bricks.Panel
+            header="Manage activity"
+            content={<>
+              {/*<StudentPicker handleChange={handleChange}/>*/}
+              <UU5.Bricks.Column>
+                <UU5.Forms.TextArea
+                  label='Activity link'
+                  ref_={input => this._inputSetLink = input}
+                  size="s"
+                />
+                <UU5.Forms.TextArea
+                  label='State'
+                  ref_={input => this._inputSetState = input}
+                  size="s"
+                />
+              </UU5.Bricks.Column>
+              <UU5.Bricks.ButtonGroup size="m" horizontal>
+                <UU5.Bricks.Button content="delete"/>
+                <UU5.Bricks.Button content="set state"/>
+                <UU5.Bricks.Button content="set link"/>
+              </UU5.Bricks.ButtonGroup>
+            </>
+            }
+            colorSchema={this.state.colorSchema === "null" ? null : this.state.colorSchema}
+            colorSchemaHeader={"primary"}
+            colorSchemaContent={"primary"}
+            bgStyle={"underline"}
+            bgStyleHeader={this.state.bgStyleHeader === "null" ? null : this.state.bgStyleHeader}
+            bgStyleContent={this.state.bgStyleContent === "null" ? null : this.state.bgStyleContent}
+            iconExpanded="mdi-chevron-up" iconCollapsed="mdi-chevron-down"
+            openClick={this.state.openClick === "null" ? null : this.state.openClick}
+          />
+          <UU5.Bricks.Panel
             header="Manage student"
             content={<>
               {/*<StudentPicker handleChange={handleChange}/>*/}
               <UU5.Bricks.Column>
+                <UU5.Bricks.Strong
+                  content={this.props.data.activityDetails.reduce(this.myFunction)}
+                />
                 <UU5.Forms.TextArea
                   label='Studen uuIdentity'
                   ref_={input => this._inputUUid = input}
