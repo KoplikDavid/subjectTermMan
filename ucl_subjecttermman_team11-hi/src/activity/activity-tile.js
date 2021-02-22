@@ -23,11 +23,9 @@ const ActivityTile = UU5.Common.VisualComponent.create({
   //@@viewOn:private
 
   _handleDetail() {
-    console.log("opoustim tile",this.props.onDetail,"a dal",this.props.data);
     const data = this.props.data;
-    console.log("funkce?",this.props.onClose);
-      data.onClose=this.props.onClose;
 
+    data.onClose=this.props.onClose;
     this.props.onDetail(data);
   },
 

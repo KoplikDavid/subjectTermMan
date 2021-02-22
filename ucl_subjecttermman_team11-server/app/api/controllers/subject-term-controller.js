@@ -24,7 +24,7 @@ class SubjectTermController {
   }
 
   create(ucEnv) {
-    return SubjectTermAbl.create(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getSession(), ucEnv.getAuthorizationResult());
+    return SubjectTermAbl.create(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
   }
 
 }

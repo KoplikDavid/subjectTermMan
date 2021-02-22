@@ -4,7 +4,7 @@ const {UuObjectDao} = require("uu_appg01_server").ObjectStore;
 class ActivityMongo extends UuObjectDao {
 
   async createSchema() {
-    await super.createIndex({awid: 1, _id: 1 }, {unique: true});
+    await super.createIndex({awid: 1, _id: 1}, {unique: true});
   }
 
   async create(uuObject) {
@@ -44,28 +44,28 @@ class ActivityMongo extends UuObjectDao {
   }
 
   async deleteStudent(dToIn) {
-    let filter= {
-      awid:dToIn.awid,
+    let filter = {
+      awid: dToIn.awid,
       id: dToIn.id,
     }
     let update = {
-      $pull: {activityDetails:{studentId: dToIn.studentId}}
+      $pull: {activityDetails: {studentId: dToIn.studentId}}
     }
     return await super.findOneAndUpdate(filter, update, "NONE");
   }
 
-  async update(filter,dToIn){
+  async update(filter, dToIn) {
     return await super.findOneAndUpdate(filter, dToIn, "NONE");
   }
 
-  async assess(filter,dToIn){
-let studentFilter={
-  awid:filter.awid,
-  id: filter.id,
-  "activityDetails.studentId": dToIn.studentId
-}
+  async assess(filter, dToIn) {
+    let studentFilter = {
+      awid: filter.awid,
+      id: filter.id,
+      "activityDetails.studentId": dToIn.studentId
+    }
 
-    let update={
+    let update = {
       $set: {"activityDetails.$.score": dToIn.score}
     }
     return await super.findOneAndUpdate(studentFilter, update, "NONE");

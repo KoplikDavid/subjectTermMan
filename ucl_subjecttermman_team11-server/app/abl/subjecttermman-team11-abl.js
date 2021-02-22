@@ -75,7 +75,6 @@ class SubjecttermmanTeam11Abl {
       const appClientToken = await AppClientTokenService.createToken(uri, uuBtBaseUri);
       const callOpts = AppClientTokenService.setToken({ session }, appClientToken);
 
-      // TODO HDS
       let awscId;
       try {
         const awscDtoOut = await AppClient.post(awscCreateUri, createAwscDtoIn, callOpts);
@@ -115,11 +114,10 @@ class SubjecttermmanTeam11Abl {
     }
 
     // HDS 4 - HDS N
-    // TODO Implement according to application needs...
     dtoIn.awid = awid;
 
     try {
-      let instance = await this.dao.create(dtoIn);
+      await this.dao.create(dtoIn);
     } catch (e) {
       // A4
       if (e instanceof ObjectStoreError) {

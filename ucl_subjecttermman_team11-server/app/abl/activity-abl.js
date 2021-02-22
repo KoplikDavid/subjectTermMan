@@ -1,8 +1,7 @@
 "use strict";
-const Path = require("path");
-const { Validator } = require("uu_appg01_server").Validation;
-const { DaoFactory, ObjectStoreError } = require("uu_appg01_server").ObjectStore;
-const { ValidationHelper } = require("uu_appg01_server").AppServer;
+const {Validator} = require("uu_appg01_server").Validation;
+const {DaoFactory, ObjectStoreError} = require("uu_appg01_server").ObjectStore;
+const {ValidationHelper} = require("uu_appg01_server").AppServer;
 const Errors = require("../api/errors/activity-error.js");
 const SubjecttermmanTeam11Abl = require("./subjecttermman-team11-abl");
 
@@ -65,7 +64,7 @@ class ActivityAbl {
     let activity = await this.dao.get(activityFilter);
 
     if (!activity) {
-      throw new Errors.AssessStudent.ActivityDoesNotExist({ uuAppErrorMap }, { subjectTermId: dtoIn.id });
+      throw new Errors.AssessStudent.ActivityDoesNotExist({uuAppErrorMap}, {subjectTermId: dtoIn.id});
     }
 
     try {
@@ -73,7 +72,7 @@ class ActivityAbl {
     } catch (e) {
       if (e instanceof ObjectStoreError) {
 
-        throw new Errors.AssessStudent.ActivityAssessStudentDaoFailed({ uuAppErrorMap }, e);
+        throw new Errors.AssessStudent.ActivityAssessStudentDaoFailed({uuAppErrorMap}, e);
       }
       throw e;
     }
@@ -106,7 +105,7 @@ class ActivityAbl {
     let activity = await this.dao.get(activityFilter);
 
     if (!activity) {
-      throw new Errors.SetActivityLink.ActivityDoesNotExist({ uuAppErrorMap }, { subjectTermId: dtoIn.id });
+      throw new Errors.SetActivityLink.ActivityDoesNotExist({uuAppErrorMap}, {subjectTermId: dtoIn.id});
     }
 
     try {
@@ -114,7 +113,7 @@ class ActivityAbl {
     } catch (e) {
       if (e instanceof ObjectStoreError) {
 
-        throw new Errors.SetActivityLink.ActivityLinkDaoUpdateFailed({ uuAppErrorMap }, e);
+        throw new Errors.SetActivityLink.ActivityLinkDaoUpdateFailed({uuAppErrorMap}, e);
       }
       throw e;
     }
@@ -147,7 +146,7 @@ class ActivityAbl {
     let activity = await this.dao.get(activityFilter);
 
     if (!activity) {
-      throw new Errors.Setstate.ActivityDoesNotExist({ uuAppErrorMap }, { subjectTermId: dtoIn.id });
+      throw new Errors.Setstate.ActivityDoesNotExist({uuAppErrorMap}, {subjectTermId: dtoIn.id});
     }
     let newStudent = {
       studentId: dtoIn.studentId
@@ -158,7 +157,7 @@ class ActivityAbl {
     } catch (e) {
       if (e instanceof ObjectStoreError) {
 
-        throw new Errors.Setstate.ActivityLinkDaoUpdateFailed({ uuAppErrorMap }, e);
+        throw new Errors.Setstate.ActivityLinkDaoUpdateFailed({uuAppErrorMap}, e);
       }
       throw e;
     }
@@ -190,17 +189,17 @@ class ActivityAbl {
     let activity = await this.dao.get(activityFilter);
 
     if (!activity) {
-      throw new Errors.DeleteStudent.ActivityDoesNotExist({ uuAppErrorMap }, { activityId: dtoIn.id });
+      throw new Errors.DeleteStudent.ActivityDoesNotExist({uuAppErrorMap}, {activityId: dtoIn.id});
     }
 
-    dtoIn.awid=awid;
+    dtoIn.awid = awid;
 
     try {
       activity = await this.dao.deleteStudent(dtoIn);
     } catch (e) {
       if (e instanceof ObjectStoreError) {
 
-        throw new Errors.DeleteStudent.ActivityDaoDeleteStudentFailed({ uuAppErrorMap }, e);
+        throw new Errors.DeleteStudent.ActivityDaoDeleteStudentFailed({uuAppErrorMap}, e);
       }
       throw e;
     }
@@ -232,7 +231,7 @@ class ActivityAbl {
     let activity = await this.dao.get(activityFilter);
 
     if (!activity) {
-      throw new Errors.AddStudent.ActivityDoesNotExist({ uuAppErrorMap }, { activityId: dtoIn.id });
+      throw new Errors.AddStudent.ActivityDoesNotExist({uuAppErrorMap}, {activityId: dtoIn.id});
     }
 
     let newStudent = {
@@ -241,11 +240,11 @@ class ActivityAbl {
     }
 
     try {
-      activity = await this.dao.addStudent(activityFilter,newStudent);
+      activity = await this.dao.addStudent(activityFilter, newStudent);
     } catch (e) {
       if (e instanceof ObjectStoreError) {
 
-        throw new Errors.AddStudent.ActivityDaoAddStudentFailed({ uuAppErrorMap }, e);
+        throw new Errors.AddStudent.ActivityDaoAddStudentFailed({uuAppErrorMap}, e);
       }
       throw e;
     }
@@ -272,7 +271,7 @@ class ActivityAbl {
     dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
     dtoIn.uuIdentityName = session.getIdentity().getName();
     dtoIn.awid = awid;
-    dtoIn.lifeCycleState= "planned";
+    dtoIn.lifeCycleState = "planned";
     if (!dtoIn.activityLink) dtoIn.activityLink = "add link please";
 
     let activity;
@@ -282,16 +281,17 @@ class ActivityAbl {
     } catch (e) {
       if (e instanceof ObjectStoreError) {
 
-        throw new Errors.Create.ActivityDaoCreateFailed({ uuAppErrorMap }, e);
+        throw new Errors.Create.ActivityDaoCreateFailed({uuAppErrorMap}, e);
       }
       throw e;
     }
     activity.uuAppErrorMap = uuAppErrorMap;
+    activity.authResult = authorizationResult;
 
     return activity;
   }
 
-  async delete(awid, dtoIn, session, authorizationResult) {
+  async delete(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
       Errors.Delete.SubjectTermInstanceDoesNotExist,
@@ -314,15 +314,15 @@ class ActivityAbl {
 
     let daoActivity = await this.dao.get(activity);
     if (!daoActivity) {
-      throw new Errors.Delete.ActivityDoesNotExist({ uuAppErrorMap }, { activityId: dtoIn.id });
+      throw new Errors.Delete.ActivityDoesNotExist({uuAppErrorMap}, {activityId: dtoIn.id});
     }
 
     await this.dao.delete(activity);
 
-    return { uuAppErrorMap };
+    return {uuAppErrorMap};
   }
 
-  async list(awid, dtoIn, authorizationResult) {
+  async list(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
       Errors.Delete.SubjectTermInstanceDoesNotExist,
@@ -343,7 +343,7 @@ class ActivityAbl {
     if (!dtoIn.pageInfo.pageSize) dtoIn.pageInfo.pageSize = DEFAULTS.pageSize;
     if (!dtoIn.pageInfo.pageIndex) dtoIn.pageInfo.pageIndex = DEFAULTS.pageIndex;
 
-    let filter ={
+    let filter = {
       awid: awid,
       subjectTermId: dtoIn.subjectTermId
     }

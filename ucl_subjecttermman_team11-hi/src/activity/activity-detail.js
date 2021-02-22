@@ -22,26 +22,26 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
 
 
   //@@viewOn:private
-  _handleDelete() {
+  _handleActivityDelete() {
     let dtoOut = {
       "id": this.props.data.id
     }
     return Calls.activityDelete(dtoOut)
   },
 
-  _handleAddStudent(uuIdentity) {
+  _handleAddStudent() {
     let dtoOut = {
       "id": this.props.data.id,
-      "studentId": uuIdentity
+      "studentId": this._inputUUid.getValue()
     }
     return Calls.activityAddStudent(dtoOut);
   },
 
-  _handleAssessStudent(uuIdentity, score) {
+  _handleAssessStudent() {
     let dtoOut = {
       "id": this.props.data.id,
-      "studentId": uuIdentity,
-      "score": score
+      "studentId": this._inputUUid.getValue(),
+      "score": this._inputScore.getValue()
     }
     return Calls.activityAssessStudent(dtoOut);
   },
@@ -49,6 +49,10 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
   myFunction(total, value) {
   return JSON.stringify(total) + JSON.stringify(value);
 },
+
+  renderRow() {
+
+  },
 
 
   //@@viewOff:private
@@ -118,7 +122,7 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
                 />
               </UU5.Bricks.Column>
               <UU5.Bricks.ButtonGroup size="m" horizontal>
-                <UU5.Bricks.Button content="delete" onClick={this._handleDelete}/>
+                <UU5.Bricks.Button content="delete" onClick={this._handleActivityDelete}/>
                 <UU5.Bricks.Button content="set state"/>
                 <UU5.Bricks.Button content="set link"/>
               </UU5.Bricks.ButtonGroup>
@@ -154,10 +158,10 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
               </UU5.Bricks.Column>
               <UU5.Bricks.ButtonGroup size="m" horizontal>
                 <UU5.Bricks.Button content="add student"
-                                   onClick={() => this._handleAddStudent(this._inputUUid.getValue())}/>
+                                   onClick={this._handleAddStudent}/>
                 <UU5.Bricks.Button content="delete student"/>
                 <UU5.Bricks.Button content="assess student"
-                                   onClick={() => this._handleAssessStudent(this._inputUUid.getValue(), this._inputScore.getValue())}/>
+                                   onClick= {this._handleAssessStudent}/>
               </UU5.Bricks.ButtonGroup>
             </>
             }

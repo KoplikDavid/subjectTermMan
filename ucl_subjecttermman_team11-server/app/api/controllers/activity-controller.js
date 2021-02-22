@@ -28,7 +28,7 @@ class ActivityController {
   }
 
   list(ucEnv) {
-    return ActivityAbl.list(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getAuthorizationResult());
+    return ActivityAbl.list(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
   }
 
   create(ucEnv) {

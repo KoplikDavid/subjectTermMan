@@ -1,7 +1,6 @@
 "use strict";
-const Path = require("path");
 const {Validator} = require("uu_appg01_server").Validation;
-const {DaoFactory} = require("uu_appg01_server").ObjectStore;
+const {DaoFactory, ObjectStoreError} = require("uu_appg01_server").ObjectStore;
 const {ValidationHelper} = require("uu_appg01_server").AppServer;
 const Errors = require("../api/errors/subject-term-error.js");
 const SubjecttermmanTeam11Abl = require("./subjecttermman-team11-abl");
@@ -219,7 +218,7 @@ class SubjectTermAbl {
 
   }
 
-  async create(awid, dtoIn, session, authorizationResult) {
+  async create(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
       Errors.Create.SubjectTermInstanceDoesNotExist,
@@ -235,7 +234,7 @@ class SubjectTermAbl {
       Errors.Create.InvalidDtoIn);
 
     dtoIn.awid = awid;
-    dtoIn.lifeCycleState = "planned";
+    dtoIn.lifeCycleState = "Planned";
 
     let subjectTerm;
 
