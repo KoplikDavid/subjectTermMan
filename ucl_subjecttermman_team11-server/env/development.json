@@ -1,9 +1,10 @@
 {
   "port": 8080,
   "uuSubAppDataStoreMap": {
-    "primary": "mongodb://127.0.0.1:27017/subjecttermmanTeam11Primary"
+    "primary": "mongodb://127.0.0.1:27017/subjecttermmanTeam11Primary",
+    "binary": "mongodb://127.0.0.1:27017/subjecttermmanTeam11Binary"
   },
-  "asid_license_owner_list": ["22-8811-1"],
+  "asid_license_owner_list": ["22-8811-1", "24-9596-1"],
   "asid": "11111111111111111111111111111111",
   "log_level": "INFO"
 }

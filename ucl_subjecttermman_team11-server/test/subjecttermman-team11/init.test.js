@@ -1,7 +1,7 @@
 const { TestHelper } = require("uu_appg01_server-test");
 
 beforeAll(async () => {
-  await TestHelper.setup();
+  await TestHelper.setup({ authEnabled: false, sysStatesEnabled: false });
   await TestHelper.initUuSubAppInstance();
   await TestHelper.createUuAppWorkspace();
 });
