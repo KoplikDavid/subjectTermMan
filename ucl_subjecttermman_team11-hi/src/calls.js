@@ -39,6 +39,11 @@ let Calls = {
     return await Calls.getWorkspace();
   },
 
+  subjectTermList(dtoInData) {
+    let commandUri = Calls.getCommandUri("subjectTerm/list");
+    return Calls.call("get", commandUri, dtoInData);
+  },
+
   activityList(dtoInData) {
     let commandUri = Calls.getCommandUri("activity/list");
     return Calls.call("get", commandUri, dtoInData);

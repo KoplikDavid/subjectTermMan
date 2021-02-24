@@ -56,7 +56,7 @@ const ActivityList = UU5.Common.VisualComponent.create({
                 tileMinWidth={220}
                 tileMaxWidth={300}
                 tileSpacing={8}
-                tileElevationHover={1}
+                tileElevationHover={0}
                 tileBorder
                 tileStyle={{borderRadius: 4}}
                 rowSpacing={8}
