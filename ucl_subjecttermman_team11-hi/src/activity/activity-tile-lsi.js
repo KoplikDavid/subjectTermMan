@@ -11,4 +11,8 @@ export default {
     cs: "Termín:",
     en: "Term:",
   },
+  detail: {
+    cs: "Podrobnosti",
+    en: "Details",
+  },
 }

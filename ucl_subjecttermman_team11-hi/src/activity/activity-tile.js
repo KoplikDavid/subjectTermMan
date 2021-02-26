@@ -81,7 +81,7 @@ const ActivityTile = UU5.Common.VisualComponent.create({
             flexDirection: "column"
           }}
         >
-          <UU5.Bricks.Button content="Detail" size="m" onClick={this._handleDetail}>
+          <UU5.Bricks.Button content={<UU5.Bricks.Lsi lsi={Lsi.detail}/>} size="m" onClick={this._handleDetail}>
 
           </UU5.Bricks.Button>
         </UU5.Bricks.Div>

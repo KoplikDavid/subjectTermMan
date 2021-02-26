@@ -64,21 +64,10 @@ const Loader = UU5.Common.VisualComponent.create({
           onDelete={Calls.delete}
         >
           {({
-              data, handleLoad, handleReload
+              data
             }) => {
             return (
               <UU5.Bricks.Div>
-                <UU5.Bricks.Button
-                  disabled={!data}
-                  colorSchema="primary"
-                  onClick={() => {
-                    handleReload()
-                      .then(data => console.log("reload ok", data))
-                      .catch(data => console.log("reload ko", data))
-                  }}
-                >
-                  Reload
-                </UU5.Bricks.Button>
                 <SubjectTermPicker data={data} selectItem={this.setSubjectTermId}/>
               </UU5.Bricks.Div>
             )
@@ -109,17 +98,7 @@ const Loader = UU5.Common.VisualComponent.create({
                 >
                   Load
                 </UU5.Bricks.Button>
-                <UU5.Bricks.Button
-                  disabled={!data}
-                  colorSchema="primary"
-                  onClick={() => {
-                    handleReload()
-                      .then(data => console.log("reload ok", data))
-                      .catch(data => console.log("reload ko", data))
-                  }}
-                >
-                  Reload
-                </UU5.Bricks.Button>
+
                 <UU5.Bricks.Button
                   disabled={!data}
                   colorSchema="success"
@@ -139,7 +118,6 @@ const Loader = UU5.Common.VisualComponent.create({
                 >
                   Create
                 </UU5.Bricks.Button>
-
                 <ActivityList data={data}/>
               </UU5.Bricks.Div>
             )

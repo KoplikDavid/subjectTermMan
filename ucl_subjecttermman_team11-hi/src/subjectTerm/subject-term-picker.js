@@ -1,4 +1,5 @@
 import UU5 from "uu5g04";
+import Lsi from "./subject-term-picker-lsi";
 
 const SubjectTermPicker = UU5.Common.VisualComponent.create({
 
@@ -14,8 +15,8 @@ const SubjectTermPicker = UU5.Common.VisualComponent.create({
       <>
         {(this.props.data && this.props.data.length > 0) ?
           <UU5.Bricks.Dropdown
-            label="Dropdown"
-            size="l"
+            label={<UU5.Bricks.Lsi lsi={Lsi.header}/>}
+            size="xl"
             colorSchema="blue"
             disableBackdrop
             elevationHover="5"
@@ -23,7 +24,7 @@ const SubjectTermPicker = UU5.Common.VisualComponent.create({
             ref_={(dropdown) => this.dropdown = dropdown}>
             {this.props.data.map(this.renderItem)}
           </UU5.Bricks.Dropdown>
-          : <UU5.Bricks.Div className="center">SubjectTerm are not loaded</UU5.Bricks.Div>
+          : <UU5.Bricks.Div className="center">{<UU5.Bricks.Lsi lsi={Lsi.empty}/>}</UU5.Bricks.Div>
         }
       </>
     )

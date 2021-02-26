@@ -7,6 +7,7 @@ import "uu_plus4u5g01-bricks";
 import "uu_plus4u5g01-app";
 import ActivityDetail from "./activity-detail";
 import {removeRouteParameters, setRouteParameters} from "../helpers/history-helper";
+import Lsi from "./activity-list-lsi";
 
 const ActivityList = UU5.Common.VisualComponent.create({
 
@@ -26,7 +27,7 @@ const ActivityList = UU5.Common.VisualComponent.create({
   _handleDetail(activity) {
     this._modal.open(
       {
-        header: <p>test</p>,
+        header: <UU5.Bricks.Lsi lsi={Lsi.headerDetail}/>,
         content: <ActivityDetail data={activity}/>,
         onClose: this._handleDetailClose
       },

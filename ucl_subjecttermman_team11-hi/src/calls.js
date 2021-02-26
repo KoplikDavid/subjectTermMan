@@ -58,6 +58,10 @@ let Calls = {
     let commandUri = Calls.getCommandUri("activity/addStudent");
     return Calls.call("post", commandUri, dtoInData);
   },
+  activityDeleteStudent(dtoInData) {
+    let commandUri = Calls.getCommandUri("activity/deleteStudent");
+    return Calls.call("post", commandUri, dtoInData);
+  },
 
   activityAssessStudent(dtoInData) {
     let commandUri = Calls.getCommandUri("activity/assessStudent");

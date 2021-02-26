@@ -29,6 +29,14 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
     return Calls.activityDelete(dtoOut)
   },
 
+  _handleStudentDelete() {
+    let dtoOut = {
+      "id": this.props.data.id,
+      "studentId": this._inputUUid.getValue()
+    }
+    return Calls.activityDeleteStudent(dtoOut)
+  },
+
   _handleAddStudent() {
     let dtoOut = {
       "id": this.props.data.id,
@@ -47,7 +55,7 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
   },
 
   myFunction(total, value) {
-  return JSON.stringify(total) + JSON.stringify(value);
+  return total + JSON.stringify(value);
 },
 
   renderRow() {
@@ -76,7 +84,7 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
             margin: 10
           }}
         >
-          <UU5.Bricks.Heading><UU5.Bricks.Lsi lsi={Lsi.header}/></UU5.Bricks.Heading>
+
           <UU5.Bricks.Row>
             {Object.entries(this.props.data).map(([key, value]) => {
               if (["activityType", "activityLink", "lifeCycleState","defaultTerm"].includes(key)) {
@@ -107,24 +115,24 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
           }}
         >
           <UU5.Bricks.Panel
-            header="Manage activity"
+            header={<UU5.Bricks.Lsi lsi={Lsi.manageActivity}/>}
             content={<>
               <UU5.Bricks.Column>
                 <UU5.Forms.TextArea
-                  label='Activity link'
+                  label={<UU5.Bricks.Lsi lsi={Lsi.newActivityLink}/>}
                   ref_={input => this._inputSetLink = input}
                   size="s"
                 />
                 <UU5.Forms.TextArea
-                  label='State'
+                  label={<UU5.Bricks.Lsi lsi={Lsi.newLifeCycleState}/>}
                   ref_={input => this._inputSetState = input}
                   size="s"
                 />
               </UU5.Bricks.Column>
               <UU5.Bricks.ButtonGroup size="m" horizontal>
-                <UU5.Bricks.Button content="delete" onClick={this._handleActivityDelete}/>
-                <UU5.Bricks.Button content="set state"/>
-                <UU5.Bricks.Button content="set link"/>
+                <UU5.Bricks.Button content={<UU5.Bricks.Lsi lsi={Lsi.setActivityLink}/>}/>
+                <UU5.Bricks.Button content={<UU5.Bricks.Lsi lsi={Lsi.setLifeCycleState}/>}/>
+                <UU5.Bricks.Button content={<UU5.Bricks.Lsi lsi={Lsi.deleteActivity}/>} onClick={this._handleActivityDelete}/>
               </UU5.Bricks.ButtonGroup>
             </>
             }
@@ -138,30 +146,30 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
             openClick={this.state.openClick === "null" ? null : this.state.openClick}
           />
           <UU5.Bricks.Panel
-            header="Manage student"
+            header={<UU5.Bricks.Lsi lsi={Lsi.manageStudent}/>}
             content={<>
-              {/*<StudentPicker handleChange={handleChange}/>*/}
               <UU5.Bricks.Column>
                 <UU5.Bricks.Strong
-                  content={this.props.data.activityDetails.reduce(this.myFunction)}
+                  content={this.props.data.activityDetails.reduce(this.myFunction,"")}
                 />
                 <UU5.Forms.TextArea
-                  label='Studen uuIdentity'
+                  label={<UU5.Bricks.Lsi lsi={Lsi.studentIdentity}/>}
                   ref_={input => this._inputUUid = input}
                   size="s"
                 />
                 <UU5.Forms.TextArea
-                  label='Score'
+                  label={<UU5.Bricks.Lsi lsi={Lsi.studentScore}/>}
                   ref_={input => this._inputScore = input}
                   size="s"
                 />
               </UU5.Bricks.Column>
               <UU5.Bricks.ButtonGroup size="m" horizontal>
-                <UU5.Bricks.Button content="add student"
-                                   onClick={this._handleAddStudent}/>
-                <UU5.Bricks.Button content="delete student"/>
-                <UU5.Bricks.Button content="assess student"
+                <UU5.Bricks.Button content={<UU5.Bricks.Lsi lsi={Lsi.assessStudent}/>}
                                    onClick= {this._handleAssessStudent}/>
+                <UU5.Bricks.Button content={<UU5.Bricks.Lsi lsi={Lsi.addStudent}/>}
+                                   onClick={this._handleAddStudent}/>
+                <UU5.Bricks.Button content={<UU5.Bricks.Lsi lsi={Lsi.deleteStudent}/>}
+                                   onClick={this._handleStudentDelete}/>
               </UU5.Bricks.ButtonGroup>
             </>
             }
