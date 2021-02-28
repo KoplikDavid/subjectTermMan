@@ -1,9 +1,7 @@
 //@@viewOn:imports
 import { createComponent, useState } from "uu5g04-hooks";
 import Config from "./config/config";
-import { subjectTerms } from "../../mock/data/subjectTerms";
-import SubjectTermRow from "../bricks/subjectTerms/subjectTermRow";
-import StudentPicker from "../bricks/utils/studentPicker";
+
 //@@viewOff:imports
 
 const SubjectTerms = createComponent({
@@ -25,11 +23,7 @@ const SubjectTerms = createComponent({
     //@@viewOn:render
     return (
       <div>
-        <StudentPicker handleChange={handleChange} />
-        {true &&
-          subjectTerms.map(({ subjectTermStart, subjectTermEnd }, index) => (
-            <SubjectTermRow start={subjectTermStart} end={subjectTermEnd} key={index} />
-          ))}
+
       </div>
     );
     //@@viewOff:render

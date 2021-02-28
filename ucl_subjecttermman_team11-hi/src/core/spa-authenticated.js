@@ -11,11 +11,9 @@ import "uu_plus4u5g01-app";
 import Config from "../core/config/config";
 import Bottom from "../core/bottom";
 import Home from "../routes/home";
-import SubjectTerms from "../routes/subjectTerms";
 import Left from "./left";
 import Activities from "../routes/activities";
 import Students from "../routes/students";
-import StudentDetail from "../bricks/students/studentDetail";
 //@@viewOff:imports
 
 const STATICS = {
@@ -39,8 +37,8 @@ const ROUTES = {
   "": DEFAULT_USE_CASE,
   home: { component: <Home /> },
   activities: { component: <Activities /> },
-  subjectTerms: { component: <SubjectTerms /> },
-  students: { component: <Students /> },
+  subjectTerms: { component: <Activities /> },
+  students: { component: <Students/>  },
   about: { component: <About /> },
   "sys/uuAppWorkspace/initUve": { component: <InitAppWorkspace /> },
   controlPanel: { component: <ControlPanel /> },
