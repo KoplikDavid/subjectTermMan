@@ -19,6 +19,7 @@ const StudentsLoader = UU5.Common.VisualComponent.create({
 
   statics: {},
 
+
   reloadAfterSelect(reload){
     this.reload = reload;
   },
@@ -78,7 +79,7 @@ const StudentsLoader = UU5.Common.VisualComponent.create({
             return (
               <UU5.Bricks.Div>
                 <SubjectTermPicker data={data} selectItem={this.setSubjectTermId}/>
-                <StudentsPicker data = {data} subjectTermID = {this.subjectTermId} selectItem={this.setStudentId}/>
+                <StudentsPicker data = {data} subjectTermId = {this.subjectTermId} selectItem={this.setStudentId}/>
               </UU5.Bricks.Div>
             )
           }}
