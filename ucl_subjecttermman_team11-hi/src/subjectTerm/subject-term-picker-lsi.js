@@ -1,7 +1,7 @@
 export default {
   header: {
-    cs: "Vyberte předmět a semestr",
-    en: "Select subject and term",
+    cs: "Vyberte semestr",
+    en: "Select subject term",
   },
   empty: {
     cs: "Nepodařilo se načíst žádný předmět",

@@ -4,7 +4,7 @@ export default {
     en: "Select student",
   },
   empty: {
-    cs: "Nepodařilo se načíst žádné studenty",
+    cs: "Nemáte vybraný předmět",
     en: "There are no students",
   }
 }

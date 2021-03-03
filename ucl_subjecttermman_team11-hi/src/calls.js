@@ -44,6 +44,31 @@ let Calls = {
     return Calls.call("get", commandUri, dtoInData);
   },
 
+  subjectTermCreate(dtoInData) {
+    let commandUri = Calls.getCommandUri("subjectTerm/create");
+    return Calls.call("post", commandUri, dtoInData);
+  },
+
+  subjectTermDelete(dtoInData) {
+    let commandUri = Calls.getCommandUri("subjectTerm/delete");
+    return Calls.call("post", commandUri, dtoInData);
+  },
+
+  subjectTermSetState(dtoInData) {
+    let commandUri = Calls.getCommandUri("subjectTerm/setState");
+    return Calls.call("post", commandUri, dtoInData);
+  },
+
+  subjectTermAddStudent(dtoInData) {
+    let commandUri = Calls.getCommandUri("subjectTerm/addStudent");
+    return Calls.call("post", commandUri, dtoInData);
+  },
+
+  subjectTermDeleteStudent(dtoInData) {
+    let commandUri = Calls.getCommandUri("subjectTerm/deleteStudent");
+    return Calls.call("post", commandUri, dtoInData);
+  },
+
   activityList(dtoInData) {
     let commandUri = Calls.getCommandUri("activity/list");
     return Calls.call("get", commandUri, dtoInData);

@@ -14,6 +14,7 @@ import Home from "../routes/home";
 import Left from "./left";
 import Activities from "../routes/activities";
 import Students from "../routes/students";
+import SubjectTerms from "../routes/subjectTerms";
 //@@viewOff:imports
 
 const STATICS = {
@@ -37,7 +38,7 @@ const ROUTES = {
   "": DEFAULT_USE_CASE,
   home: { component: <Home /> },
   activities: { component: <Activities /> },
-  subjectTerms: { component: <Activities /> },
+  subjectTerms: { component: <SubjectTerms /> },
   students: { component: <Students/>  },
   about: { component: <About /> },
   "sys/uuAppWorkspace/initUve": { component: <InitAppWorkspace /> },
