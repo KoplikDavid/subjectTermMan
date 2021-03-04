@@ -4,11 +4,11 @@ export default {
     en: "Set subject term state",
   },
   addStudent: {
-    cs: "Zapiš studenta:",
-    en: "Assign student:",
+    cs: "Zapiš studenta",
+    en: "Assign student",
   },
   deleteStudent: {
-    cs: "Odhlaš studenta:",
-    en: "Unassign student:",
+    cs: "Odhlaš studenta",
+    en: "Unassign student",
   },
 }

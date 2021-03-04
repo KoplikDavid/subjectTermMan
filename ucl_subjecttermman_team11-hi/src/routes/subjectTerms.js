@@ -5,8 +5,18 @@ import Calls from "../calls";
 import SubjectTermPickerHook from "../subjectTerm/subject-term-picker-hooks";
 import StudentPickerHook from "../students/student-picker-hooks";
 import SubjectTermControl from "../subjectTerm/subject-term-control";
-
+import SubjectTermRow from "../subjectTerm/subject-term-row";
+import allStudents from "../../mock/allStudents"
 //@@viewOff:imports
+
+function subjectTermCalls(callType,dtoOut) {
+  const callMap = {
+    "setState": Calls.subjectTermSetState,
+    "addStudent": Calls.subjectTermAddStudent,
+    "deleteStudent": Calls.subjectTermDeleteStudent}
+
+   return  callMap[callType](dtoOut);
+}
 
 const SubjectTerms = createVisualComponent({
   //@@viewOn:propTypes
@@ -34,13 +44,11 @@ const SubjectTerms = createVisualComponent({
         createItem: Calls.subjectTermCreate,
       },
       itemHandlerMap: {
-        setState: Calls.subjectTermSetState,
-        addStudent: Calls.subjectTermAddStudent,
-        deleteStudent: Calls.subjectTermDeleteStudent,
+        update: subjectTermCalls,
         delete: Calls.subjectTermDelete,
       }
     });
-    const { state, data, newData, errorData, pendingData, handlerMap, itemHandlerMap } = dataListResult;
+    const { state, data, newData, errorData, pendingData, handlerMap } = dataListResult;
     //@viewOff:hooks
 
     //@viewOn:private
@@ -50,14 +58,13 @@ const SubjectTerms = createVisualComponent({
     //@@viewOn:render
     return (
       <>
-        <SubjectTermControl itemHandlerMap={itemHandlerMap} selectedSubjectTerm={selectedSubjectTerm} selectedStudent={selectedStudent}/>
-        <span/>
         <SubjectTermPickerHook data={data} selectItem={setSelectedSubjectTerm} setSelectedData={setCurrentSubjectTermData}/>
-        <StudentPickerHook data={currentSubjectTermData} selectItem={setSelectedStudent}/>
+        <StudentPickerHook data={allStudents} selectItem={setSelectedStudent}/>
+        {data ? (data.map((term) => <SubjectTermRow data={term} key={term.data.termCode} selectedStudent={selectedStudent}/>)) : <h1>No data</h1>}
       </>
     );
     //@@viewOff:render
-  },
+  }
 });
 
 export default SubjectTerms;

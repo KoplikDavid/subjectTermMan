@@ -5,7 +5,6 @@ import Lsi from "./students-picker-lsi";
 const StudentPickerHook = createVisualComponent({
     render(props) {
       const dropdownRef = useRef();
-      console.log(JSON.stringify(props.data));
     return (
       <>
         {(props.data) ?
