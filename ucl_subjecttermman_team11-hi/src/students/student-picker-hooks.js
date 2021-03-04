@@ -1,8 +1,8 @@
 import UU5 from "uu5g04";
-import {createComponent, useRef} from "uu5g04-hooks";
+import {createVisualComponent, useRef} from "uu5g04-hooks";
 import Lsi from "./students-picker-lsi";
 
-const StudentPickerHook = createComponent({
+const StudentPickerHook = createVisualComponent({
     render(props) {
       const dropdownRef = useRef();
       console.log(JSON.stringify(props.data));

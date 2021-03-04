@@ -1,8 +1,8 @@
 import UU5 from "uu5g04";
-import {createComponent, useRef} from "uu5g04-hooks";
+import {createVisualComponent, useRef} from "uu5g04-hooks";
 import Lsi from "./subject-term-picker-lsi";
 
-const SubjectTermPickerHook = createComponent({
+const SubjectTermPickerHook = createVisualComponent({
     render(props) {
       const dropdownRef = useRef();
     return (

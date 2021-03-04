@@ -1,8 +1,8 @@
 import UU5 from "uu5g04";
-import {createComponent} from "uu5g04-hooks";
+import {createVisualComponent} from "uu5g04-hooks";
 import Lsi from "./subject-term-control-lsi";
 
-const SubjectTermControl = createComponent({
+const SubjectTermControl = createVisualComponent({
     render(props) {
     return (
       <>
