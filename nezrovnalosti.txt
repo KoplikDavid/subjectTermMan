@@ -1,0 +1,22 @@
+subject-term-abl.js:
++ SubjectTermInstanceDoesNotExist ma byt SubjectTermManInstanceDoesNotExist
++ SubjectTermInstanceNotInProperState ma byt SubjectTermManInstanceNotInProperState
+
+
+activity-abl.js:
++ SubjectTermInstanceDoesNotExist ma byt SubjectTermManInstanceDoesNotExist
++ SubjectTermInstanceNotInProperState ma byt SubjectTermManInstanceNotInProperState
+
+
+subjecttermman-team11-abl.js:
++ v metode init() nevidim to, co je v knihe ako HDS 4
++ v metode init() je imo v zlom poradi HDS 5, 6, 7, 8 (v knihe inak ako v kode) 
++ chyba HDS 9 a HDS 10 (ohladom binary img)
++ na 125. riadku je unused variable 'instance' - to je v poho?
++ leftovers z jokes (jokeInstance)
++ nevidim v kode initkeysfailed z A5
++ nevidim v kode appClientTokenCreateFailed z A6
++ nevidim v kode A7 ani a8
++ CreateAwscFailed je error, ktory nie je spomenuty v knihe
++ SubjecttermmanInstanceDaoCreateFailed je s malym m, asi ma byt s velkym :DD
+

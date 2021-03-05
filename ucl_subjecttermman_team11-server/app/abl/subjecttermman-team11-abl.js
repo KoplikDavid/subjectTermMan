@@ -37,8 +37,9 @@ class SubjecttermmanTeam11Abl {
       throw new Errors.Init.SubjecttermmanInstanceAlreadyInitialized();
     }
 
+    // HDS 2
     let validationResult = this.validator.validate("initDtoInType", dtoIn);
-    // A1, A2
+    // A2, A3
     let uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
       validationResult,
@@ -46,7 +47,7 @@ class SubjecttermmanTeam11Abl {
       Errors.Init.InvalidDtoIn
     );
 
-    // HDS 2
+    // HDS 3
     const schemas = ["subjecttermmanTeam11", "activity","subjectTerm"];
     let schemaCreateResults = schemas.map(async (schema) => {
       try {
@@ -58,6 +59,7 @@ class SubjecttermmanTeam11Abl {
     });
     await Promise.all(schemaCreateResults);
 
+    // HDS 7
     if (dtoIn.uuBtLocationUri) {
       const baseUri = uri.getBaseUri();
       const uuBtUriBuilder = UriBuilder.parse(dtoIn.uuBtLocationUri);
@@ -72,10 +74,11 @@ class SubjecttermmanTeam11Abl {
       };
 
       const awscCreateUri = uuBtUriBuilder.setUseCase("uuAwsc/create").toUri();
+
+      // HDS 6
       const appClientToken = await AppClientTokenService.createToken(uri, uuBtBaseUri);
       const callOpts = AppClientTokenService.setToken({ session }, appClientToken);
 
-      // TODO HDS
       let awscId;
       try {
         const awscDtoOut = await AppClient.post(awscCreateUri, createAwscDtoIn, callOpts);
@@ -91,6 +94,7 @@ class SubjecttermmanTeam11Abl {
 
       const artifactUri = uuBtUriBuilder.setUseCase(null).clearParameters().setParameter("id", awscId).toUri();
 
+      // HDS 8
       await UuAppWorkspace.connectArtifact(
         baseUri,
         {
@@ -101,35 +105,33 @@ class SubjecttermmanTeam11Abl {
       );
     }
 
-    // HDS 3
+    // HDS 5
     if (dtoIn.uuAppProfileAuthorities) {
       try {
         await Profile.set(awid, "Authorities", dtoIn.uuAppProfileAuthorities);
       } catch (e) {
+        // A4
         if (e instanceof UuAppWorkspaceError) {
-          // A4
           throw new Errors.Init.SysSetProfileFailed({ uuAppErrorMap }, { role: dtoIn.uuAppProfileAuthorities }, e);
         }
         throw e;
       }
     }
 
-    // HDS 4 - HDS N
-    // TODO Implement according to application needs...
     dtoIn.awid = awid;
 
+    // HDS 11
     try {
       let instance = await this.dao.create(dtoIn);
     } catch (e) {
-      // A4
       if (e instanceof ObjectStoreError) {
         throw new Errors.Init.SubjecttermmanInstanceDaoCreateFailed({ uuAppErrorMap }, e);
       }
       throw e;
     }
-    // HDS N+1
     const workspace = UuAppWorkspace.get(awid);
 
+    // HDS 12
     return {
       ...workspace,
       uuAppErrorMap: uuAppErrorMap,
