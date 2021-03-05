@@ -120,14 +120,17 @@ class SubjectTermAbl {
   }
 
   async addStudent(awid, dtoIn) {
+    // HDS 1, A1, A2
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
       Errors.AddStudent.SubjectTermInstanceDoesNotExist,
       Errors.AddStudent.SubjectTermInstanceNotInProperState
     );
 
+    // HDS 2
     let validationResult = this.validator.validate("activityAddStudentDtoInType", dtoIn);
 
+    // A3, A4
     let uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
       validationResult,
@@ -139,15 +142,19 @@ class SubjectTermAbl {
       id: dtoIn.id,
     };
 
+    // HDS 3
     let subjectTerm = await this.dao.get(subjectTermFilter);
 
+    // A5
     if (!subjectTerm) {
       throw new Errors.AddStudent.SubjectTermDoesNotExist({uuAppErrorMap}, {activityId: dtoIn.id});
     }
 
+    // HDS 4
     try {
       subjectTerm = await this.dao.addStudent(subjectTermFilter, dtoIn.studentId);
     } catch (e) {
+      // A6 
       if (e instanceof ObjectStoreError) {
 
         throw new Errors.AddStudent.SubjectTermDaoAddStudentFailed({uuAppErrorMap}, e);
@@ -156,6 +163,7 @@ class SubjectTermAbl {
     }
 
     subjectTerm.uuAppErrorMap = uuAppErrorMap;
+    // HDS 5
     return subjectTerm;
   }
 
