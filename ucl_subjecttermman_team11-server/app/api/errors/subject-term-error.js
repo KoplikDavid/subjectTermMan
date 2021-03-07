@@ -30,18 +30,18 @@ const Create = {
     }
   },
 
-  SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
+  SubjectTermManInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Create.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${Create.UC_CODE}SubjectTermManInstanceDoesNotExist`;
       this.message = "SubjectTermInstance does not exist.";
     }
   },
 
-  SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
+  SubjectTermManInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Create.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.code = `${Create.UC_CODE}SubjectTermManInstanceNotInProperState`;
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },
@@ -58,18 +58,18 @@ const Delete = {
     }
   },
 
-  SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
+  SubjectTermManInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Delete.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${Delete.UC_CODE}SubjectTermManInstanceDoesNotExist`;
       this.message = "SubjectTermInstance does not exist.";
     }
   },
 
-  SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
+  SubjectTermManInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Delete.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.code = `${Delete.UC_CODE}SubjectTermManInstanceNotInProperState`;
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },
@@ -85,7 +85,7 @@ const Delete = {
   SubjectTermDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${Delete.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${Delete.UC_CODE}SubjectTermManInstanceDoesNotExist`;
       this.message = "Removing SubjectTerm by SubjectTerm Dao removeActivity failed.";
     }
   }
@@ -103,18 +103,18 @@ const List = {
     }
   },
 
-  SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
+  SubjectTermManInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${List.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${List.UC_CODE}SubjectTermManInstanceDoesNotExist`;
       this.message = "SubjectTermInstance does not exist.";
     }
   },
 
-  SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
+  SubjectTermManInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${List.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.code = `${List.UC_CODE}SubjectTermManInstanceNotInProperState`;
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },
@@ -140,18 +140,18 @@ const AddStudent = {
     }
   },
 
-  SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
+  SubjectTermManInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${AddStudent.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${AddStudent.UC_CODE}SubjectTermManInstanceDoesNotExist`;
       this.message = "SubjectTermInstance does not exist.";
     }
   },
 
-  SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
+  SubjectTermManInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${AddStudent.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.code = `${AddStudent.UC_CODE}SubjectTermManInstanceNotInProperState`;
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },
@@ -192,18 +192,18 @@ const DeleteStudent = {
     }
   },
 
-  SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
+  SubjectTermManInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${DeleteStudent.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${DeleteStudent.UC_CODE}SubjectTermManInstanceDoesNotExist`;
       this.message = "SubjectTermInstance does not exist.";
     }
   },
 
-  SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
+  SubjectTermManInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${DeleteStudent.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.code = `${DeleteStudent.UC_CODE}SubjectTermManInstanceNotInProperState`;
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },
@@ -245,17 +245,17 @@ const SetState = {
     }
   },
 
-  SubjectTermInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
+  SubjectTermManInstanceDoesNotExist: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${SetState.UC_CODE}SubjectTermInstanceDoesNotExist`;
+      this.code = `${SetState.UC_CODE}SubjectTermManInstanceDoesNotExist`;
       this.message = "SubjectTermInstance does not exist.";
     }
   },
-  SubjectTermInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
+  SubjectTermManInstanceNotInProperState: class extends SubjecttermmanTeam11UseCaseError {
     constructor() {
       super(...arguments);
-      this.code = `${SetState.UC_CODE}SubjectTermInstanceNotInProperState`;
+      this.code = `${SetState.UC_CODE}SubjectTermManInstanceNotInProperState`;
       this.message = "SubjectTermInstance is not in proper state [active|underConstruction].";
     }
   },

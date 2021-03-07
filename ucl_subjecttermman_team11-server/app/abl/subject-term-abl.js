@@ -37,8 +37,8 @@ class SubjectTermAbl {
   async setState(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.SetState.SubjectTermInstanceDoesNotExist,
-      Errors.SetState.SubjectTermInstanceNotInProperState
+      Errors.SetState.SubjectTermManInstanceDoesNotExist,
+      Errors.SetState.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("subjectTermSetStateDtoInType", dtoIn);
@@ -78,8 +78,8 @@ class SubjectTermAbl {
   async deleteStudent(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.DeleteStudent.SubjectTermInstanceDoesNotExist,
-      Errors.DeleteStudent.SubjectTermInstanceNotInProperState
+      Errors.DeleteStudent.SubjectTermManInstanceDoesNotExist,
+      Errors.DeleteStudent.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("subjectTermDeleteStudentDtoInType", dtoIn);
@@ -121,8 +121,8 @@ class SubjectTermAbl {
   async addStudent(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.AddStudent.SubjectTermInstanceDoesNotExist,
-      Errors.AddStudent.SubjectTermInstanceNotInProperState
+      Errors.AddStudent.SubjectTermManInstanceDoesNotExist,
+      Errors.AddStudent.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("activityAddStudentDtoInType", dtoIn);
@@ -161,8 +161,8 @@ class SubjectTermAbl {
   async list(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.List.SubjectTermInstanceDoesNotExist,
-      Errors.List.SubjectTermInstanceNotInProperState
+      Errors.List.SubjectTermManInstanceDoesNotExist,
+      Errors.List.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("subjectTermListDtoInType", dtoIn);
@@ -189,8 +189,8 @@ class SubjectTermAbl {
   async delete(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.Delete.SubjectTermInstanceDoesNotExist,
-      Errors.Delete.SubjectTermInstanceNotInProperState
+      Errors.Delete.SubjectTermManInstanceDoesNotExist,
+      Errors.Delete.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("subjectTermDeleteDtoInType", dtoIn);
@@ -221,8 +221,8 @@ class SubjectTermAbl {
   async create(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.Create.SubjectTermInstanceDoesNotExist,
-      Errors.Create.SubjectTermInstanceNotInProperState
+      Errors.Create.SubjectTermManInstanceDoesNotExist,
+      Errors.Create.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("subjectTermDtoInType", dtoIn);

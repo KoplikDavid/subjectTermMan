@@ -43,8 +43,8 @@ class ActivityAbl {
   async assessStudent(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.AssessStudent.SubjectTermInstanceDoesNotExist,
-      Errors.AssessStudent.SubjectTermInstanceNotInProperState
+      Errors.AssessStudent.SubjectTermManInstanceDoesNotExist,
+      Errors.AssessStudent.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("activityAssessStudentDtoInType", dtoIn);
@@ -84,8 +84,8 @@ class ActivityAbl {
   async setActivityLink(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.SetActivityLink.SubjectTermInstanceDoesNotExist,
-      Errors.SetActivityLink.SubjectTermInstanceNotInProperState
+      Errors.SetActivityLink.SubjectTermManInstanceDoesNotExist,
+      Errors.SetActivityLink.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("activitySetActivityLinkDtoInType", dtoIn);
@@ -125,8 +125,8 @@ class ActivityAbl {
   async setstate(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.Setstate.SubjectTermInstanceDoesNotExist,
-      Errors.Setstate.SubjectTermInstanceNotInProperState
+      Errors.Setstate.SubjectTermManInstanceDoesNotExist,
+      Errors.Setstate.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("activitySetStateDtoInType", dtoIn);
@@ -169,8 +169,8 @@ class ActivityAbl {
   async deleteStudent(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.DeleteStudent.SubjectTermInstanceDoesNotExist,
-      Errors.DeleteStudent.SubjectTermInstanceNotInProperState
+      Errors.DeleteStudent.SubjectTermManInstanceDoesNotExist,
+      Errors.DeleteStudent.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("activityDeleteStudentDtoInType", dtoIn);
@@ -211,8 +211,8 @@ class ActivityAbl {
   async addStudent(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.AddStudent.SubjectTermInstanceDoesNotExist,
-      Errors.AddStudent.SubjectTermInstanceNotInProperState
+      Errors.AddStudent.SubjectTermManInstanceDoesNotExist,
+      Errors.AddStudent.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("subjectTermAddStudentDtoInType", dtoIn);
@@ -256,8 +256,8 @@ class ActivityAbl {
   async create(awid, dtoIn, session, authorizationResult) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.Create.SubjectTermInstanceDoesNotExist,
-      Errors.Create.SubjectTermInstanceNotInProperState
+      Errors.Create.SubjectTermManInstanceDoesNotExist,
+      Errors.Create.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("activityCreateDtoInType", dtoIn);
@@ -294,8 +294,8 @@ class ActivityAbl {
   async delete(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.Delete.SubjectTermInstanceDoesNotExist,
-      Errors.Delete.SubjectTermInstanceNotInProperState
+      Errors.Delete.SubjectTermManInstanceDoesNotExist,
+      Errors.Delete.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("activityDeleteDtoInType", dtoIn);
@@ -325,8 +325,8 @@ class ActivityAbl {
   async list(awid, dtoIn) {
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
-      Errors.Delete.SubjectTermInstanceDoesNotExist,
-      Errors.Delete.SubjectTermInstanceNotInProperState
+      Errors.Delete.SubjectTermManInstanceDoesNotExist,
+      Errors.Delete.SubjectTermManInstanceNotInProperState
     );
 
     let validationResult = this.validator.validate("activityListDtoInType", dtoIn);

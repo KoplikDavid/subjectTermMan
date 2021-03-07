@@ -31,9 +31,9 @@ class SubjecttermmanTeam11Abl {
   async init(uri, dtoIn, session) {
     const awid = uri.getAwid();
     // HDS 1
-    let jokeInstance = await this.dao.getByAwid(awid);
+    let Subjecttermman = await this.dao.getByAwid(awid);
     // A1
-    if (jokeInstance) {
+    if (Subjecttermman) {
       throw new Errors.Init.SubjecttermmanInstanceAlreadyInitialized();
     }
 
