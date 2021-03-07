@@ -110,7 +110,7 @@ class SubjecttermmanTeam11Abl {
       try {
         await Profile.set(awid, "Authorities", dtoIn.uuAppProfileAuthorities);
       } catch (e) {
-        // A4
+        // A7
         if (e instanceof UuAppWorkspaceError) {
           throw new Errors.Init.SysSetProfileFailed({ uuAppErrorMap }, { role: dtoIn.uuAppProfileAuthorities }, e);
         }
