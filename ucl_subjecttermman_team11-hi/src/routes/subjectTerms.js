@@ -4,18 +4,19 @@ import Config from "./config/config";
 import Calls from "../calls";
 import SubjectTermPickerHook from "../subjectTerm/subject-term-picker-hooks";
 import StudentPickerHook from "../students/student-picker-hooks";
-import SubjectTermControl from "../subjectTerm/subject-term-control";
 import SubjectTermRow from "../subjectTerm/subject-term-row";
 import allStudents from "../../mock/allStudents"
 //@@viewOff:imports
 
-function subjectTermCalls(callType,dtoOut) {
+function subjectTermCalls(data) {
   const callMap = {
     "setState": Calls.subjectTermSetState,
     "addStudent": Calls.subjectTermAddStudent,
-    "deleteStudent": Calls.subjectTermDeleteStudent}
+    "deleteStudent": Calls.subjectTermDeleteStudent
+  }
+  const call = callMap[data.type];
 
-   return  callMap[callType](dtoOut);
+  return call(data.data);
 }
 
 const SubjectTerms = createVisualComponent({
