@@ -8,15 +8,15 @@ import SubjectTermRow from "../subjectTerm/subject-term-row";
 import allStudents from "../../mock/allStudents"
 //@@viewOff:imports
 
-function subjectTermCalls(data) {
+function subjectTermCalls(callData) {
   const callMap = {
     "setState": Calls.subjectTermSetState,
     "addStudent": Calls.subjectTermAddStudent,
     "deleteStudent": Calls.subjectTermDeleteStudent
   }
-  const call = callMap[data.type];
+  const call = callMap[callData.type];
 
-  return call(data.data);
+  return call(callData.data);
 }
 
 const SubjectTerms = createVisualComponent({
@@ -34,9 +34,7 @@ const SubjectTerms = createVisualComponent({
 
   render(props) {
     //@viewOn:hooks
-    const [selectedSubjectTerm, setSelectedSubjectTerm] = useState();
     const [selectedStudent, setSelectedStudent] = useState();
-    const [currentSubjectTermData, setCurrentSubjectTermData] = useState();
     const pageSize = 20;
     const dataListResult = useDataList({
       pageSize,
@@ -59,9 +57,8 @@ const SubjectTerms = createVisualComponent({
     //@@viewOn:render
     return (
       <>
-        <SubjectTermPickerHook data={data} selectItem={setSelectedSubjectTerm} setSelectedData={setCurrentSubjectTermData}/>
-        <StudentPickerHook data={allStudents} selectItem={setSelectedStudent}/>
-        {data ? (data.map((term) => <SubjectTermRow data={term} key={term.data.termCode} selectedStudent={selectedStudent}/>)) : <h1>No data</h1>}
+        <StudentPickerHook students={allStudents.students} selectItem={setSelectedStudent}/>
+        {data ? (data.map((term) => <SubjectTermRow data={term} key={term.data.termCode} selectedStudent={selectedStudent} setSelectedStudent={setSelectedStudent}/>)) : <h1>No data</h1>}
       </>
     );
     //@@viewOff:render

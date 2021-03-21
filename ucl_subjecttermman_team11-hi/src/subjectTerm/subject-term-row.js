@@ -6,7 +6,6 @@ import SubjectTermControl from "./subject-term-control";
 const SubjectTermRow = createVisualComponent({
     render(props) {
       return (
-        <div onClick={() => console.log(props.data.data.termCode)}>
             <UU5.Bricks.Row display={"flex"}>
               <UU5.Bricks.Lsi lsi={Lsi.name}/>
               <UU5.Bricks.Strong content={props.data.data.subjectName}/>
@@ -14,9 +13,8 @@ const SubjectTermRow = createVisualComponent({
               <UU5.Bricks.Strong content={props.data.data.termCode}/>
               <UU5.Bricks.Lsi lsi={Lsi.lifeCycleState}/>
               <UU5.Bricks.Strong content={props.data.data.lifeCycleState}/>
-              <SubjectTermControl itemHandlerMap={props.data.handlerMap} selectedSubjectTerm={props.data.data.id} selectedStudent={props.selectedStudent}/>
+              <SubjectTermControl data={props.data} itemHandlerMap={props.data.handlerMap} selectedSubjectTerm={props.data.data.id} selectedStudent={props.selectedStudent} setSelectedStudent={props.setSelectedStudent}/>
             </UU5.Bricks.Row>
-        </div>
       )
   }
 });
