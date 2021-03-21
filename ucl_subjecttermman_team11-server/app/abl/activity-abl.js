@@ -41,14 +41,18 @@ class ActivityAbl {
   }
 
   async assessStudent(awid, dtoIn) {
+    // HDS 1
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
+      // A1, A2
       Errors.AssessStudent.SubjectTermManInstanceDoesNotExist,
       Errors.AssessStudent.SubjectTermManInstanceNotInProperState
     );
 
+    // HDS 2
     let validationResult = this.validator.validate("activityAssessStudentDtoInType", dtoIn);
 
+    // A3, A4
     let uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
       validationResult,
@@ -61,23 +65,27 @@ class ActivityAbl {
       id: dtoIn.id,
     };
 
+    // HDS 3
     let activity = await this.dao.get(activityFilter);
 
+    // A5
     if (!activity) {
       throw new Errors.AssessStudent.ActivityDoesNotExist({uuAppErrorMap}, {subjectTermId: dtoIn.id});
     }
 
+    // HDS 4
     try {
       activity = await this.dao.assess(activityFilter, dtoIn);
     } catch (e) {
       if (e instanceof ObjectStoreError) {
-
+        // A6
         throw new Errors.AssessStudent.ActivityAssessStudentDaoFailed({uuAppErrorMap}, e);
       }
       throw e;
     }
 
     activity.uuAppErrorMap = uuAppErrorMap;
+    // HDS 5
     return activity;
   }
 
@@ -323,20 +331,25 @@ class ActivityAbl {
   }
 
   async list(awid, dtoIn) {
+    // HDS 1
     await SubjecttermmanTeam11Abl.checkInstance(
       awid,
+      // A1, A2
       Errors.Delete.SubjectTermManInstanceDoesNotExist,
       Errors.Delete.SubjectTermManInstanceNotInProperState
     );
 
+    // HDS 2
     let validationResult = this.validator.validate("activityListDtoInType", dtoIn);
 
+    // A3, A4
     let uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
       validationResult,
       WARNINGS.listUnsupportedKeys.code,
       Errors.List.InvalidDtoIn);
 
+    // HDS 3
     dtoIn.sortBy = DEFAULTS.sortBy;
     if (!dtoIn.order) dtoIn.order = DEFAULTS.order;
     if (!dtoIn.pageInfo) dtoIn.pageInfo = {};
@@ -351,6 +364,8 @@ class ActivityAbl {
     let list = await this.dao.list(filter, dtoIn.sortBy, dtoIn.order, dtoIn.pageInfo);
 
     list.uuAppErrorMap = uuAppErrorMap;
+
+    // HDS 4
     return list;
   }
 

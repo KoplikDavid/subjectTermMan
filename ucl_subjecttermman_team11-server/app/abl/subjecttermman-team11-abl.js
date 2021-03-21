@@ -37,8 +37,9 @@ class SubjecttermmanTeam11Abl {
       throw new Errors.Init.SubjecttermmanInstanceAlreadyInitialized();
     }
 
+    // HDS 2
     let validationResult = this.validator.validate("initDtoInType", dtoIn);
-    // A1, A2
+    // A2, A3
     let uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
       validationResult,
@@ -46,18 +47,19 @@ class SubjecttermmanTeam11Abl {
       Errors.Init.InvalidDtoIn
     );
 
-    // HDS 2
+    // HDS 3
     const schemas = ["subjecttermmanTeam11", "activity","subjectTerm"];
     let schemaCreateResults = schemas.map(async (schema) => {
       try {
         return await DaoFactory.getDao(schema).createSchema();
       } catch (e) {
-        // A3
+        // A4
         throw new Errors.Init.SchemaDaoCreateSchemaFailed({ uuAppErrorMap }, { schema }, e);
       }
     });
     await Promise.all(schemaCreateResults);
 
+    // HDS 4
     if (dtoIn.uuBtLocationUri) {
       const baseUri = uri.getBaseUri();
       const uuBtUriBuilder = UriBuilder.parse(dtoIn.uuBtLocationUri);
@@ -72,9 +74,12 @@ class SubjecttermmanTeam11Abl {
       };
 
       const awscCreateUri = uuBtUriBuilder.setUseCase("uuAwsc/create").toUri();
+      
+      // HDS 5
       const appClientToken = await AppClientTokenService.createToken(uri, uuBtBaseUri);
       const callOpts = AppClientTokenService.setToken({ session }, appClientToken);
 
+      // HDS 6
       let awscId;
       try {
         const awscDtoOut = await AppClient.post(awscCreateUri, createAwscDtoIn, callOpts);
@@ -84,6 +89,7 @@ class SubjecttermmanTeam11Abl {
           logger.warn(`Awsc already exists id=${e.paramMap.id}.`, e);
           awscId = e.paramMap.id;
         } else {
+          // A5
           throw new Errors.Init.CreateAwscFailed({ uuAppErrorMap }, { location: dtoIn.uuBtLocationUri }, e);
         }
       }
@@ -100,34 +106,35 @@ class SubjecttermmanTeam11Abl {
       );
     }
 
-    // HDS 3
+    // HDS 7
     if (dtoIn.uuAppProfileAuthorities) {
       try {
         await Profile.set(awid, "Authorities", dtoIn.uuAppProfileAuthorities);
       } catch (e) {
         if (e instanceof UuAppWorkspaceError) {
-          // A4
+          // A6
           throw new Errors.Init.SysSetProfileFailed({ uuAppErrorMap }, { role: dtoIn.uuAppProfileAuthorities }, e);
         }
         throw e;
       }
     }
 
-    // HDS 4 - HDS N
     dtoIn.awid = awid;
 
+    // HDS 8
     try {
       await this.dao.create(dtoIn);
     } catch (e) {
-      // A4
+      // A7
       if (e instanceof ObjectStoreError) {
         throw new Errors.Init.SubjecttermmanInstanceDaoCreateFailed({ uuAppErrorMap }, e);
       }
       throw e;
     }
-    // HDS N+1
+
     const workspace = UuAppWorkspace.get(awid);
 
+    // HDS 9
     return {
       ...workspace,
       uuAppErrorMap: uuAppErrorMap,
@@ -153,7 +160,7 @@ class SubjecttermmanTeam11Abl {
     }
 
 
-    // hds 3
+    // HDS 3
     subjecttermman.authorizedProfileList = authorizedProfiles;
 
     // HDS 4
