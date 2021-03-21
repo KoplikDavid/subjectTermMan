@@ -13,7 +13,7 @@ const SubjectTermRow = createVisualComponent({
               <UU5.Bricks.Strong content={props.data.data.termCode}/>
               <UU5.Bricks.Lsi lsi={Lsi.lifeCycleState}/>
               <UU5.Bricks.Strong content={props.data.data.lifeCycleState}/>
-              <SubjectTermControl data={props.data} itemHandlerMap={props.data.handlerMap} selectedSubjectTerm={props.data.data.id} selectedStudent={props.selectedStudent} setSelectedStudent={props.setSelectedStudent}/>
+              <SubjectTermControl students={props.data.data.students} itemHandlerMap={props.data.handlerMap} selectedSubjectTerm={props.data.data.id} selectedStudent={props.selectedStudent} setSelectedStudent={props.setSelectedStudent}/>
             </UU5.Bricks.Row>
       )
   }
