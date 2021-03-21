@@ -1,5 +1,5 @@
 import UU5 from "uu5g04";
-import {createVisualComponent} from "uu5g04-hooks";
+import {createVisualComponent, useRef} from "uu5g04-hooks";
 import Lsi from "./subject-term-control-lsi";
 import StudentPickerHook from "../students/student-picker-hooks";
 import Config from "../routes/config/config";
@@ -22,13 +22,27 @@ const SubjectTermControl = createVisualComponent({
   //@@viewOn:statics
   displayName: Config.TAG + "SubjectTermControl",
   //@@viewOff:statics
+  _confirm: undefined,
 
   render(props) {
-    console.log(props);
+    const _confirm = useRef();
     return (
       <>
+        <UU5.Bricks.ConfirmModal
+          ref_={confirm => _confirm.current = confirm}
+          onConfirm={() => props.itemHandlerMap.update({
+            "type": "deleteStudent",
+            "data": {
+              "id": props.selectedSubjectTerm,
+              "studentId": props.selectedStudent
+            }
+          })}
+          header="Unassign student"
+          content={<UU5.Bricks.P>Are you sure?</UU5.Bricks.P>}
+        />
         <UU5.Bricks.ButtonGroup>
           <UU5.Bricks.Button content={<UU5.Bricks.Lsi lsi={Lsi.addStudent}/>}
+                             disabled={!!props.students.filter(student => student.studentId === props.selectedStudent).length}
                              onClick={() => props.itemHandlerMap.update({
                                "type": "addStudent",
                                "data": {
@@ -37,15 +51,9 @@ const SubjectTermControl = createVisualComponent({
                                }
                              })}/>
           <UU5.Bricks.Button content={<UU5.Bricks.Lsi lsi={Lsi.deleteStudent}/>}
-                             onClick={() => {
-                               props.itemHandlerMap.update({
-                                 "type": "deleteStudent",
-                                 "data": {
-                                   "id": props.selectedSubjectTerm,
-                                   "studentId": props.selectedStudent
-                                 }
-                               })
-                             }}/>
+                             disabled={!props.students.filter(student => student.studentId === props.selectedStudent).length}
+                             onClick={() => _confirm.current.open()
+                             }/>
         </UU5.Bricks.ButtonGroup>
         <StudentPickerHook students={props.students} selectItem={props.setSelectedStudent}/>
       </>

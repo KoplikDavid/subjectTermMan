@@ -118,12 +118,12 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
             header={<UU5.Bricks.Lsi lsi={Lsi.manageActivity}/>}
             content={<>
               <UU5.Bricks.Column>
-                <UU5.Forms.TextArea
+                <UU5.Forms.Text
                   label={<UU5.Bricks.Lsi lsi={Lsi.newActivityLink}/>}
                   ref_={input => this._inputSetLink = input}
                   size="s"
                 />
-                <UU5.Forms.TextArea
+                <UU5.Forms.Text
                   label={<UU5.Bricks.Lsi lsi={Lsi.newLifeCycleState}/>}
                   ref_={input => this._inputSetState = input}
                   size="s"
@@ -152,12 +152,12 @@ const ActivityDetail = UU5.Common.VisualComponent.create({
                 <UU5.Bricks.Strong
                   content={this.props.data.activityDetails.reduce(this.myFunction,"")}
                 />
-                <UU5.Forms.TextArea
+                <UU5.Forms.Text
                   label={<UU5.Bricks.Lsi lsi={Lsi.studentIdentity}/>}
                   ref_={input => this._inputUUid = input}
                   size="s"
                 />
-                <UU5.Forms.TextArea
+                <UU5.Forms.Text
                   label={<UU5.Bricks.Lsi lsi={Lsi.studentScore}/>}
                   ref_={input => this._inputScore = input}
                   size="s"

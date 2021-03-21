@@ -6,6 +6,7 @@ import SubjectTermPickerHook from "../subjectTerm/subject-term-picker-hooks";
 import StudentPickerHook from "../students/student-picker-hooks";
 import SubjectTermRow from "../subjectTerm/subject-term-row";
 import allStudents from "../../mock/allStudents"
+import UU5 from "uu5g04";
 //@@viewOff:imports
 
 function subjectTermCalls(callData) {
@@ -47,7 +48,7 @@ const SubjectTerms = createVisualComponent({
         delete: Calls.subjectTermDelete,
       }
     });
-    const { state, data, newData, errorData, pendingData, handlerMap } = dataListResult;
+    const { data, errorData, } = dataListResult;
     //@viewOff:hooks
 
     //@viewOn:private
@@ -57,12 +58,13 @@ const SubjectTerms = createVisualComponent({
     //@@viewOn:render
     return (
       <>
+        {errorData ? <UU5.Common.Error bgStyle={this.state.bgStyle} errorData={errorData} colorSchema="default" content="default" />:<></>}
         <StudentPickerHook students={allStudents.students} selectItem={setSelectedStudent}/>
         {data ? (data.map((term) => <SubjectTermRow data={term} key={term.data.termCode} selectedStudent={selectedStudent} setSelectedStudent={setSelectedStudent}/>)) : <h1>No data</h1>}
       </>
     );
     //@@viewOff:render
-  }
+  },
 });
 
 export default SubjectTerms;
