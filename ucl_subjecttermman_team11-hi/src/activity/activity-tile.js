@@ -23,7 +23,7 @@ const ActivityTile = UU5.Common.VisualComponent.create({
   //@@viewOn:private
 
   _handleDetail() {
-    const data = this.props.data;
+    let data = this.props.data;
 
     data.onClose=this.props.onClose;
     this.props.onDetail(data);

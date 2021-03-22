@@ -37,8 +37,8 @@ const SubjectTermControl = createVisualComponent({
               "studentId": props.selectedStudent
             }
           })}
-          header="Unassign student"
-          content={<UU5.Bricks.P>Are you sure?</UU5.Bricks.P>}
+          header={<UU5.Bricks.Lsi lsi={Lsi.deleteStudent}/>}
+          content={<UU5.Bricks.Lsi lsi={Lsi.deleteQuestion}/>}
         />
         <UU5.Bricks.ButtonGroup>
           <UU5.Bricks.Button content={<UU5.Bricks.Lsi lsi={Lsi.addStudent}/>}

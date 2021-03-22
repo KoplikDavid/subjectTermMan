@@ -4,11 +4,15 @@ export default {
     en: "Set subject term state",
   },
   addStudent: {
-    cs: "Zapiš studenta",
+    cs: "Zapsat studenta",
     en: "Assign student",
   },
   deleteStudent: {
-    cs: "Odhlaš studenta",
+    cs: "Odhlasit studenta",
     en: "Unassign student",
   },
+  deleteQuestion:{
+    cs: "Jste si jistý?",
+    en: "Are you sure?",
+  }
 }

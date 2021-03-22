@@ -1,14 +1,14 @@
 export default {
   name: {
-    cs: "Předmět:",
-    en: "Subject",
+    cs: " Předmět: ",
+    en: " Subject: ",
   },
   termCode: {
-    cs: "Kod semestru:",
-    en: "Subject Term code",
+    cs: " Kod semestru: ",
+    en: " Subject Term code: ",
   },
   lifeCycleState: {
-    cs: "Stav:",
-    en: "State",
+    cs: " Stav: ",
+    en: " State: ",
   }
 }
